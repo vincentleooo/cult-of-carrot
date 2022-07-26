@@ -6,9 +6,6 @@ using UnityEngine;
 public class CharacterStatus : ScriptableObject 
 {
     public string charName = "";
-    public float[] position = new float[2];
     public GameObject characterGameObject;
     public int node = 1;
-    public float maxFaith = 100;
-    public float faith = 100;
 }

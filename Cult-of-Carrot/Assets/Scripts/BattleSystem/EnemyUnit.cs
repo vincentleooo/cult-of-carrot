@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerUnit : MonoBehaviour
+public class EnemyUnit : MonoBehaviour
 {
     public int maxFaith = 100;
     public int currentFaith;
@@ -16,11 +16,13 @@ public class PlayerUnit : MonoBehaviour
         faithBar.SetMaxFaith(maxFaith);
     }
 
-    // unique to each enemy type
     public void TakeDamage(int damage)
     {
         currentFaith -= damage;
         faithBar.SetFaith(currentFaith);
     }
 
+    public int Attack() {
+        return 5;
+    }
 }
