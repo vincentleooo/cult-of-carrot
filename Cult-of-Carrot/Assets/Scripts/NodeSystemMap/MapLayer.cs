@@ -11,8 +11,11 @@ namespace Map
 
         // [OneLineWithHeader] public IntMinMax numOfNodes;
         
-        [OneLineWithHeader] public FloatMinMax distanceFromPreviousLayer;
-        [Tooltip("Distance between the nodes on this layer")]
+        [Tooltip("Distance between the nodes on each layer (Width change)")]
+        [OneLineWithHeader]
+        public FloatMinMax distanceFromPreviousLayer;
+
+        [Tooltip("Distance between the nodes on this layer (Height change)")]
         public float nodesApartDistance;
 
         [Tooltip("If this is set to 0, nodes on this layer will appear in a straight line. Closer to 1f = more position randomization")]

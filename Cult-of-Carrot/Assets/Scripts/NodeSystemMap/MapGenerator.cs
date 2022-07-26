@@ -10,11 +10,11 @@ namespace Map
 
         private static readonly List<NodeType> RandomNodes = new List<NodeType>
         {
-            NodeType.Mystery,
-            NodeType.Store,
-            NodeType.Treasure,
+            NodeType.Tutorial,
             NodeType.MinorEnemy,
-            NodeType.RestSite
+            NodeType.EliteEnemy,
+            NodeType.Rest,
+            NodeType.Shop
         };
 
         private static List<float> layerDistances;

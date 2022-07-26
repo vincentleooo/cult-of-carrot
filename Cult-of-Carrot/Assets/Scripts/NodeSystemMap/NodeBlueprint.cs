@@ -4,13 +4,12 @@ namespace Map
 {
     public enum NodeType
     {
+        Tutorial,
         MinorEnemy,
         EliteEnemy,
-        RestSite,
-        Treasure,
-        Store,
-        Boss,
-        Mystery
+        Rest,
+        Shop,
+        Boss
     }
 }
 

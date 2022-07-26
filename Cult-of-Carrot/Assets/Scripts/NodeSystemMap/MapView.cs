@@ -258,7 +258,7 @@ namespace Map
 
             switch (orientation)
             {
-                case MapOrientation.LeftToRight:
+                case (MapOrientation.LeftToRight):
                     offset *= cam.aspect;
                     mapParent.transform.eulerAngles = new Vector3(0, 0, -90);
                     firstParent.transform.localPosition += new Vector3(offset, -bossNode.transform.position.y, 0);
