@@ -12,7 +12,8 @@ namespace Map
         public bool freezeY;
         public FloatMinMax yConstraints = new FloatMinMax();
         private Vector2 offset;
-        // distance from the center of this Game Object to the point where we clicked to start dragging 
+
+        // Distance from the center of this Game Object to the point where we clicked to start dragging 
         private Vector3 pointerDisplacement;
         private float zDisplacement;
         private bool dragging;
@@ -42,14 +43,14 @@ namespace Map
             if (!dragging) return;
 
             var mousePos = MouseInWorldCoords();
-            //Debug.Log(mousePos);
+            // Debug.Log(mousePos);
             transform.position = new Vector3(
-                freezeX ? transform.position.x : mousePos.x - pointerDisplacement.x,
-                freezeY ? transform.position.y : mousePos.y - pointerDisplacement.y,
+                (freezeX) ? transform.position.x : mousePos.x - pointerDisplacement.x,
+                (freezeY) ? transform.position.y : mousePos.y - pointerDisplacement.y,
                 transform.position.z);
         }
 
-        // returns mouse position in World coordinates for our GameObject to follow. 
+        // Returns mouse position in World coordinates for our GameObject to follow
         private Vector3 MouseInWorldCoords()
         {
             var screenMousePos = Input.mousePosition;
@@ -62,16 +63,15 @@ namespace Map
         {
             if (freezeY)
             {
-                if (transform.localPosition.x >= xConstraints.min && transform.localPosition.x <= xConstraints.max)
-                    return;
+                if (transform.localPosition.x >= xConstraints.min && transform.localPosition.x <= xConstraints.max) return;
 
                 var targetX = transform.localPosition.x < xConstraints.min ? xConstraints.min : xConstraints.max;
                 transform.DOLocalMoveX(targetX, tweenBackDuration).SetEase(tweenBackEase);
             }
+
             else if (freezeX)
             {
-                if (transform.localPosition.y >= yConstraints.min && transform.localPosition.y <= yConstraints.max)
-                    return;
+                if (transform.localPosition.y >= yConstraints.min && transform.localPosition.y <= yConstraints.max) return;
 
                 var targetY = transform.localPosition.y < yConstraints.min ? yConstraints.min : yConstraints.max;
                 transform.DOLocalMoveY(targetY, tweenBackDuration).SetEase(tweenBackEase);

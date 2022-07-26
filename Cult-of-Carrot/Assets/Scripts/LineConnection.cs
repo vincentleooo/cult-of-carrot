@@ -5,13 +5,13 @@ namespace Map
     [System.Serializable]
     public class LineConnection
     {
-        public LineRenderer lr;
+        public LineRenderer lineRenderer;
         public MapNode from;
         public MapNode to;
 
-        public LineConnection(LineRenderer lr, MapNode from, MapNode to)
+        public LineConnection(LineRenderer lineRenderer, MapNode from, MapNode to)
         {
-            this.lr = lr;
+            this.lineRenderer = lineRenderer;
             this.from = from;
             this.to = to;
         }
@@ -21,15 +21,16 @@ namespace Map
             // Debug.Log("In setcolor");
             // lr.material.color = color;
 
-            var gradient = lr.colorGradient;
+            var gradient = lineRenderer.colorGradient;
             var colorKeys = gradient.colorKeys;
+            
             for (var j = 0; j < colorKeys.Length; j++)
             {
                 colorKeys[j].color = color;
             }
 
             gradient.colorKeys = colorKeys;
-            lr.colorGradient = gradient;
+            lineRenderer.colorGradient = gradient;
         }
     }
 }

@@ -5,7 +5,7 @@ namespace Map
     public class DottedLineRenderer : MonoBehaviour
     {
         public bool scaleInUpdate = false;
-        private LineRenderer lR;
+        private LineRenderer lineRenderer;
         private Renderer rend;
 
         private void Start()
@@ -16,18 +16,18 @@ namespace Map
 
         public void ScaleMaterial()
         {
-            lR = GetComponent<LineRenderer>();
+            lineRenderer = GetComponent<LineRenderer>();
             rend = GetComponent<Renderer>();
             rend.material.mainTextureScale =
-                new Vector2(Vector2.Distance(lR.GetPosition(0), lR.GetPosition(lR.positionCount - 1)) / lR.widthMultiplier,
-                    1);
+                new Vector2(Vector2.Distance(lineRenderer.GetPosition(0),
+                    lineRenderer.GetPosition(lineRenderer.positionCount - 1)) / lineRenderer.widthMultiplier, 1);
         }
 
         private void Update()
         {
             rend.material.mainTextureScale =
-                new Vector2(Vector2.Distance(lR.GetPosition(0), lR.GetPosition(lR.positionCount - 1)) / lR.widthMultiplier,
-                    1);
+                new Vector2(Vector2.Distance(lineRenderer.GetPosition(0),
+                    lineRenderer.GetPosition(lineRenderer.positionCount - 1)) / lineRenderer.widthMultiplier, 1);
         }
     }
 }

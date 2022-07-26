@@ -11,6 +11,7 @@ namespace Map
         public readonly Point point;
         public readonly List<Point> incoming = new List<Point>();
         public readonly List<Point> outgoing = new List<Point>();
+
         [JsonConverter(typeof(StringEnumConverter))]
         public readonly NodeType nodeType;
         public readonly string blueprintName;
@@ -25,16 +26,14 @@ namespace Map
 
         public void AddIncoming(Point p)
         {
-            if (incoming.Any(element => element.Equals(p)))
-                return;
+            if (incoming.Any(element => element.Equals(p))) return;
 
             incoming.Add(p);
         }
 
         public void AddOutgoing(Point p)
         {
-            if (outgoing.Any(element => element.Equals(p)))
-                return;
+            if (outgoing.Any(element => element.Equals(p))) return;
 
             outgoing.Add(p);
         }

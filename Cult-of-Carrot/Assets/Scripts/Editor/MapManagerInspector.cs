@@ -15,7 +15,9 @@ namespace Map
             GUILayout.Space(10);
 
             if (GUILayout.Button("Generate"))
+            {
                 myScript.GenerateNewMap();
+            }
         }
     }
 }

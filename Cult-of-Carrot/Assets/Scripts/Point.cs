@@ -13,19 +13,24 @@ namespace Map
             this.y = y;
         }
 
-        // * Auto generated:
+        // Auto generated
         public bool Equals(Point other)
         {
             if (ReferenceEquals(null, other)) return false;
+
             if (ReferenceEquals(this, other)) return true;
+
             return x == other.x && y == other.y;
         }
 
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
+
             if (ReferenceEquals(this, obj)) return true;
+
             if (obj.GetType() != this.GetType()) return false;
+
             return Equals((Point)obj);
         }
 
@@ -36,7 +41,7 @@ namespace Map
                 return (x * 397) ^ y;
             }
         }
-        // * End of Auto generated
+        // End of Auto generated
 
         public override string ToString()
         {
