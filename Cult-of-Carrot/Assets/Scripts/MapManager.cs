@@ -17,19 +17,24 @@ namespace Map
             {
                 var mapJson = PlayerPrefs.GetString("Map");
                 var map = JsonConvert.DeserializeObject<Map>(mapJson);
-                // using this instead of .Contains()
+
+                // Using this instead of .Contains()
                 if (map.path.Any(p => p.Equals(map.GetBossNode().point)))
                 {
-                    // payer has already reached the boss, generate a new map
+                    // Player has already reached the boss
+                    // Generate a new map
                     GenerateNewMap();
                 }
+
                 else
                 {
                     CurrentMap = map;
-                    // player has not reached the boss yet, load the current map
+                    // Player has not reached the boss yet
+                    // Load the current map
                     view.ShowMap(map);
                 }
             }
+
             else
             {
                 GenerateNewMap();
@@ -53,6 +58,7 @@ namespace Map
                         { 
                             ReferenceLoopHandling = ReferenceLoopHandling.Ignore
                         });
+                        
             PlayerPrefs.SetString("Map", json);
             PlayerPrefs.Save();
         }

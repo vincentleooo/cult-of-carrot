@@ -126,11 +126,11 @@ namespace Map
             backgroundObject.transform.localPosition = new Vector3(bossNode.transform.localPosition.x, span / 2f, 0f);
             backgroundObject.transform.localRotation = Quaternion.identity;
 
-            var sr = backgroundObject.AddComponent<SpriteRenderer>();
-            sr.color = backgroundColor;
-            sr.drawMode = SpriteDrawMode.Sliced;
-            sr.sprite = background;
-            sr.size = new Vector2(xSize, span + yOffset * 2f);
+            var spriteRenderer = backgroundObject.AddComponent<SpriteRenderer>();
+            spriteRenderer.color = backgroundColor;
+            spriteRenderer.drawMode = SpriteDrawMode.Sliced;
+            spriteRenderer.sprite = background;
+            spriteRenderer.size = new Vector2(xSize, span + yOffset * 2f);
         }
 
         private void CreateMapParent()
@@ -268,6 +268,7 @@ namespace Map
                         scrollNonUi.xConstraints.max = 0;
                         scrollNonUi.xConstraints.min = -(span + 2f * offset);
                     }
+
                     break;
 
                 default:
@@ -314,7 +315,7 @@ namespace Map
             }
 
             var dottedLine = lineObject.GetComponent<DottedLineRenderer>();
-            
+
             if (dottedLine != null)
             {
                 dottedLine.ScaleMaterial();

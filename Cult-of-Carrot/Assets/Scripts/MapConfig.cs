@@ -13,14 +13,14 @@ namespace Map
 
         [OneLineWithHeader]
         public IntMinMax numOfPreBossNodes;
+
         [OneLineWithHeader]
         public IntMinMax numOfStartingNodes;
+
         [Reorderable]
         public ListOfMapLayers layers;
 
         [System.Serializable]
-        public class ListOfMapLayers : ReorderableArray<MapLayer>
-        {
-        }
+        public class ListOfMapLayers : ReorderableArray<MapLayer> { };
     }
 }

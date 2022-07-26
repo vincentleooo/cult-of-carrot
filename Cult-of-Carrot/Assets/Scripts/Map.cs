@@ -9,7 +9,7 @@ namespace Map
         public List<Node> nodes;
         public List<Point> path;
         public string bossNodeName;
-        public string configName; // similar to the act name in Slay the Spire
+        public string configName; // Similar to the act name in Slay the Spire
 
         public Map(string configName, string bossNodeName, List<Node> nodes, List<Point> path)
         {
@@ -29,8 +29,7 @@ namespace Map
             var bossNode = GetBossNode();
             var firstLayerNode = nodes.FirstOrDefault(n => n.point.y == 0);
 
-            if (bossNode == null || firstLayerNode == null)
-                return 0f;
+            if (bossNode == null || firstLayerNode == null) return 0f;
 
             return bossNode.position.y - firstLayerNode.position.y;
         }
@@ -45,7 +44,7 @@ namespace Map
             // var settings = new Newtonsoft.Json.JsonSerializerSettings();
             // settings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
 
-            //return JsonConvert.SerializeObject(this, Formatting.Indented);
+            // return JsonConvert.SerializeObject(this, Formatting.Indented);
             
             return JsonConvert.SerializeObject(this, Formatting.Indented,
                         new JsonSerializerSettings()
