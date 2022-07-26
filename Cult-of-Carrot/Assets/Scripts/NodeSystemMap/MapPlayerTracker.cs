@@ -83,8 +83,6 @@ namespace Map
             {
                 case (NodeType.Tutorial):
                     SceneManager.LoadScene("Induction");
-                    MapPlayerTracker.Instance.lockAfterSelecting = false;
-                    MapPlayerTracker.Instance.Locked = MapPlayerTracker.Instance.lockAfterSelecting;
                     break;
 
                 case (NodeType.MinorEnemy):
