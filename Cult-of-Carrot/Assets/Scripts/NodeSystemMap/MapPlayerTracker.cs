@@ -2,6 +2,7 @@
 using System.Linq;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Map
 {
@@ -81,6 +82,9 @@ namespace Map
             switch (mapNode.Node.nodeType)
             {
                 case (NodeType.Tutorial):
+                    SceneManager.LoadScene("Induction");
+                    MapPlayerTracker.Instance.lockAfterSelecting = false;
+                    MapPlayerTracker.Instance.Locked = MapPlayerTracker.Instance.lockAfterSelecting;
                     break;
 
                 case (NodeType.MinorEnemy):
