@@ -92,6 +92,7 @@ namespace Map
                     break;
 
                 case (NodeType.Rest):
+                    SceneManager.LoadScene("RestNode");
                     break;
 
                 case (NodeType.Shop):
