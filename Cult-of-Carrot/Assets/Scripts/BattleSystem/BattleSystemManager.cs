@@ -22,8 +22,8 @@ public class BattleSystemManager : MonoBehaviour
     public Transform[] enemyBattlePositions;
     public Transform playerBattlePosition;
 
-    public CharacterStatus[] enemiesStatus;
-    public CharacterStatus playerStatus;
+    public CharacterStats[] enemiesStatus;
+    public CharacterStats playerStatus;
 
     private PlayerUnit playerUnit;
     private EnemyUnit[] enemyUnits;

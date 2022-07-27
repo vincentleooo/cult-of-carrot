@@ -652,9 +652,11 @@ MonoBehaviour:
   battleText: {fileID: 1914323952}
   enemyBattlePositions:
   - {fileID: 1162594494}
+  - {fileID: 1725101906}
   playerBattlePosition: {fileID: 824977084}
   enemiesStatus:
-  - {fileID: 11400000, guid: 6a3ae917a938447abbd304a8e80d08a0, type: 2}
+  - {fileID: 11400000, guid: 8d152b54a88e249b597e5cdeae253e95, type: 2}
+  - {fileID: 11400000, guid: 8d152b54a88e249b597e5cdeae253e95, type: 2}
   playerStatus: {fileID: 11400000, guid: 87288b689e43147a1addf110cb5ff290, type: 2}
 --- !u!4 &570100334
 Transform:
@@ -820,7 +822,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &978747519
 GameObject:
@@ -931,7 +933,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1439827221
 GameObject:
@@ -1185,6 +1187,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1725101905
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1725101906}
+  m_Layer: 0
+  m_Name: PriestBattleStation2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1725101906
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1725101905}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9, y: -2.82, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1771297516
 GameObject:
   m_ObjectHideFlags: 0

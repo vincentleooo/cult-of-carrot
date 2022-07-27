@@ -9,14 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce729077f59bb43cbb630e9d13cf7e0f, type: 3}
-  m_Name: PlayerStatus
+  m_Script: {fileID: 11500000, guid: d1f742a600a0a439096e33f9863e63e9, type: 3}
+  m_Name: Enraged
   m_EditorClassIdentifier: 
-  charName: Missionary
-  position:
-  - 0
-  - 0
-  characterGameObject: {fileID: 8832023093376962782, guid: b348d4fc82eaabe4f938fbbe7778a3fb, type: 3}
-  node: 1
-  maxFaith: 100
-  faith: 100
+  stateName: Enraged
+  castOnEnemy: 1
+  description: Become enraged. Do not question my beliefs
+  change: 10
+  statType: 2
