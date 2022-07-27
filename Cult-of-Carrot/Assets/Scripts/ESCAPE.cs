@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ESCAPE : MonoBehaviour
+public class Escape : MonoBehaviour
 {
     // Update is called once per frame
     void Update()

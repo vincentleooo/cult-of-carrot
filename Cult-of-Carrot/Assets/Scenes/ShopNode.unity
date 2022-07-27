@@ -150,7 +150,7 @@ RectTransform:
   m_GameObject: {fileID: 69846531}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.11909771, y: 0.13468438, z: 0.38199192}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1539791045}
@@ -158,8 +158,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 91, y: 139}
-  m_SizeDelta: {x: 300.3932, y: 50.9971}
+  m_AnchoredPosition: {x: 97.7269, y: 156.6}
+  m_SizeDelta: {x: 2375.4624, y: 384.9481}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &69846533
 MonoBehaviour:
@@ -182,19 +182,21 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 8828c781709a8e242b67b87f2fa1aab8, type: 3}
-    m_FontSize: 17
+    m_Font: {fileID: 12800000, guid: f8b0bef0b3e424b5abcb6e19757f76b7, type: 3}
+    m_FontSize: 150
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 40
+    m_MaxSize: 150
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Welcome. What are you looking for?
+  m_Text: 'Welcome.
+
+    What are you looking for?'
 --- !u!222 &69846534
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2219,6 +2221,65 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &1790985204
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 2
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2163338869917363966, guid: 48ebb3cf62d548e44b7199257a9576f3, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163338869917363966, guid: 48ebb3cf62d548e44b7199257a9576f3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163338869917363966, guid: 48ebb3cf62d548e44b7199257a9576f3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163338869917363966, guid: 48ebb3cf62d548e44b7199257a9576f3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163338869917363966, guid: 48ebb3cf62d548e44b7199257a9576f3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163338869917363966, guid: 48ebb3cf62d548e44b7199257a9576f3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163338869917363966, guid: 48ebb3cf62d548e44b7199257a9576f3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163338869917363966, guid: 48ebb3cf62d548e44b7199257a9576f3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163338869917363966, guid: 48ebb3cf62d548e44b7199257a9576f3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163338869917363966, guid: 48ebb3cf62d548e44b7199257a9576f3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163338869917363966, guid: 48ebb3cf62d548e44b7199257a9576f3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4519069596457153706, guid: 48ebb3cf62d548e44b7199257a9576f3, type: 3}
+      propertyPath: m_Name
+      value: Escape
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_AddedGameObjects: []
+  m_SourcePrefab: {fileID: 100100000, guid: 48ebb3cf62d548e44b7199257a9576f3, type: 3}
 --- !u!1 &2105750875
 GameObject:
   m_ObjectHideFlags: 0
