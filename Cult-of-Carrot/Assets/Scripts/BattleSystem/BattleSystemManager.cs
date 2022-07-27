@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public enum BattleState 
 {
@@ -15,6 +16,8 @@ public enum BattleState
 public class BattleSystemManager : MonoBehaviour
 {
     public Text battleText;
+    public Transform[] skillButtonPositions;
+    public Button[] skillButtons;
 
     private GameObject[] enemies;
     private GameObject player;
@@ -71,35 +74,37 @@ public class BattleSystemManager : MonoBehaviour
 
     IEnumerator PlayerTurn()
     {
-        // Debug.Log("Player Turn");
-        battleText.text = "Player's Turn";
+        battleText.text = "Player's Turn. Carrot be with you.";
         playerHasClicked = false;
         yield return null;
     }
 
-    public void OnAttackButtonPress()
+    public void CharacterAttack(Skills skill)
     {
+        Debug.Log(skill.skillName);
         if (battleState != BattleState.PLAYERTURN) return;
 
         if (!playerHasClicked)
         {
-            StartCoroutine(PlayerAttack());
+            StartCoroutine(PlayerSkillAttack(skill));
             playerHasClicked = true;
         }
     }
 
-    IEnumerator PlayerAttack()
+    IEnumerator PlayerSkillAttack(Skills skill)
     {
-        battleText.text = "CONVERT THOSE BITCHES. BITCH.";
+        battleText.text = "Player used " + skill.skillName;
 
-        // Let all enemies take equal damage FOR NOW
+        int perEnemyFaithDamage = skill.changeFaith / enemiesRemaining;
+        int perEnemyPwrDamage = skill.changePower / enemiesRemaining;
+        int perEnemyDefDamage = skill.changeDef / enemiesRemaining;
+
         foreach (EnemyUnit e in enemyUnits)
         {
-            e.TakeDamage(20);
+            e.ChangeStats(perEnemyFaithDamage, perEnemyPwrDamage, perEnemyDefDamage);
             if (e.currentFaith <= 0) enemiesRemaining--;
+            yield return new WaitForSeconds(1);
         }
-
-        yield return new WaitForSeconds(2);
 
         if (enemiesRemaining > 0)
         {
@@ -111,7 +116,6 @@ public class BattleSystemManager : MonoBehaviour
             battleState = BattleState.WIN;
             yield return StartCoroutine(EndBattle());
         }
-
     }
 
     IEnumerator EnemiesAttack()
@@ -133,6 +137,7 @@ public class BattleSystemManager : MonoBehaviour
 
                 // TODO: Transition to end battle
                 yield return StartCoroutine(EndBattle());
+                yield break;
             }
         }
 
@@ -155,7 +160,7 @@ public class BattleSystemManager : MonoBehaviour
             battleText.text = "You lost, you little bitch.";
         }
 
-        yield return null;
+        yield break;
     }
 
 }

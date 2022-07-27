@@ -13,6 +13,7 @@ public class EnemyUnit : MonoBehaviour
     private FaithBar faithBar;
     private PowerBar powerBar;
     private DefBar defBar;
+    private Skills[] skills;
 
     // Start is called before the first frame update
     void Start()
@@ -20,14 +21,28 @@ public class EnemyUnit : MonoBehaviour
         
     }
 
-    // unique to each enemy type
-    public void TakeDamage(int damage)
+    public void ChangeStats(int faithChange, int pwrChange, int defChange)
     {
-        currentFaith -= damage;
+        currentFaith += faithChange;
         faithBar.SetFaith(currentFaith);
-        currentPower -= damage;
+
+        currentPower += pwrChange;
         powerBar.SetPower(currentPower);
-        currentDef -= damage;
+
+        currentDef += defChange;
+        defBar.SetDef(currentDef);
+    }
+
+    // unique to each enemy type
+    public void TakeDamage(int faithDamage, int pwrDamage, int defDamage)
+    {
+        currentFaith -= faithDamage;
+        faithBar.SetFaith(currentFaith);
+
+        currentPower -= pwrDamage;
+        powerBar.SetPower(currentPower);
+
+        currentDef -= defDamage;
         defBar.SetDef(currentDef);
     }
 
@@ -48,8 +63,13 @@ public class EnemyUnit : MonoBehaviour
         powerBar.SetMaxPower(maxPower);
         defBar.SetMaxDef(maxDef);
 	}
+
+    public void SetSkills(Skills[] enemySkills)
+    {
+        skills = enemySkills;
+    }
 	
 	public int Attack() {
-        return 5;
+        return 1;
     }
 }

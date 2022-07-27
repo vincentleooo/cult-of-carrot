@@ -36,7 +36,7 @@ public class PlayerUnit : MonoBehaviour
 		faithBar = (GetComponentInChildren(typeof(FaithBar))) as FaithBar;
         powerBar = (GetComponentInChildren(typeof(PowerBar))) as PowerBar;
         defBar = (GetComponentInChildren(typeof(DefBar))) as DefBar;
-		
+
 		maxFaith = faith;
 		maxPower = power;
 		maxDef = def;
@@ -44,8 +44,10 @@ public class PlayerUnit : MonoBehaviour
 		currentFaith = maxFaith;
 		currentPower = maxPower;
 		currentDef = maxDef;
+
         faithBar.SetMaxFaith(maxFaith);
         powerBar.SetMaxPower(maxPower);
         defBar.SetMaxDef(maxDef);
 	}
+
 }
