@@ -22,8 +22,8 @@ public class BattleSystemManager : MonoBehaviour
     public Transform[] enemyBattlePositions;
     public Transform playerBattlePosition;
 
-    public CharacterStats[] enemiesStatus;
-    public CharacterStats playerStatus;
+    public CharacterStats[] enemiesStats;
+    public CharacterStats playerStats;
 
     private PlayerUnit playerUnit;
     private EnemyUnit[] enemyUnits;
@@ -36,10 +36,10 @@ public class BattleSystemManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Assert(enemiesStatus.Length == enemyBattlePositions.Length); 
-        enemies = new GameObject[enemiesStatus.Length];
-        enemyUnits = new EnemyUnit[enemiesStatus.Length];
-        enemiesRemaining = enemiesStatus.Length;
+        Debug.Assert(enemiesStats.Length == enemyBattlePositions.Length); 
+        enemies = new GameObject[enemiesStats.Length];
+        enemyUnits = new EnemyUnit[enemiesStats.Length];
+        enemiesRemaining = enemiesStats.Length;
         battleState = BattleState.START;
         StartCoroutine(BeginBattle());
     }
@@ -48,16 +48,18 @@ public class BattleSystemManager : MonoBehaviour
     {
         // spawn characters on battle stations
         // players
-        player = Instantiate(playerStatus.characterGameObject, playerBattlePosition);
+        player = Instantiate(playerStats.characterGameObject, playerBattlePosition);
         player.SetActive(true);
         playerUnit = player.GetComponent<PlayerUnit>();
+        playerUnit.SetStats(playerStats.Faith, playerStats.Power, playerStats.Defence);
         
         // enemies
-        for (int i = 0; i < enemiesStatus.Length; i++)
+        for (int i = 0; i < enemiesStats.Length; i++)
         {
-            enemies[i] = Instantiate(enemiesStatus[i].characterGameObject, enemyBattlePositions[i]);
+            enemies[i] = Instantiate(enemiesStats[i].characterGameObject, enemyBattlePositions[i]);
             enemies[i].SetActive(true);
             enemyUnits[i] = enemies[i].GetComponent<EnemyUnit>();
+            enemyUnits[i].SetStats(enemiesStats[i].Faith, enemiesStats[i].Power, enemiesStats[i].Defence);
         }
 
         yield return new WaitForSeconds(3);
@@ -71,8 +73,8 @@ public class BattleSystemManager : MonoBehaviour
     {
         // Debug.Log("Player Turn");
         battleText.text = "Player's Turn";
-        yield return new WaitForSeconds(2);
         playerHasClicked = false;
+        yield return null;
     }
 
     public void OnAttackButtonPress()

@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class PlayerUnit : MonoBehaviour
 {
-    public int maxFaith = 100;
+    private int maxFaith;
+    private int maxPower;
+    private int maxDef;
     public int currentFaith;
+    public int currentPower;
+    public int currentDef;
     private FaithBar faithBar;
+    private PowerBar powerBar;
+    private DefBar defBar;
 
     // Start is called before the first frame update
     void Start()
     {
-        faithBar = (GetComponentInChildren(typeof(FaithBar))) as FaithBar;
-        currentFaith = maxFaith;
-        faithBar.SetMaxFaith(maxFaith);
+        
     }
 
     // unique to each enemy type
@@ -21,6 +25,27 @@ public class PlayerUnit : MonoBehaviour
     {
         currentFaith -= damage;
         faithBar.SetFaith(currentFaith);
+        currentPower -= damage;
+        powerBar.SetPower(currentPower);
+        currentDef -= damage;
+        defBar.SetDef(currentDef);
     }
 
+	public void SetStats(int faith, int power, int def)
+	{
+		faithBar = (GetComponentInChildren(typeof(FaithBar))) as FaithBar;
+        powerBar = (GetComponentInChildren(typeof(PowerBar))) as PowerBar;
+        defBar = (GetComponentInChildren(typeof(DefBar))) as DefBar;
+		
+		maxFaith = faith;
+		maxPower = power;
+		maxDef = def;
+
+		currentFaith = maxFaith;
+		currentPower = maxPower;
+		currentDef = maxDef;
+        faithBar.SetMaxFaith(maxFaith);
+        powerBar.SetMaxPower(maxPower);
+        defBar.SetMaxDef(maxDef);
+	}
 }
