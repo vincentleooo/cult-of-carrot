@@ -86,6 +86,7 @@ namespace Map
                     break;
 
                 case (NodeType.MinorEnemy):
+                    SceneManager.LoadScene("Induction");
                     break;
 
                 case (NodeType.EliteEnemy):
@@ -96,6 +97,7 @@ namespace Map
                     break;
 
                 case (NodeType.Shop):
+                    SceneManager.LoadScene("ShopNode");
                     break;
 
                 case (NodeType.Boss):
