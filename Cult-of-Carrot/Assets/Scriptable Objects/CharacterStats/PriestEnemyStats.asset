@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce729077f59bb43cbb630e9d13cf7e0f, type: 3}
+  m_Name: PriestEnemyStats
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterState
+  charName: Gsus
+  characterGameObject: {fileID: 2674028702039327738, guid: 20aa6e638782e36419170e64473a871b, type: 3}
+  node: 1
+  Faith: 30
+  Power: 10
+  Defence: 5
