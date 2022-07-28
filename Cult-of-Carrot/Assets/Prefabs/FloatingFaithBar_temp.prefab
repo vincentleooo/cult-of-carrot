@@ -195,7 +195,7 @@ GameObject:
   - component: {fileID: 1103833253591334753}
   - component: {fileID: 1103833253591334752}
   m_Layer: 5
-  m_Name: FloatingFaithBar
+  m_Name: FloatingFaithBar_temp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
