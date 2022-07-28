@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public enum BattleState 
 {
@@ -15,6 +16,8 @@ public enum BattleState
 public class BattleSystemManager : MonoBehaviour
 {
     public Text battleText;
+    public Transform[] skillButtonPositions;
+    public Button[] skillButtons;
 
     private GameObject[] enemies;
     private GameObject player;
@@ -22,8 +25,8 @@ public class BattleSystemManager : MonoBehaviour
     public Transform[] enemyBattlePositions;
     public Transform playerBattlePosition;
 
-    public CharacterStats[] enemiesStatus;
-    public CharacterStats playerStatus;
+    public CharacterStats[] enemiesStats;
+    public CharacterStats playerStats;
 
     private PlayerUnit playerUnit;
     private EnemyUnit[] enemyUnits;
@@ -36,10 +39,10 @@ public class BattleSystemManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Assert(enemiesStatus.Length == enemyBattlePositions.Length); 
-        enemies = new GameObject[enemiesStatus.Length];
-        enemyUnits = new EnemyUnit[enemiesStatus.Length];
-        enemiesRemaining = enemiesStatus.Length;
+        Debug.Assert(enemiesStats.Length == enemyBattlePositions.Length); 
+        enemies = new GameObject[enemiesStats.Length];
+        enemyUnits = new EnemyUnit[enemiesStats.Length];
+        enemiesRemaining = enemiesStats.Length;
         battleState = BattleState.START;
         StartCoroutine(BeginBattle());
     }
@@ -48,16 +51,18 @@ public class BattleSystemManager : MonoBehaviour
     {
         // spawn characters on battle stations
         // players
-        player = Instantiate(playerStatus.characterGameObject, playerBattlePosition);
+        player = Instantiate(playerStats.characterGameObject, playerBattlePosition);
         player.SetActive(true);
         playerUnit = player.GetComponent<PlayerUnit>();
+        playerUnit.SetStats(playerStats.Faith, playerStats.Power, playerStats.Defence);
         
         // enemies
-        for (int i = 0; i < enemiesStatus.Length; i++)
+        for (int i = 0; i < enemiesStats.Length; i++)
         {
-            enemies[i] = Instantiate(enemiesStatus[i].characterGameObject, enemyBattlePositions[i]);
+            enemies[i] = Instantiate(enemiesStats[i].characterGameObject, enemyBattlePositions[i]);
             enemies[i].SetActive(true);
             enemyUnits[i] = enemies[i].GetComponent<EnemyUnit>();
+            enemyUnits[i].SetStats(enemiesStats[i].Faith, enemiesStats[i].Power, enemiesStats[i].Defence);
         }
 
         yield return new WaitForSeconds(3);
@@ -69,35 +74,37 @@ public class BattleSystemManager : MonoBehaviour
 
     IEnumerator PlayerTurn()
     {
-        // Debug.Log("Player Turn");
-        battleText.text = "Player's Turn";
-        yield return new WaitForSeconds(2);
+        battleText.text = "Player's Turn. Carrot be with you.";
         playerHasClicked = false;
+        yield return null;
     }
 
-    public void OnAttackButtonPress()
+    public void CharacterAttack(Skills skill)
     {
+        Debug.Log(skill.skillName);
         if (battleState != BattleState.PLAYERTURN) return;
 
         if (!playerHasClicked)
         {
-            StartCoroutine(PlayerAttack());
+            StartCoroutine(PlayerSkillAttack(skill));
             playerHasClicked = true;
         }
     }
 
-    IEnumerator PlayerAttack()
+    IEnumerator PlayerSkillAttack(Skills skill)
     {
-        battleText.text = "CONVERT THOSE BITCHES. BITCH.";
+        battleText.text = "Player used " + skill.skillName;
 
-        // Let all enemies take equal damage FOR NOW
+        int perEnemyFaithDamage = skill.changeFaith / enemiesRemaining;
+        int perEnemyPwrDamage = skill.changePower / enemiesRemaining;
+        int perEnemyDefDamage = skill.changeDef / enemiesRemaining;
+
         foreach (EnemyUnit e in enemyUnits)
         {
-            e.TakeDamage(20);
+            e.ChangeStats(perEnemyFaithDamage, perEnemyPwrDamage, perEnemyDefDamage);
             if (e.currentFaith <= 0) enemiesRemaining--;
+            yield return new WaitForSeconds(1);
         }
-
-        yield return new WaitForSeconds(2);
 
         if (enemiesRemaining > 0)
         {
@@ -109,7 +116,6 @@ public class BattleSystemManager : MonoBehaviour
             battleState = BattleState.WIN;
             yield return StartCoroutine(EndBattle());
         }
-
     }
 
     IEnumerator EnemiesAttack()
@@ -131,6 +137,7 @@ public class BattleSystemManager : MonoBehaviour
 
                 // TODO: Transition to end battle
                 yield return StartCoroutine(EndBattle());
+                yield break;
             }
         }
 
@@ -153,7 +160,7 @@ public class BattleSystemManager : MonoBehaviour
             battleText.text = "You lost, you little bitch.";
         }
 
-        yield return null;
+        yield break;
     }
 
 }
