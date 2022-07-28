@@ -26,8 +26,6 @@ namespace Map
         {
             if (Locked) return;
 
-            // Debug.Log("Selected node: " + mapNode.Node.point);
-
             if (mapManager.CurrentMap.path.Count == 0)
             {
                 // Player has not selected the node yet, so he can select any of the nodes with y = 0

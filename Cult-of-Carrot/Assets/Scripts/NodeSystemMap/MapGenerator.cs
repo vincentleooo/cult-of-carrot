@@ -162,12 +162,9 @@ namespace Map
 
                     if (topRight == null || topRight.HasNoConnections()) continue;
 
-                    // Debug.Log("Inspecting node for connections: " + node.point);
                     if (!node.outgoing.Any(element => element.Equals(topRight.point))) continue;
 
                     if (!right.outgoing.Any(element => element.Equals(top.point))) continue;
-
-                    // Debug.Log("Found a cross node: " + node.point);
 
                     // We managed to find a cross node
                     // 1) add direct connections
