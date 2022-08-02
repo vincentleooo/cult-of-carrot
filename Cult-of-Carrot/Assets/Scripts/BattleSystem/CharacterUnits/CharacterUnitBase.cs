@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharacterUnitBase : MonoBehaviour
 {
-    [SerializeField] private CharacterStats characterStats;
+    [SerializeField] protected CharacterStats characterStats;
     [SerializeField] private HUDBar powerBar;
     [SerializeField] private HUDBar faithBar;
     [SerializeField] private HUDBar defBar;

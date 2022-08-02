@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class EnemyUnit : CharacterUnitBase
 {
-    // private Skills[] skills;
+    System.Random random = new System.Random();
 
-    // public void SetSkills(Skills[] enemySkills)
-    // {
-    //     skills = enemySkills;
-    // }
-	
-	public int Attack() {
-        return 1;
+    public Skills SelectAttack()
+    {
+        Skills[] enemySkills = characterStats.Skills;
+        int skillIndex = random.Next(0, enemySkills.Length);
+
+        return enemySkills[skillIndex];
     }
 }

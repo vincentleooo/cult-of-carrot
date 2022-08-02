@@ -37,6 +37,11 @@ public class SkillsPanel : MonoBehaviour
             buttonGameObject.GetComponent<Button>().onClick.AddListener(() => {
                 attackEvent.Raise(skill);
             });
+
+            // Set tooltip text
+            TooltipManager tooltip = buttonGameObject.GetComponent<TooltipManager>();
+            tooltip.SetTooltipText(skill.skillDescription);
+
             skillButtons.Add(buttonGameObject);
             xPosition += buttonSpacing + buttonWidth;
             panelWidth += buttonSpacing + buttonWidth;

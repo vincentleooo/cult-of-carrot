@@ -16,8 +16,6 @@ public enum BattleState
 public class BattleSystemManager : MonoBehaviour
 {
     public HUDBattlePanel battlePanel;
-    public Transform[] skillButtonPositions;
-    public Button[] skillButtons;
 
     public GameObject[] enemyPrefabs;
     public GameObject playerPrefab;
@@ -114,11 +112,13 @@ public class BattleSystemManager : MonoBehaviour
     {
         battlePanel.UpdateBattleText("Enemy's turn. You better start praying.");
 
-        // TODO: Have enemies w diff attacks or smth
+        yield return new WaitForSeconds(2);
+
         foreach (EnemyUnit e in enemyUnits)
         {
-            int playerDamage = e.Attack();
-            playerUnit.TakeDamage(playerDamage, playerDamage, playerDamage);
+            Skills enemySkill = e.SelectAttack();
+            battlePanel.UpdateBattleText("Enemy used " + enemySkill.skillName);
+            playerUnit.TakeDamage(enemySkill.changeFaith, enemySkill.changePower, enemySkill.changeDef);
 
             yield return new WaitForSeconds(1);
 
@@ -126,7 +126,6 @@ public class BattleSystemManager : MonoBehaviour
             {
                 battleState = BattleState.LOST;
 
-                // TODO: Transition to end battle
                 yield return StartCoroutine(EndBattle());
                 yield break;
             }

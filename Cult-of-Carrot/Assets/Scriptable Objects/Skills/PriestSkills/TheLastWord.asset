@@ -12,15 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 222452829764e4bd88a338a30bf00f7b, type: 3}
   m_Name: TheLastWord
   m_EditorClassIdentifier: 
-  skillName: TheLastWord
+  skillName: The Last Word
   skillDescription: 'Reduces FAITH of enemies by 50, raises self DEF by 10.
 
     CD:
     3
 
 '
-  skillImage: {fileID: 0}
-  castType: 0
-  changeFaith: -50
+  changeFaith: 50
   changePower: 0
   changeDef: 10
+  cooldown: 0

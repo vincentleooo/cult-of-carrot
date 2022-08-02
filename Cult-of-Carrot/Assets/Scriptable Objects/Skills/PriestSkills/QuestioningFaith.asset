@@ -21,8 +21,7 @@ MonoBehaviour:
     CD: 0
 
 '
-  skillImage: {fileID: 0}
-  castType: 0
-  changeFaith: -10
+  changeFaith: 10
   changePower: 0
   changeDef: 0
+  cooldown: 0
