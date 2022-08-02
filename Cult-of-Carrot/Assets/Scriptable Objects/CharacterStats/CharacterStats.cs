@@ -6,7 +6,6 @@ using UnityEngine;
 public class CharacterStats : ScriptableObject 
 {
     public string charName = "";
-    public GameObject characterGameObject;
     public int node = 1;
     public int Faith = 30;
     public int Power = 10;

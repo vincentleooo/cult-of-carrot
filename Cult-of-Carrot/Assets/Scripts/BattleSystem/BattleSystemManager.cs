@@ -15,18 +15,15 @@ public enum BattleState
 
 public class BattleSystemManager : MonoBehaviour
 {
-    public Text battleText;
+    public HUDBattlePanel battlePanel;
     public Transform[] skillButtonPositions;
     public Button[] skillButtons;
 
-    private GameObject[] enemies;
-    private GameObject player;
+    public GameObject[] enemyPrefabs;
+    public GameObject playerPrefab;
 
     public Transform[] enemyBattlePositions;
     public Transform playerBattlePosition;
-
-    public CharacterStats[] enemiesStats;
-    public CharacterStats playerStats;
 
     private PlayerUnit playerUnit;
     private EnemyUnit[] enemyUnits;
@@ -39,30 +36,25 @@ public class BattleSystemManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Assert(enemiesStats.Length == enemyBattlePositions.Length); 
-        enemies = new GameObject[enemiesStats.Length];
-        enemyUnits = new EnemyUnit[enemiesStats.Length];
-        enemiesRemaining = enemiesStats.Length;
+        enemyUnits = new EnemyUnit[enemyBattlePositions.Length];
+        enemiesRemaining = enemyBattlePositions.Length;
         battleState = BattleState.START;
         StartCoroutine(BeginBattle());
     }
 
     IEnumerator BeginBattle()
     {
-        // spawn characters on battle stations
-        // players
-        player = Instantiate(playerStats.characterGameObject, playerBattlePosition);
-        player.SetActive(true);
-        playerUnit = player.GetComponent<PlayerUnit>();
-        playerUnit.SetStats(playerStats.Faith, playerStats.Power, playerStats.Defence);
+        // spawn player on battle stations
+        playerPrefab = Instantiate(playerPrefab, playerBattlePosition);
+        playerPrefab.SetActive(true);
+        playerUnit = playerPrefab.GetComponent<PlayerUnit>();
         
-        // enemies
-        for (int i = 0; i < enemiesStats.Length; i++)
+        // spawn enemies on battle stations
+        for (int i = 0; i < enemyPrefabs.Length; i++)
         {
-            enemies[i] = Instantiate(enemiesStats[i].characterGameObject, enemyBattlePositions[i]);
-            enemies[i].SetActive(true);
-            enemyUnits[i] = enemies[i].GetComponent<EnemyUnit>();
-            enemyUnits[i].SetStats(enemiesStats[i].Faith, enemiesStats[i].Power, enemiesStats[i].Defence);
+            enemyPrefabs[i] = Instantiate(enemyPrefabs[i], enemyBattlePositions[i]);
+            enemyPrefabs[i].SetActive(true);
+            enemyUnits[i] = enemyPrefabs[i].GetComponent<EnemyUnit>();
         }
 
         yield return new WaitForSeconds(3);
@@ -74,7 +66,7 @@ public class BattleSystemManager : MonoBehaviour
 
     IEnumerator PlayerTurn()
     {
-        battleText.text = "Player's Turn. Carrot be with you.";
+        battlePanel.UpdateBattleText("Player's Turn. Carrot be with you.");
         playerHasClicked = false;
         yield return null;
     }
@@ -93,7 +85,7 @@ public class BattleSystemManager : MonoBehaviour
 
     IEnumerator PlayerSkillAttack(Skills skill)
     {
-        battleText.text = "Player used " + skill.skillName;
+        battlePanel.UpdateBattleText("Player used " + skill.skillName);
 
         int perEnemyFaithDamage = skill.changeFaith / enemiesRemaining;
         int perEnemyPwrDamage = skill.changePower / enemiesRemaining;
@@ -101,8 +93,8 @@ public class BattleSystemManager : MonoBehaviour
 
         foreach (EnemyUnit e in enemyUnits)
         {
-            e.ChangeStats(perEnemyFaithDamage, perEnemyPwrDamage, perEnemyDefDamage);
-            if (e.currentFaith <= 0) enemiesRemaining--;
+            e.TakeDamage(perEnemyFaithDamage, perEnemyPwrDamage, perEnemyDefDamage);
+            if (e.IsDefeated()) enemiesRemaining--;
             yield return new WaitForSeconds(1);
         }
 
@@ -120,18 +112,17 @@ public class BattleSystemManager : MonoBehaviour
 
     IEnumerator EnemiesAttack()
     {
-        battleText.text = "Enemy's turn. You better start praying.";
+        battlePanel.UpdateBattleText("Enemy's turn. You better start praying.");
 
         // TODO: Have enemies w diff attacks or smth
         foreach (EnemyUnit e in enemyUnits)
         {
             int playerDamage = e.Attack();
-            playerUnit.TakeDamage(playerDamage);
+            playerUnit.TakeDamage(playerDamage, playerDamage, playerDamage);
 
             yield return new WaitForSeconds(1);
 
-            // Check if player is still alive
-            if (playerUnit.currentFaith <= 0)
+            if (playerUnit.IsDefeated())
             {
                 battleState = BattleState.LOST;
 
@@ -152,12 +143,12 @@ public class BattleSystemManager : MonoBehaviour
     {
         if (battleState == BattleState.WIN)
         {
-            battleText.text = "You won. Bitch.";
+            battlePanel.UpdateBattleText("You won. Bitch.");
         }
 
         else if (battleState == BattleState.LOST)
         {
-            battleText.text = "You lost, you little bitch.";
+            battlePanel.UpdateBattleText("You lost, you little bitch.");
         }
 
         yield break;

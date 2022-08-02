@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -495,8 +495,9 @@ GameObject:
   - component: {fileID: 245520388}
   - component: {fileID: 245520390}
   - component: {fileID: 245520389}
+  - component: {fileID: 245520391}
   m_Layer: 5
-  m_Name: HUDBackground
+  m_Name: BattlePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -561,6 +562,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 245520387}
   m_CullTransparentMesh: 1
+--- !u!114 &245520391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245520387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: beed07304c7f244afa1f05abeba460cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  battleText: {fileID: 1914323952}
 --- !u!1 &322645913
 GameObject:
   m_ObjectHideFlags: 0
@@ -709,19 +723,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edb71bd853b214e269ea4f15bb5daf62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  battleText: {fileID: 1914323952}
-  skillButtonPositions: []
+  battlePanel: {fileID: 245520391}
+  skillButtonPositions:
+  - {fileID: 683177137}
+  - {fileID: 1362816876}
   skillButtons:
   - {fileID: 683177138}
   - {fileID: 1362816877}
+  enemyPrefabs:
+  - {fileID: 2674028702039327738, guid: 93d54fe94679bc94cb6b6099d688c762, type: 3}
+  - {fileID: 2674028702039327738, guid: 93d54fe94679bc94cb6b6099d688c762, type: 3}
+  playerPrefab: {fileID: 1494772015911411254, guid: b348d4fc82eaabe4f938fbbe7778a3fb, type: 3}
   enemyBattlePositions:
   - {fileID: 1162594494}
   - {fileID: 1725101906}
   playerBattlePosition: {fileID: 824977084}
-  enemiesStats:
-  - {fileID: 11400000, guid: 8d152b54a88e249b597e5cdeae253e95, type: 2}
-  - {fileID: 11400000, guid: 8d152b54a88e249b597e5cdeae253e95, type: 2}
-  playerStats: {fileID: 11400000, guid: 87288b689e43147a1addf110cb5ff290, type: 2}
 --- !u!4 &570100334
 Transform:
   m_ObjectHideFlags: 0

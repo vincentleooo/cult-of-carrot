@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1103833252653468600}
   - component: {fileID: 1803518883269721556}
   m_Layer: 5
-  m_Name: CharacterFaithBar
+  m_Name: CharacterPowerBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 1103833253591334753}
   - component: {fileID: 1103833253591334752}
   m_Layer: 5
-  m_Name: FloatingFaithBar
+  m_Name: FloatingPowerBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 1103833253669533381}
   - component: {fileID: 1103833253669533380}
   m_Layer: 5
-  m_Name: FaithBorder
+  m_Name: PowerBorder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -295,7 +295,7 @@ GameObject:
   - component: {fileID: 1103833253763266906}
   - component: {fileID: 1103833253763266901}
   m_Layer: 5
-  m_Name: FaithFill
+  m_Name: PowerFill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -342,7 +342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.09700583, g: 0.91764706, b: 0.050980363, a: 1}
+  m_Color: {r: 0.9176471, g: 0.050980397, b: 0.1137255, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
