@@ -16,6 +16,7 @@ public enum BattleState
 public class BattleSystemManager : MonoBehaviour
 {
     public HUDBattlePanel battlePanel;
+    public SkillsPanel skillsPanel;
 
     public GameObject[] enemyPrefabs;
     public GameObject playerPrefab;
@@ -30,6 +31,7 @@ public class BattleSystemManager : MonoBehaviour
 
     private bool playerHasClicked = true;
     private int enemiesRemaining;
+    private int currentTurn;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +39,7 @@ public class BattleSystemManager : MonoBehaviour
         enemyUnits = new EnemyUnit[enemyBattlePositions.Length];
         enemiesRemaining = enemyBattlePositions.Length;
         battleState = BattleState.START;
+        currentTurn = 0;
         StartCoroutine(BeginBattle());
     }
 
@@ -64,30 +67,37 @@ public class BattleSystemManager : MonoBehaviour
 
     IEnumerator PlayerTurn()
     {
+        Debug.Log(currentTurn);
         battlePanel.UpdateBattleText("Player's Turn. Carrot be with you.");
+        skillsPanel.SetCurrentTurn(currentTurn);
         playerHasClicked = false;
         yield return null;
     }
 
-    public void CharacterAttack(Skills skill)
+    public void PlayerAttackChosen(Attack attack)
     {
-        Debug.Log(skill.skillName);
         if (battleState != BattleState.PLAYERTURN) return;
+
+        if (!attack.canCast)
+        {
+            battlePanel.UpdateBattleText("Cannot cast " + attack.skill.skillName + " during cooldown");
+            return;
+        }
 
         if (!playerHasClicked)
         {
-            StartCoroutine(PlayerSkillAttack(skill));
+            StartCoroutine(PlayerSkillAttack(attack.skill));
             playerHasClicked = true;
         }
     }
 
-    IEnumerator PlayerSkillAttack(Skills skill)
+    IEnumerator PlayerSkillAttack(Skill skill)
     {
         battlePanel.UpdateBattleText("Player used " + skill.skillName);
 
-        int perEnemyFaithDamage = skill.changeFaith / enemiesRemaining;
-        int perEnemyPwrDamage = skill.changePower / enemiesRemaining;
-        int perEnemyDefDamage = skill.changeDef / enemiesRemaining;
+        int perEnemyFaithDamage = skill.changeFaith; // enemiesRemaining;
+        int perEnemyPwrDamage = skill.changePower; // enemiesRemaining;
+        int perEnemyDefDamage = skill.changeDef; // enemiesRemaining;
 
         foreach (EnemyUnit e in enemyUnits)
         {
@@ -116,7 +126,7 @@ public class BattleSystemManager : MonoBehaviour
 
         foreach (EnemyUnit e in enemyUnits)
         {
-            Skills enemySkill = e.SelectAttack();
+            Skill enemySkill = e.SelectAttack();
             battlePanel.UpdateBattleText("Enemy used " + enemySkill.skillName);
             playerUnit.TakeDamage(enemySkill.changeFaith, enemySkill.changePower, enemySkill.changeDef);
 
@@ -133,6 +143,7 @@ public class BattleSystemManager : MonoBehaviour
 
         yield return new WaitForSeconds(2);
 
+        currentTurn += 1;
         battleState = BattleState.PLAYERTURN;
 
         yield return StartCoroutine(PlayerTurn());

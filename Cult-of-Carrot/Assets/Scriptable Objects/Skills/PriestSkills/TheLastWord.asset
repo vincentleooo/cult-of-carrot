@@ -19,7 +19,7 @@ MonoBehaviour:
     3
 
 '
-  changeFaith: 50
+  changeFaith: 2
   changePower: 0
-  changeDef: 10
+  changeDef: 2
   cooldown: 0

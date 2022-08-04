@@ -7,7 +7,6 @@ public class SkillsPanel : MonoBehaviour
 {
     public CharacterStats playerStats;
     public GameObject buttonPrefab;
-    public AttackEvent attackEvent;
 
     private List<GameObject> skillButtons;
     private int buttonWidth = 100;
@@ -21,7 +20,7 @@ public class SkillsPanel : MonoBehaviour
 
     private void CreateButtons()
     {
-        Skills[] playerSkills = playerStats.Skills;
+        Skill[] playerSkills = playerStats.Skills;
         skillButtons = new List<GameObject>();
         int xPosition = buttonSpacing + (buttonWidth / 2);
         float panelWidth = buttonSpacing;
@@ -31,12 +30,11 @@ public class SkillsPanel : MonoBehaviour
             GameObject buttonGameObject = Instantiate(buttonPrefab, new Vector3(xPosition, 0, 0), Quaternion.identity);
             
             buttonGameObject.transform.SetParent(GetComponent<RectTransform>(), false);
-            buttonGameObject.GetComponentInChildren<Text>().text = playerSkills[i].skillName;
 
-            Skills skill = playerSkills[i];
-            buttonGameObject.GetComponent<Button>().onClick.AddListener(() => {
-                attackEvent.Raise(skill);
-            });
+            Skill skill = playerSkills[i];
+            SkillButton skillButton = buttonGameObject.GetComponent<SkillButton>();
+            skillButton.SetSkill(skill);
+            skillButton.SetText(skill.skillName);
 
             // Set tooltip text
             TooltipManager tooltip = buttonGameObject.GetComponent<TooltipManager>();
@@ -50,6 +48,14 @@ public class SkillsPanel : MonoBehaviour
         // Resize skills panel to fit all skill buttons
         RectTransform rt = GetComponent<RectTransform>();
         rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, panelWidth);
+    }
+
+    public void SetCurrentTurn(int currentTurn)
+    {
+        foreach (GameObject btn in skillButtons)
+        {
+            btn.GetComponent<SkillButton>().SetCurrentTurn(currentTurn);
+        }
     }
 
 }

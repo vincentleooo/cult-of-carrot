@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "Skills", menuName = "Scriptable Objects/Skills", order = 1)]
-public class Skills : ScriptableObject
+public class Skill : ScriptableObject
 {
     public string skillName;
     [Multiline] public string skillDescription;

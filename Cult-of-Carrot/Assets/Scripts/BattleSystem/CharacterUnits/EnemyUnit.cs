@@ -6,9 +6,9 @@ public class EnemyUnit : CharacterUnitBase
 {
     System.Random random = new System.Random();
 
-    public Skills SelectAttack()
+    public Skill SelectAttack()
     {
-        Skills[] enemySkills = characterStats.Skills;
+        Skill[] enemySkills = characterStats.Skills;
         int skillIndex = random.Next(0, enemySkills.Length);
 
         return enemySkills[skillIndex];

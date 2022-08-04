@@ -24,4 +24,4 @@ MonoBehaviour:
   changeFaith: 5
   changePower: 0
   changeDef: 0
-  cooldown: 0
+  cooldown: 2

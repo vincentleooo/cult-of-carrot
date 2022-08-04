@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [System.Serializable]
-public class CustomAttackEvent : UnityEvent<Skills>
+public class CustomAttackEvent : UnityEvent<Attack>
 {
 
 }
@@ -24,8 +24,8 @@ public class AttackEventListener : MonoBehaviour
         Event.UnregisterListener(this);
     }
 
-    public void OnEventRaised(Skills skill)
+    public void OnEventRaised(Attack attack)
     {
-        Response.Invoke(skill);
+        Response.Invoke(attack);
     }
 }

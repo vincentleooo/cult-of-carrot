@@ -10,5 +10,5 @@ public class CharacterStats : ScriptableObject
     public int Faith = 30;
     public int Power = 10;
     public int Defence = 5;
-	public Skills[] Skills;
+	public Skill[] Skills;
 }

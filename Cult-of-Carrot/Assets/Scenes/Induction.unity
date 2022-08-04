@@ -724,12 +724,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   battlePanel: {fileID: 245520391}
-  skillButtonPositions:
-  - {fileID: 0}
-  - {fileID: 0}
-  skillButtons:
-  - {fileID: 0}
-  - {fileID: 0}
+  skillsPanel: {fileID: 1156881544}
   enemyPrefabs:
   - {fileID: 2674028702039327738, guid: 93d54fe94679bc94cb6b6099d688c762, type: 3}
   - {fileID: 2674028702039327738, guid: 93d54fe94679bc94cb6b6099d688c762, type: 3}
@@ -771,7 +766,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 570100333}
         m_TargetAssemblyTypeName: BattleSystemManager, Assembly-CSharp
-        m_MethodName: CharacterAttack
+        m_MethodName: PlayerAttackChosen
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -903,7 +898,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerStats: {fileID: 11400000, guid: 87288b689e43147a1addf110cb5ff290, type: 2}
   buttonPrefab: {fileID: 6366796987577180648, guid: 53daa5d836e1f4e069c102f71202d73c, type: 3}
-  attackEvent: {fileID: 11400000, guid: a1698f3938593478b8281bfb5dbaf02a, type: 2}
 --- !u!1 &1162594492
 GameObject:
   m_ObjectHideFlags: 0
