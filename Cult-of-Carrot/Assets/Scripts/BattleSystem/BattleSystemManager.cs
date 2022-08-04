@@ -70,6 +70,7 @@ public class BattleSystemManager : MonoBehaviour
         Debug.Log(currentTurn);
         battlePanel.UpdateBattleText("Player's Turn. Carrot be with you.");
         skillsPanel.SetCurrentTurn(currentTurn);
+        skillsPanel.EnableSkillButtons();
         playerHasClicked = false;
         yield return null;
     }
@@ -88,6 +89,7 @@ public class BattleSystemManager : MonoBehaviour
         {
             StartCoroutine(PlayerSkillAttack(attack.skill));
             playerHasClicked = true;
+            skillsPanel.DisableSkillButtons();
         }
     }
 

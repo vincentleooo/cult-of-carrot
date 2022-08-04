@@ -48,6 +48,8 @@ public class SkillsPanel : MonoBehaviour
         // Resize skills panel to fit all skill buttons
         RectTransform rt = GetComponent<RectTransform>();
         rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, panelWidth);
+
+        DisableSkillButtons();
     }
 
     public void SetCurrentTurn(int currentTurn)
@@ -55,6 +57,22 @@ public class SkillsPanel : MonoBehaviour
         foreach (GameObject btn in skillButtons)
         {
             btn.GetComponent<SkillButton>().SetCurrentTurn(currentTurn);
+        }
+    }
+
+    public void DisableSkillButtons()
+    {
+        foreach (GameObject btn in skillButtons)
+        {
+            btn.GetComponent<Button>().interactable = false;
+        }
+    }
+
+    public void EnableSkillButtons()
+    {
+        foreach (GameObject btn in skillButtons)
+        {
+            btn.GetComponent<Button>().interactable = true;
         }
     }
 
