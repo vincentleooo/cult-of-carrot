@@ -97,9 +97,9 @@ public class BattleSystemManager : MonoBehaviour
     {
         battlePanel.UpdateBattleText("Player used " + skill.skillName);
 
-        int perEnemyFaithDamage = skill.changeFaith; // enemiesRemaining;
-        int perEnemyPwrDamage = skill.changePower; // enemiesRemaining;
-        int perEnemyDefDamage = skill.changeDef; // enemiesRemaining;
+        float perEnemyFaithDamage = skill.changeFaith; // enemiesRemaining;
+        float perEnemyPwrDamage = skill.changePower; // enemiesRemaining;
+        float perEnemyDefDamage = skill.changeDef; // enemiesRemaining;
 
         foreach (EnemyUnit e in enemyUnits)
         {

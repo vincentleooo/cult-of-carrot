@@ -9,12 +9,12 @@ public class HUDBar : MonoBehaviour
     public Slider slider;
     public Image fill;
 
-    public void SetValue(int value)
+    public void SetValue(float value)
     {
         slider.value = value;
     }
 
-    public void SetMaxValue(int value)
+    public void SetMaxValue(float value)
     {
         slider.maxValue = value;
         slider.value = value;

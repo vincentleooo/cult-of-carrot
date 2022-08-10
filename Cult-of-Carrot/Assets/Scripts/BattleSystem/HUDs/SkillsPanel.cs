@@ -20,12 +20,12 @@ public class SkillsPanel : MonoBehaviour
 
     private void CreateButtons()
     {
-        Skill[] playerSkills = playerStats.Skills;
+        List<Skill> playerSkills = playerStats.Skills;
         skillButtons = new List<GameObject>();
         int xPosition = buttonSpacing + (buttonWidth / 2);
         float panelWidth = buttonSpacing;
 
-        for (int i = 0; i < playerSkills.Length; i++)
+        for (int i = 0; i < playerSkills.Count; i++)
         {
             GameObject buttonGameObject = Instantiate(buttonPrefab, new Vector3(xPosition, 0, 0), Quaternion.identity);
             
