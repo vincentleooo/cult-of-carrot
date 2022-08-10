@@ -16,6 +16,10 @@ public class CharacterUnitBase : MonoBehaviour
     private int currentPower;
     private int currentFaith;
     private int currentDef;
+    private bool isDefeated = false;
+
+
+    private  Animator characterAnimator;
 
     // Start is called before the first frame update
     protected void Start()
@@ -30,6 +34,11 @@ public class CharacterUnitBase : MonoBehaviour
 
         SetStats(characterStats.Faith, characterStats.Power, characterStats.Defence);
 
+        characterAnimator  =  GetComponent<Animator>();
+    }
+    void Update()
+    {
+        characterAnimator.SetBool("isDefeated", isDefeated);
     }
 
     private void SetStats(int faith, int power, int def)
@@ -57,7 +66,12 @@ public class CharacterUnitBase : MonoBehaviour
 
     public bool IsDefeated()
     {
-        return currentFaith <= 0;
+        if (currentFaith <= 0){
+            isDefeated=true;
+        } else {
+            isDefeated=false;
+        }
+        return isDefeated;
     }
 
 }

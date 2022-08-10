@@ -118,5 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef1495e5550144672ac7f0d35655a8be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxFaith: 100
-  currentFaith: 0
+  characterStats: {fileID: 0}
+  powerBar: {fileID: 0}
+  faithBar: {fileID: 0}
+  defBar: {fileID: 0}
