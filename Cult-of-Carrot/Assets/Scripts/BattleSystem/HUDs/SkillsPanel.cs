@@ -34,10 +34,6 @@ public class SkillsPanel : MonoBehaviour
             SkillButton skillButton = buttonGameObject.GetComponent<SkillButton>();
             skillButton.SetSkill(skill);
 
-            // Set tooltip text
-            TooltipManager tooltip = buttonGameObject.GetComponent<TooltipManager>();
-            tooltip.SetTooltipText(skill.skillDescription);
-
             skillButtons.Add(buttonGameObject);
         }
 

@@ -5,9 +5,8 @@ using UnityEngine;
 public class CharacterUnitBase : MonoBehaviour
 {
     [SerializeField] protected CharacterStats characterStats;
-    [SerializeField] private HUDBar powerBar;
     [SerializeField] private HUDBar faithBar;
-    [SerializeField] private HUDBar defBar;
+    [SerializeField] private CharacterStatTooltipManager statTooltipManager;
 
     private float maxFaith;
     private float maxPower;
@@ -18,7 +17,6 @@ public class CharacterUnitBase : MonoBehaviour
     private float currentDef;
     private bool isDefeated = false;
 
-
     private  Animator characterAnimator;
 
     // Start is called before the first frame update
@@ -28,30 +26,22 @@ public class CharacterUnitBase : MonoBehaviour
 		maxPower = characterStats.Power;
 		maxDef = characterStats.Defence;
 
+        currentFaith = maxFaith;
+		currentPower = maxPower;
+		currentDef = maxPower;
+
         faithBar.SetMaxValue(maxFaith);
-        powerBar.SetMaxValue(maxPower);
-        defBar.SetMaxValue(maxDef);
+        faithBar.SetValue(maxFaith);
 
-        SetStats(characterStats.Faith, characterStats.Power, characterStats.Defence);
+        statTooltipManager.SetTooltipText(maxPower, maxDef);
 
-        characterAnimator  =  GetComponent<Animator>();
+        characterAnimator = GetComponent<Animator>();
     }
 
     // void Update()
     // {
     //     characterAnimator.SetBool("isDefeated", isDefeated);
     // }
-
-    private void SetStats(float faith, float power, float def)
-	{
-		currentFaith = faith;
-		currentPower = power;
-		currentDef = def;
-
-        faithBar.SetValue(faith);
-        powerBar.SetValue(power);
-        defBar.SetValue(def);
-	}
 
     public void TakeDamage(float faithDamage, float pwrDamage, float defDamage, bool doubleDamage = false)
     {
@@ -66,9 +56,8 @@ public class CharacterUnitBase : MonoBehaviour
         currentDef -= defDamage;
         currentFaith -= faithDamage * (1f + 0.1f * (currentPower - currentDef));
 
-        defBar.SetValue(currentDef);
-        powerBar.SetValue(currentPower);
         faithBar.SetValue(currentFaith);
+        statTooltipManager.SetTooltipText(currentPower, currentDef);
     }
 
     public bool IsDefeated()

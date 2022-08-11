@@ -17,7 +17,6 @@ public class HUDBar : MonoBehaviour
     public void SetMaxValue(float value)
     {
         slider.maxValue = value;
-        slider.value = value;
     }
 
 }

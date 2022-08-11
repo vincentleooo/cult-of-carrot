@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SkillButton : MonoBehaviour
 {
@@ -36,7 +37,11 @@ public class SkillButton : MonoBehaviour
             attackEvent.Raise(attack);
         });
 
-        gameObject.GetComponentInChildren<Text>().text = skill.skillName;
+        TMP_Text buttonTMP = gameObject.GetComponentInChildren<TMP_Text>();
+        buttonTMP.SetText(skill.skillName);
+
+        TooltipManager tooltip = gameObject.GetComponent<TooltipManager>();
+        tooltip.SetTooltipText(skill.skillDescription);
     }
 
     public void SetCurrentTurn(int currentTurn)
