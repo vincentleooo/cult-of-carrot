@@ -99,7 +99,7 @@ Animator:
   m_GameObject: {fileID: 9069980682929612017}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8e68679d4cdd0a545882b89488322ea8, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3a43cbde94b1472498dcc8d7969f9e30, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -379,6 +379,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 8060703399320177090}
     m_Modifications:
+    - target: {fileID: 1103833253591334753, guid: bc18de69a59bd4c57967bd45907c74b0, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1103833253591334755, guid: bc18de69a59bd4c57967bd45907c74b0, type: 3}
       propertyPath: m_Name
       value: FloatingDefBar
