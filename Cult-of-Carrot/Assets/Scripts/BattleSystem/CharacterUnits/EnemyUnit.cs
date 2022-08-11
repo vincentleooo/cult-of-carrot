@@ -8,8 +8,8 @@ public class EnemyUnit : CharacterUnitBase
 
     public Skill SelectAttack()
     {
-        Skill[] enemySkills = characterStats.Skills;
-        int skillIndex = random.Next(0, enemySkills.Length);
+        List<Skill> enemySkills = characterStats.Skills;
+        int skillIndex = random.Next(0, enemySkills.Count);
 
         return enemySkills[skillIndex];
     }

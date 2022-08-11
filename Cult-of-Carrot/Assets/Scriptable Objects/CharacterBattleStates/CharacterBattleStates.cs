@@ -17,8 +17,8 @@ public class CharacterBattleStates : ScriptableObject
 {
     public string stateName = "";
     public bool castOnEnemy = true;
-    [Multiline]
-    public string description = "";
-    public int change;
+    [Multiline] public string description = "";
+    public int statChangeValue;
+    public int numTurns;
     public StatTypeChanged statType;
 }

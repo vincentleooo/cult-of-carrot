@@ -9,13 +9,13 @@ public class CharacterUnitBase : MonoBehaviour
     [SerializeField] private HUDBar faithBar;
     [SerializeField] private HUDBar defBar;
 
-    private int maxFaith;
-    private int maxPower;
-    private int maxDef;
+    private float maxFaith;
+    private float maxPower;
+    private float maxDef;
 
-    private int currentPower;
-    private int currentFaith;
-    private int currentDef;
+    private float currentPower;
+    private float currentFaith;
+    private float currentDef;
     private bool isDefeated = false;
 
 
@@ -41,7 +41,7 @@ public class CharacterUnitBase : MonoBehaviour
         characterAnimator.SetBool("isDefeated", isDefeated);
     }
 
-    private void SetStats(int faith, int power, int def)
+    private void SetStats(float faith, float power, float def)
 	{
 		currentFaith = faith;
 		currentPower = power;
@@ -52,16 +52,22 @@ public class CharacterUnitBase : MonoBehaviour
         defBar.SetValue(def);
 	}
 
-    public void TakeDamage(int faithDamage, int pwrDamage, int defDamage)
+    public void TakeDamage(float faithDamage, float pwrDamage, float defDamage, bool doubleDamage = false)
     {
-        currentFaith -= faithDamage;
-        faithBar.SetValue(currentFaith);
+        if (doubleDamage)
+        {
+            faithDamage *= 2;
+            pwrDamage *= 2;
+            defDamage *= 2;
+        }
 
         currentPower -= pwrDamage;
-        powerBar.SetValue(currentPower);
-
         currentDef -= defDamage;
+        currentFaith -= faithDamage * (1f + 0.1f * ((currentPower) - currentDef));
+
         defBar.SetValue(currentDef);
+        powerBar.SetValue(currentPower);
+        faithBar.SetValue(currentFaith);
     }
 
     public bool IsDefeated()

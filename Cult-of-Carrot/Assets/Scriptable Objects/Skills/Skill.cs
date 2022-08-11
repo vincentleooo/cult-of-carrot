@@ -9,9 +9,9 @@ public class Skill : ScriptableObject
     public string skillName;
     [Multiline] public string skillDescription;
 	// public Image skillImage;
-    public int changeFaith;
-	public int changePower;
-	public int changeDef;
+    public float changeFaith;
+	public float changePower;
+	public float changeDef;
     public int cooldown; // TODO: Handle skill cooldowns
-
+    public CharacterBattleStates resultingState;
 }
