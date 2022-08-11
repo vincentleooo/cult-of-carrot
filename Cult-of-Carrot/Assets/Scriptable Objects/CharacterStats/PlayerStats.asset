@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: PlayerStats
   m_EditorClassIdentifier: Assembly-CSharp::CharacterState
   charName: Judas Iscariot
-  characterGameObject: {fileID: 1494772015911411254, guid: b348d4fc82eaabe4f938fbbe7778a3fb, type: 3}
   node: 1
   Faith: 20
   Power: 20
@@ -21,3 +20,5 @@ MonoBehaviour:
   Skills:
   - {fileID: 11400000, guid: 6aa7ca7afe25747b69a5aaff70a9eb3b, type: 2}
   - {fileID: 11400000, guid: 1523c2d2f3d3e4fe8a2cdcf976a3ccf5, type: 2}
+  - {fileID: 11400000, guid: 7bf21b402bcab4677a62ef8ebb7add26, type: 2}
+  - {fileID: 11400000, guid: f1e30513bfb5d43a5ac88da8b400bc5e, type: 2}

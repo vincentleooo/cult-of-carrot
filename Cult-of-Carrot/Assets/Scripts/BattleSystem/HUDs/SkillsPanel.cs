@@ -8,9 +8,8 @@ public class SkillsPanel : MonoBehaviour
     public CharacterStats playerStats;
     public GameObject buttonPrefab;
 
+    private List<RectTransform> buttonTranforms;
     private List<GameObject> skillButtons;
-    private int buttonWidth = 100;
-    private int buttonSpacing = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -21,33 +20,26 @@ public class SkillsPanel : MonoBehaviour
     private void CreateButtons()
     {
         List<Skill> playerSkills = playerStats.Skills;
+
+        // Includes parent component. Add 1 to index when referencing from list
+        buttonTranforms = new List<RectTransform>(GetComponentsInChildren<RectTransform>());
         skillButtons = new List<GameObject>();
-        int xPosition = buttonSpacing + (buttonWidth / 2);
-        float panelWidth = buttonSpacing;
 
         for (int i = 0; i < playerSkills.Count; i++)
         {
-            GameObject buttonGameObject = Instantiate(buttonPrefab, new Vector3(xPosition, 0, 0), Quaternion.identity);
-            
-            buttonGameObject.transform.SetParent(GetComponent<RectTransform>(), false);
+            Transform buttonPosition = buttonTranforms[i+1].transform;
+            GameObject buttonGameObject = Instantiate(buttonPrefab, buttonPosition);
 
             Skill skill = playerSkills[i];
             SkillButton skillButton = buttonGameObject.GetComponent<SkillButton>();
             skillButton.SetSkill(skill);
-            skillButton.SetText(skill.skillName);
 
             // Set tooltip text
             TooltipManager tooltip = buttonGameObject.GetComponent<TooltipManager>();
             tooltip.SetTooltipText(skill.skillDescription);
 
             skillButtons.Add(buttonGameObject);
-            xPosition += buttonSpacing + buttonWidth;
-            panelWidth += buttonSpacing + buttonWidth;
         }
-
-        // Resize skills panel to fit all skill buttons
-        RectTransform rt = GetComponent<RectTransform>();
-        rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, panelWidth);
 
         DisableSkillButtons();
     }

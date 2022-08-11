@@ -36,10 +36,11 @@ public class CharacterUnitBase : MonoBehaviour
 
         characterAnimator  =  GetComponent<Animator>();
     }
-    void Update()
-    {
-        characterAnimator.SetBool("isDefeated", isDefeated);
-    }
+
+    // void Update()
+    // {
+    //     characterAnimator.SetBool("isDefeated", isDefeated);
+    // }
 
     private void SetStats(float faith, float power, float def)
 	{
@@ -63,7 +64,7 @@ public class CharacterUnitBase : MonoBehaviour
 
         currentPower -= pwrDamage;
         currentDef -= defDamage;
-        currentFaith -= faithDamage * (1f + 0.1f * ((currentPower) - currentDef));
+        currentFaith -= faithDamage * (1f + 0.1f * (currentPower - currentDef));
 
         defBar.SetValue(currentDef);
         powerBar.SetValue(currentPower);
@@ -72,11 +73,7 @@ public class CharacterUnitBase : MonoBehaviour
 
     public bool IsDefeated()
     {
-        if (currentFaith <= 0){
-            isDefeated=true;
-        } else {
-            isDefeated=false;
-        }
+        isDefeated = currentFaith <= 0;
         return isDefeated;
     }
 

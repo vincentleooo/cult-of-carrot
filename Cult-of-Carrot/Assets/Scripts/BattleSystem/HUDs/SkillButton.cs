@@ -35,11 +35,8 @@ public class SkillButton : MonoBehaviour
             else attack.canCast = false;
             attackEvent.Raise(attack);
         });
-    }
 
-    public void SetText(string text)
-    {
-        gameObject.GetComponentInChildren<Text>().text = text;
+        gameObject.GetComponentInChildren<Text>().text = skill.skillName;
     }
 
     public void SetCurrentTurn(int currentTurn)
