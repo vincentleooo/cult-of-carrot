@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce729077f59bb43cbb630e9d13cf7e0f, type: 3}
-  m_Name: PriestEnemyStats
+  m_Name: Priest2Stats
   m_EditorClassIdentifier: Assembly-CSharp::CharacterState
-  charName: ' Gsus Cries'
-  characterGameObject: {fileID: 2674028702039327738, guid: 93d54fe94679bc94cb6b6099d688c762, type: 3}
+  charName: ' Gsus Cries Jr.'
   node: 1
-  Faith: 50
-  Power: 50
-  Defence: 20
+  Faith: 20
+  Power: 5
+  Defence: 5
   Skills:
   - {fileID: 11400000, guid: d03f4fd756fba4bcd9deebf35706a3c4, type: 2}
   - {fileID: 11400000, guid: 3a932d022b376424291d931b8a06ed1d, type: 2}

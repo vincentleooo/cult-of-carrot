@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using TMPro;
 
 public enum BattleState 
 {
@@ -24,6 +25,8 @@ public class BattleSystemManager : MonoBehaviour
     public Transform[] enemyBattlePositions;
     public Transform playerBattlePosition;
 
+    public TextMeshProUGUI currentRoundText;
+
     private PlayerUnit playerUnit;
     private EnemyUnit[] enemyUnits;
 
@@ -39,6 +42,10 @@ public class BattleSystemManager : MonoBehaviour
         enemiesRemaining = enemyBattlePositions.Length;
         battleState = BattleState.START;
         currentTurn = 0;
+
+        string currentRound = "Round: " + currentTurn.ToString();
+        currentRoundText.text = currentRound;
+
         StartCoroutine(BeginBattle());
     }
 
@@ -66,6 +73,9 @@ public class BattleSystemManager : MonoBehaviour
 
     IEnumerator PlayerTurn()
     {
+        string currentRound = "Round: " + currentTurn.ToString();
+        currentRoundText.text = currentRound;
+
         Debug.Log(currentTurn);
         battlePanel.UpdateBattleText("Player's Turn. Carrot be with you.");
         skillsPanel.SetCurrentTurn(currentTurn);
@@ -80,7 +90,7 @@ public class BattleSystemManager : MonoBehaviour
 
         if (!attack.canCast)
         {
-            battlePanel.UpdateBattleText("Cannot cast " + attack.skill.skillName + " during cooldown");
+            battlePanel.UpdateBattleText("Cannot cast " + attack.skill.skillName + " during cooldown.");
             return;
         }
 
@@ -94,11 +104,16 @@ public class BattleSystemManager : MonoBehaviour
 
     IEnumerator PlayerSkillAttack(Skill skill)
     {
-        battlePanel.UpdateBattleText("Player used " + skill.skillName);
+        battlePanel.UpdateBattleText("Player used " + skill.skillName + "!");
 
         float perEnemyFaithDamage = skill.changeFaith; // enemiesRemaining;
         float perEnemyPwrDamage = skill.changePower; // enemiesRemaining;
         float perEnemyDefDamage = skill.changeDef; // enemiesRemaining;
+
+        // print("changeFaith: " + skill.changeFaith);
+        // print("changePower: " + skill.changePower);
+        // print("changeDef: " + skill.changeDef);
+
 
         foreach (EnemyUnit e in enemyUnits)
         {
@@ -112,7 +127,7 @@ public class BattleSystemManager : MonoBehaviour
             battleState = BattleState.ENEMYTURN;
             yield return StartCoroutine(EnemiesAttack());
         }
-        
+
         else
         {
             battleState = BattleState.WIN;
@@ -129,8 +144,12 @@ public class BattleSystemManager : MonoBehaviour
         foreach (EnemyUnit e in enemyUnits)
         {
             Skill enemySkill = e.SelectAttack();
-            battlePanel.UpdateBattleText("Enemy used " + enemySkill.skillName);
+            battlePanel.UpdateBattleText("Enemy used " + enemySkill.skillName + "!");
             playerUnit.TakeDamage(enemySkill.changeFaith, enemySkill.changePower, enemySkill.changeDef);
+
+            // print("Faith dmg taken: " + enemySkill.changeFaith);
+            // print("Power dmg taken: " + enemySkill.changePower);
+            // print("Def dmg taken: " + enemySkill.changeDef);
 
             yield return new WaitForSeconds(1);
 
@@ -155,7 +174,7 @@ public class BattleSystemManager : MonoBehaviour
     {
         if (battleState == BattleState.WIN)
         {
-            battlePanel.UpdateBattleText("You won. Bitch.");
+            battlePanel.UpdateBattleText("You won. You have made their lives better.");
         }
 
         else if (battleState == BattleState.LOST)

@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 940cd774f7ded8749964308e7311be13, type: 3}
   m_Name: VeggieBagMix
   m_EditorClassIdentifier: 
-  consumableName: StaleDailyBread
-  consumableDescription: 'Crusty, armoured bread. Gives you thick skin for a while.
+  consumableName: Veggie Bag Mix
+  consumableDescription: 'Kids like it. Cultists LOVE it. Get yours today for $23.59,
+    or a dollar if you''re one of us.
 
-    Gain
-    +5 DEF for 3 turns.'
+    Gain +15 PWR for 3 turns.'
   changeFaith: 0
-  changePower: 0
-  changeDef: 5
+  changePower: 15
+  changeDef: 0
   numTurns: 3
   numberOfConsummables: 0
   statusEffectType: 

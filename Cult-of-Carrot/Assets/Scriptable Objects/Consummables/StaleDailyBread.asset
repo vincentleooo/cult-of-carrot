@@ -16,10 +16,10 @@ MonoBehaviour:
   consumableDescription: 'Crusty, armoured bread. Gives you thick skin for a while.
 
     Gain
-    +5 DEF for 3 turns.'
+    +15 DEF for 3 turns.'
   changeFaith: 0
   changePower: 0
-  changeDef: 5
+  changeDef: 15
   numTurns: 3
   numberOfConsummables: 0
   statusEffectType: 

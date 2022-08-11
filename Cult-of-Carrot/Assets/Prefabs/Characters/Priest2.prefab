@@ -121,10 +121,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef1495e5550144672ac7f0d35655a8be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterStats: {fileID: 11400000, guid: 8d152b54a88e249b597e5cdeae253e95, type: 2}
+  characterStats: {fileID: 11400000, guid: 545a3e5af7d82af4eac80bb3826e7fe1, type: 2}
   powerBar: {fileID: 2116609450971681059}
   faithBar: {fileID: 1111909924852947556}
-  defBar: {fileID: 1111909924852947556}
+  defBar: {fileID: 1053105015114114072}
 --- !u!1001 &313237439812922615
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -379,6 +379,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 2674028702039327492}
     m_Modifications:
+    - target: {fileID: 1103833253591334753, guid: bc18de69a59bd4c57967bd45907c74b0, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1103833253591334755, guid: bc18de69a59bd4c57967bd45907c74b0, type: 3}
       propertyPath: m_Name
       value: FloatingDefBar
@@ -478,6 +482,17 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: bc18de69a59bd4c57967bd45907c74b0, type: 3}
+--- !u!114 &1053105015114114072 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1803518883269721556, guid: bc18de69a59bd4c57967bd45907c74b0, type: 3}
+  m_PrefabInstance: {fileID: 1700675867728878028}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75b1aabaca0394ac79358693336b1004, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1786690787318965931 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1103833253591334759, guid: bc18de69a59bd4c57967bd45907c74b0, type: 3}

@@ -13,5 +13,4 @@ public class Consumables : ScriptableObject
     public int numTurns; // Not sure if we need this yet
     public int numberOfConsummables; // Not sure if we need this yet
     public StatusEffectTypeChanged[] statusEffectType; // Not sure if we need this yet
-
 }

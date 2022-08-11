@@ -256,6 +256,18 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 1494772015911411248}
     m_Modifications:
+    - target: {fileID: 1103833252653468600, guid: 63f5e545669ad3d43921bc6c34b236d3, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103833252653468600, guid: 63f5e545669ad3d43921bc6c34b236d3, type: 3}
+      propertyPath: m_MaxValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103833253591334753, guid: 63f5e545669ad3d43921bc6c34b236d3, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1103833253591334755, guid: 63f5e545669ad3d43921bc6c34b236d3, type: 3}
       propertyPath: m_Name
       value: FloatingFaithBar
@@ -379,6 +391,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 1494772015911411248}
     m_Modifications:
+    - target: {fileID: 1103833253591334753, guid: 58f0291f5c01f4c1c972585f43179172, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1103833253591334755, guid: 58f0291f5c01f4c1c972585f43179172, type: 3}
       propertyPath: m_Name
       value: FloatingPowerBar

@@ -32,7 +32,7 @@ public class CharacterUnitBase : MonoBehaviour
 
         SetStats(characterStats.Faith, characterStats.Power, characterStats.Defence);
 
-        characterAnimator  =  GetComponent<Animator>();
+        characterAnimator = GetComponent<Animator>();
     }
 
     void Update()
@@ -46,6 +46,8 @@ public class CharacterUnitBase : MonoBehaviour
 		currentPower = power;
 		currentDef = def;
 
+        print("f: " + currentFaith + "; p: " + currentPower + "; d: " + currentDef);
+
         faithBar.SetValue(faith);
         powerBar.SetValue(power);
         defBar.SetValue(def);
@@ -55,14 +57,28 @@ public class CharacterUnitBase : MonoBehaviour
     {
         if (doubleDamage)
         {
+            Debug.Log("dealing double damage");
             faithDamage *= 2;
             pwrDamage *= 2;
             defDamage *= 2;
         }
 
+        print("currPower: " + currentPower);
         currentPower -= pwrDamage;
+        print("currPower2: " + currentPower);
+        print("pwrDmg: " + pwrDamage);
+
+
+        print("currDef: " + currentDef);
         currentDef -= defDamage;
+        print("currDef2: " + currentDef);
+        print("defDmg: " + defDamage);
+
         currentFaith -= faithDamage * (1f + 0.1f * ((currentPower) - currentDef));
+
+        Debug.Log("faith dealt: " + faithDamage);
+        Debug.Log("total faith dealt: " + faithDamage * (1f + 0.1f * ((currentPower) - currentDef)));
+
 
         defBar.SetValue(currentDef);
         powerBar.SetValue(currentPower);
@@ -73,15 +89,14 @@ public class CharacterUnitBase : MonoBehaviour
     {
         if (currentFaith <= 0)
         {
-            isDefeated=true;
+            isDefeated = true;
         }
 
         else
         {
-            isDefeated=false;
+            isDefeated = false;
         }
-        
+
         return isDefeated;
     }
-
 }
