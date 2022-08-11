@@ -33,7 +33,6 @@ public class BattleSystemManager : MonoBehaviour
     private int enemiesRemaining;
     private int currentTurn;
 
-    // Start is called before the first frame update
     void Start()
     {
         enemyUnits = new EnemyUnit[enemyBattlePositions.Length];
@@ -113,6 +112,7 @@ public class BattleSystemManager : MonoBehaviour
             battleState = BattleState.ENEMYTURN;
             yield return StartCoroutine(EnemiesAttack());
         }
+        
         else
         {
             battleState = BattleState.WIN;

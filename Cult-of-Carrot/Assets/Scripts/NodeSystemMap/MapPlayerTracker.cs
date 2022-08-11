@@ -80,11 +80,11 @@ namespace Map
             switch (mapNode.Node.nodeType)
             {
                 case (NodeType.Tutorial):
-                    SceneManager.LoadScene("Induction");
+                    SceneManager.LoadScene("InductionTest");
                     break;
 
                 case (NodeType.MinorEnemy):
-                    SceneManager.LoadScene("Induction");
+                    SceneManager.LoadScene("InductionTest");
                     break;
 
                 case (NodeType.EliteEnemy):
