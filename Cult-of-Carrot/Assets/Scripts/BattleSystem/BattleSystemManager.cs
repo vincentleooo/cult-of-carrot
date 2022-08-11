@@ -36,12 +36,16 @@ public class BattleSystemManager : MonoBehaviour
     private int enemiesRemaining;
     private int currentTurn;
 
+    [SerializeField]
+    private CharacterStats[] currentCharacters;
+    private int currentCharacterIndex = 0;
+
     void Start()
     {
         enemyUnits = new EnemyUnit[enemyBattlePositions.Length];
         enemiesRemaining = enemyBattlePositions.Length;
         battleState = BattleState.START;
-        currentTurn = 0;
+        currentTurn = 1;
 
         string currentRound = "Round: " + currentTurn.ToString();
         currentRoundText.text = currentRound;
@@ -115,11 +119,14 @@ public class BattleSystemManager : MonoBehaviour
         // print("changeDef: " + skill.changeDef);
 
 
+        currentCharacterIndex = 1; // Reset it each time
+
         foreach (EnemyUnit e in enemyUnits)
         {
-            e.TakeDamage(perEnemyFaithDamage, perEnemyPwrDamage, perEnemyDefDamage);
+            e.TakeDamage(perEnemyFaithDamage, perEnemyPwrDamage, perEnemyDefDamage, currentCharacters[0], currentCharacters[currentCharacterIndex], currentCharacterIndex);
             if (e.IsDefeated()) enemiesRemaining--;
             yield return new WaitForSeconds(1);
+            currentCharacterIndex++;
         }
 
         if (enemiesRemaining > 0)
@@ -141,11 +148,14 @@ public class BattleSystemManager : MonoBehaviour
 
         yield return new WaitForSeconds(2);
 
+        currentCharacterIndex = 1; // Reset it each time
+
         foreach (EnemyUnit e in enemyUnits)
         {
             Skill enemySkill = e.SelectAttack();
             battlePanel.UpdateBattleText("Enemy used " + enemySkill.skillName + "!");
-            playerUnit.TakeDamage(enemySkill.changeFaith, enemySkill.changePower, enemySkill.changeDef);
+            playerUnit.TakeDamage(enemySkill.changeFaith, enemySkill.changePower, enemySkill.changeDef, currentCharacters[currentCharacterIndex], currentCharacters[0], 0);
+            currentCharacterIndex++;
 
             // print("Faith dmg taken: " + enemySkill.changeFaith);
             // print("Power dmg taken: " + enemySkill.changePower);

@@ -735,6 +735,10 @@ MonoBehaviour:
   - {fileID: 1725101906}
   playerBattlePosition: {fileID: 824977084}
   currentRoundText: {fileID: 2127345511}
+  currentCharacters:
+  - {fileID: 11400000, guid: 87288b689e43147a1addf110cb5ff290, type: 2}
+  - {fileID: 11400000, guid: 8d152b54a88e249b597e5cdeae253e95, type: 2}
+  - {fileID: 11400000, guid: 545a3e5af7d82af4eac80bb3826e7fe1, type: 2}
 --- !u!4 &570100334
 Transform:
   m_ObjectHideFlags: 0
