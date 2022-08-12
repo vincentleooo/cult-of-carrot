@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class GetMouseClick : MonoBehaviour
 {
+    public List<GameObject> currentlySelectedCharacter;
+    
     private bool isSelectRingActive = false;
-    private List<GameObject> currentlySelectedCharacter;
 
     void Start()
     {
