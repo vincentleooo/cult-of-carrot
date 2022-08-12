@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222452829764e4bd88a338a30bf00f7b, type: 3}
+  m_Name: FaithfulWords
+  m_EditorClassIdentifier: 
+  skillName: Faithful Words
+  skillDescription: 'Prayer2Go.
+
+    Restores your own FAITH by 10.
+
+    CD: 1'
+  changeFaith: 10
+  changePower: 0
+  changeDef: 0
+  cooldown: 1
+  resultingStatus: {fileID: 0}
+  isSingleTarget: 1
+  isMultiTarget: 0
+  isSingleAndMultiTarget: 0
+  isSelfCast: 1
+  isEnemyCast: 0

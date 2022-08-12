@@ -12,7 +12,6 @@ public class SkillsPanel : MonoBehaviour
     private int buttonWidth = 100;
     private int buttonSpacing = 10;
 
-    // Start is called before the first frame update
     void Start()
     {
         CreateButtons();

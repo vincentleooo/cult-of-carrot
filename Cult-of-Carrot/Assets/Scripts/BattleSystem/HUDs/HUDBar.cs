@@ -19,5 +19,4 @@ public class HUDBar : MonoBehaviour
         slider.maxValue = value;
         slider.value = value;
     }
-
 }
