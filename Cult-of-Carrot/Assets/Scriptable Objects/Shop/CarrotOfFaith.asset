@@ -15,4 +15,5 @@ MonoBehaviour:
   itemName: Carrot of Faith
   price: 10
   quantity: 0
+  prefab: {fileID: 5372141736820619776, guid: 11fd1cf139f3141ffac012aed75aa04a, type: 3}
   itemDesc: Hellu young one

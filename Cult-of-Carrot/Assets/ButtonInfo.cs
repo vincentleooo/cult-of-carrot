@@ -8,23 +8,38 @@ public class ButtonInfo : MonoBehaviour
 {
 	public int itemID;
 	public string itemName;
+	public float price;
+	public int quantity;
 	public TextMeshProUGUI priceText;
 	public TextMeshProUGUI quantityText;
-	private GameObject shopManager;
-	private ShopManagerScript shopManagerBuyer;
+	private ShopManagerScript shopManager;
+	public float buttonDelay = 0.1f;
+
+	// IEnumerator DisableButtonTemp(Button button, float seconds)
+	// {
+	// 	yield return new WaitForSeconds(seconds);
+	// 	button.interactable = true;
+	// }
 
 	void Start()
 	{
-		shopManager = GameObject.Find("ShopManager");
-		shopManagerBuyer = shopManager.GetComponent<ShopManagerScript>();
-		Debug.Log(shopManager.name);
-		GetComponent<Button>().onClick.AddListener(delegate {shopManagerBuyer.Buy();});
+		shopManager = GameObject.Find("ShopManager").GetComponent<ShopManagerScript>();
+		GetComponent<Button>().onClick.AddListener(delegate {shopManager.Buy();});
 	}
+
+	// void Clicked()
+	// {
+	// 	GetComponent<Button>().interactable = false;
+	// 	unbuyState = true;
+	// 	StartCoroutine(DisableButtonTemp(GetComponent<Button>(), buttonDelay));
+	// 	GetComponent<Button>().onClick.Invoke();
+	// 	unbuyState = false;
+	// }
 
     // Update is called once per frame
     void Update()
     {
-		priceText.text = "Price: $" + shopManager.GetComponent<ShopManagerScript>().shopItems[2, itemID].ToString();
-		quantityText.text = "Quantity: " + shopManager.GetComponent<ShopManagerScript>().shopItems[3, itemID].ToString();
+		priceText.text = "Price: $" + price.ToString();
+		quantityText.text = "Quantity: " + quantity.ToString();
     }
 }

@@ -8,5 +8,6 @@ public class ShopItems : ScriptableObject
     public string itemName = "";
 	public float price;
 	public int quantity;
+	public GameObject prefab;
 	[Multiline] public string itemDesc = "";
 }
