@@ -18,4 +18,6 @@ public class PlayerUnit : CharacterUnitBase
     //         cooldownDict.Add(skill.skillName, skill.cooldown);
     //     }
     // }
+
+    public bool isSelected;
 }

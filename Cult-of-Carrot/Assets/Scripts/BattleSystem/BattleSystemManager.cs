@@ -129,7 +129,7 @@ public class BattleSystemManager : MonoBehaviour
 
         currentCharacterIndex = 1; // Reset it each time
 
-        // Single target skills, cast on Enemy
+        // Single target, cast on Enemy skills
         if (skill.isSingleTarget && skill.isEnemyCast)
         {
             foreach (EnemyUnit e in enemyUnits)
@@ -144,10 +144,15 @@ public class BattleSystemManager : MonoBehaviour
             }
         }
 
-        // Single target skills, cast on Self
+        // Single target, cast on Self skills
         if (skill.isSingleTarget && skill.isSelfCast)
         {
-            // smth smth
+            if (playerUnit.isSelected)
+            {
+                playerUnit.TakeDamage(skill.changeFaith, skill.changePower, skill.changeDef, currentCharacters[0], currentCharacters[0], 0);
+                yield return new WaitForSeconds(1);
+                StartCoroutine(CheckPlayerDeath());
+            }
         }
 
         // foreach (EnemyUnit e in enemyUnits)
@@ -187,14 +192,16 @@ public class BattleSystemManager : MonoBehaviour
             currentCharacterIndex++;
 
             yield return new WaitForSeconds(1);
+            StartCoroutine(CheckPlayerDeath());
 
-            if (playerUnit.IsDefeated())
-            {
-                battleState = BattleState.LOST;
+            // if (playerUnit.IsDefeated())
+            // {
+            //     battleState = BattleState.LOST;
 
-                yield return StartCoroutine(EndBattle());
-                yield break;
-            }
+            //     yield return StartCoroutine(EndBattle());
+            //     yield break;
+            // }
+
         }
 
         yield return new WaitForSeconds(2);
@@ -203,6 +210,17 @@ public class BattleSystemManager : MonoBehaviour
         battleState = BattleState.PLAYERTURN;
 
         yield return StartCoroutine(PlayerTurn());
+    }
+
+    IEnumerator CheckPlayerDeath()
+    {
+        if (playerUnit.IsDefeated())
+        {
+            battleState = BattleState.LOST;
+
+            yield return StartCoroutine(EndBattle());
+            yield break;
+        }
     }
 
     IEnumerator EndBattle()

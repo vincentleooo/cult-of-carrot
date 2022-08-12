@@ -5,13 +5,14 @@ using UnityEngine;
 public class GetMouseClick : MonoBehaviour
 {
     public List<GameObject> currentlySelectedCharacter;
-    public EnemyUnit GMCenemyUnit = null;
-    // public EnemyUnit[] GMCenemyUnitList;
     public int enemyUnitIndex;
     
     private bool isSelectRingActive = false;
     private int enemyUnitListIndex = 0;
     private BattleSystemManager battleSystemManager;
+    private EnemyUnit GMCenemyUnit = null;
+    private PlayerUnit GMCplayerUnit = null;
+
 
     void Start()
     {
@@ -41,7 +42,19 @@ public class GetMouseClick : MonoBehaviour
                 if (currentlySelectedCharacter.Count > 1)
                 {
                     SetSelectRing(currentlySelectedCharacter[0], isSelectRingActive);
-                    currentlySelectedCharacter[0].GetComponent<EnemyUnit>().isSelected = false; // Make it unselected
+
+                    // Check if it is Enemy
+                    if (currentlySelectedCharacter[0].tag == "Enemy")
+                    {
+                        currentlySelectedCharacter[0].GetComponent<EnemyUnit>().isSelected = false; // Make it unselected
+                    }
+
+                    // Check if it is Player
+                    else if (currentlySelectedCharacter[0].tag == "Player")
+                    {
+                        currentlySelectedCharacter[0].GetComponent<PlayerUnit>().isSelected = false; // Make it unselected
+                    }
+
                     currentlySelectedCharacter.RemoveAt(0);
                 }
 
@@ -64,6 +77,15 @@ public class GetMouseClick : MonoBehaviour
 
                         enemyUnitListIndex++;
                     }
+                }
+
+                // Cast on Player
+                else if (targetSelected.gameObject.tag == "Player")
+                {
+                    GMCplayerUnit = targetSelected.GetComponent<PlayerUnit>();
+                    GMCplayerUnit.isSelected = true;
+
+                    // TODO: finish this
                 }
             }
         }
