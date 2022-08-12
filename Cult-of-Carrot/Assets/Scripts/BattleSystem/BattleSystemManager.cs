@@ -57,6 +57,11 @@ public class BattleSystemManager : MonoBehaviour
     {
         // spawn player on battle stations
         playerPrefab = Instantiate(playerPrefab, playerBattlePosition);
+
+        // set player name
+        var characterName = playerPrefab.GetComponentInChildren<TextMeshPro>();
+        characterName.text = currentCharacters[currentCharacterIndex].charName;
+
         playerPrefab.SetActive(true);
         playerUnit = playerPrefab.GetComponent<PlayerUnit>();
         
@@ -64,6 +69,11 @@ public class BattleSystemManager : MonoBehaviour
         for (int i = 0; i < enemyPrefabs.Length; i++)
         {
             enemyPrefabs[i] = Instantiate(enemyPrefabs[i], enemyBattlePositions[i]);
+
+            // set enemy names
+            var characterNames = enemyPrefabs[i].GetComponentInChildren<TextMeshPro>();
+            characterNames.text = currentCharacters[i + 1].charName;
+
             enemyPrefabs[i].SetActive(true);
             enemyUnits[i] = enemyPrefabs[i].GetComponent<EnemyUnit>();
         }
@@ -80,7 +90,6 @@ public class BattleSystemManager : MonoBehaviour
         string currentRound = "Round: " + currentTurn.ToString();
         currentRoundText.text = currentRound;
 
-        Debug.Log(currentTurn);
         battlePanel.UpdateBattleText("Player's Turn. Carrot be with you.");
         skillsPanel.SetCurrentTurn(currentTurn);
         skillsPanel.EnableSkillButtons();
@@ -113,11 +122,6 @@ public class BattleSystemManager : MonoBehaviour
         float perEnemyFaithDamage = skill.changeFaith; // enemiesRemaining;
         float perEnemyPwrDamage = skill.changePower; // enemiesRemaining;
         float perEnemyDefDamage = skill.changeDef; // enemiesRemaining;
-
-        // print("changeFaith: " + skill.changeFaith);
-        // print("changePower: " + skill.changePower);
-        // print("changeDef: " + skill.changeDef);
-
 
         currentCharacterIndex = 1; // Reset it each time
 
@@ -156,10 +160,6 @@ public class BattleSystemManager : MonoBehaviour
             battlePanel.UpdateBattleText("Enemy used " + enemySkill.skillName + "!");
             playerUnit.TakeDamage(enemySkill.changeFaith, enemySkill.changePower, enemySkill.changeDef, currentCharacters[currentCharacterIndex], currentCharacters[0], 0);
             currentCharacterIndex++;
-
-            // print("Faith dmg taken: " + enemySkill.changeFaith);
-            // print("Power dmg taken: " + enemySkill.changePower);
-            // print("Def dmg taken: " + enemySkill.changeDef);
 
             yield return new WaitForSeconds(1);
 

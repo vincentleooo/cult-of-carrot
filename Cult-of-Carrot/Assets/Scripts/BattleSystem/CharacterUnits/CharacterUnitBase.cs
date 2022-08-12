@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class CharacterUnitBase : MonoBehaviour
 {
@@ -24,17 +25,16 @@ public class CharacterUnitBase : MonoBehaviour
     private float getCurrentCharacterFaith;
     private float getCurrentCharacterPower;
     private float getCurrentCharacterDef;
-
-    [SerializeField]
-    private CharacterStats[] currentCharacters;
-
     private float characterToAttackFaith;
     private float characterToAttackPower;
     private float characterToAttackDef;
-
     private GameObject[] allFaithBars;
     private GameObject[] allPowerBars;
     private GameObject[] allDefBars;
+    private GameObject[] allFaithNumbers;
+    private int allFaithNumbersIndex = 0;
+    private GameObject[] allMaxFaithNumbers;
+    private int allMaxFaithNumbersIndex = 0;
 
     protected void Start()
     {
@@ -53,6 +53,11 @@ public class CharacterUnitBase : MonoBehaviour
         allFaithBars = GameObject.FindGameObjectsWithTag("FaithBar");
         allPowerBars = GameObject.FindGameObjectsWithTag("PowerBar");
         allDefBars = GameObject.FindGameObjectsWithTag("DefBar");
+
+        allFaithNumbers = GameObject.FindGameObjectsWithTag("FaithNumber");
+        allMaxFaithNumbers = GameObject.FindGameObjectsWithTag("MaxFaithNumber");
+        SetAllCurrentFaith();
+        SetAllMaxFaith();
     }
 
     void Update()
@@ -85,39 +90,12 @@ public class CharacterUnitBase : MonoBehaviour
         characterToAttackFaith = allFaithBars[index].GetComponent<Slider>().value;
         characterToAttackPower = allPowerBars[index].GetComponent<Slider>().value;
         characterToAttackDef = allDefBars[index].GetComponent<Slider>().value;
-
-        // switch (index)
-        // {
-        //     case ("Judas Iscariot"):
-        //         characterToAttackFaith = GameObject.Find("Player(Clone)").GetComponentsInChildren<Slider>().value;
-        //         characterToAttackPower = GameObject.Find("Player(Clone)").GetComponentsInChildren<Slider>().value;
-        //         characterToAttackDef = GameObject.Find("Player(Clone)").GetComponentInChildren<Slider>().value;
-        //         break;
-            
-        //     case ("Gsus Cries"):
-        //         characterToAttackFaith = GameObject.Find("Priest1(Clone)").GetComponentInChildren<Slider>().value;
-        //         characterToAttackPower = GameObject.Find("Priest1(Clone)").GetComponentInChildren<Slider>().value;
-        //         characterToAttackDef = GameObject.Find("Priest1(Clone)").GetComponentInChildren<Slider>().value;
-        //         break;
-
-        //     case ("Gsus Cries Jr."):
-        //         characterToAttackFaith = GameObject.Find("Priest2(Clone)").GetComponentInChildren<Slider>().value;
-        //         characterToAttackPower = GameObject.Find("Priest2(Clone)").GetComponentInChildren<Slider>().value;
-        //         characterToAttackDef = GameObject.Find("Priest2(Clone)").GetComponentInChildren<Slider>().value;
-        //         break;
-            
-        //     default:
-        //         throw new System.Exception("Character does not exist!");
-        // }
         
         print("charToAttack => f: " + characterToAttackFaith + "; p: " + characterToAttackPower + "; d: " + characterToAttackDef);
-
     }
 
     public void TakeDamage(float faithDamage, float pwrDamage, float defDamage, CharacterStats character, CharacterStats characterBeingAttacked, int characterBeingAttackedIndex, bool doubleDamage = false)
     {
-        IsDefeated(); // Do a check
-
         GetCurrentCharacterStats(character.Faith, character.Power, character.Defence);
         GetCharacterBeingAttackedStats(characterBeingAttackedIndex);
 
@@ -149,11 +127,39 @@ public class CharacterUnitBase : MonoBehaviour
         faithBar.SetValue(characterToAttackFaith);
         powerBar.SetValue(characterToAttackPower);
         defBar.SetValue(characterToAttackDef);
+        SetAllCurrentFaith();
+    }
+
+    private void SetAllMaxFaith()
+    {
+        allMaxFaithNumbersIndex = 0; // Reset it each time
+
+        // set the max Faith values for all the characters' Faith bars
+        foreach (var gameObjects in allMaxFaithNumbers)
+        {
+            var gameObjectText = gameObjects.GetComponent<TextMeshProUGUI>();
+            gameObjectText.text = "/" + allFaithBars[allMaxFaithNumbersIndex].GetComponent<Slider>().value.ToString();
+            allMaxFaithNumbersIndex++;
+        }
+    }
+
+    private void SetAllCurrentFaith()
+    {
+        allFaithNumbersIndex = 0; // Reset it each time
+
+        // update the current Faith values for all the characters' Faith bars
+        foreach (var gameObjects in allFaithNumbers)
+        {
+            var gameObjectText = gameObjects.GetComponent<TextMeshProUGUI>();
+            gameObjectText.text = allFaithBars[allFaithNumbersIndex].GetComponent<Slider>().value.ToString();
+            allFaithNumbersIndex++;
+        }
     }
 
     public bool IsDefeated()
     {
-        if (currentFaith <= 0 || getCurrentCharacterFaith <= 0)
+        // Not sure which condition is triggering the death (didn't check) but just use all lol
+        if (currentFaith <= 0 || getCurrentCharacterFaith <= 0 || characterToAttackFaith <= 0)
         {
             isDefeated = true;
         }

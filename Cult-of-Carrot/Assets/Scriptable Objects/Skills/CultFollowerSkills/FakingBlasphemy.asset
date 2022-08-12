@@ -21,8 +21,8 @@ MonoBehaviour:
     CD: 0
 
 '
-  changeFaith: 5
+  changeFaith: 50
   changePower: 0
   changeDef: 0
   cooldown: 0
-  resultingState: {fileID: 0}
+  resultingStatus: {fileID: 0}
