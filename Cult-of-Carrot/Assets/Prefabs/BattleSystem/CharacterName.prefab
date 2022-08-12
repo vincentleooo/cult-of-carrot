@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4410904729708698529}
   - component: {fileID: 5172777112229145808}
-  - component: {fileID: 6851053929443254665}
   - component: {fileID: 164614446853408803}
   m_Layer: 0
   m_Name: Text
@@ -81,14 +80,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!222 &6851053929443254665
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 731655222591852031}
-  m_CullTransparentMesh: 1
 --- !u!114 &164614446853408803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,5 +202,5 @@ Transform:
   m_Children:
   - {fileID: 4410904729708698529}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
