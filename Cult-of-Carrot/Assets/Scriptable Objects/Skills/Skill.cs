@@ -14,4 +14,9 @@ public class Skill : ScriptableObject
 	public float changeDef;
     public int cooldown; // TODO: Handle skill cooldowns
     public CharacterStatusEffects resultingStatus;
+    public bool isSingleTarget;
+    public bool isMultiTarget;
+    public bool isAllTarget;
+    public bool isSelfCast;
+    public bool isEnemyCast;
 }

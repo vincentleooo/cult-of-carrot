@@ -27,8 +27,8 @@ public class BattleSystemManager : MonoBehaviour
 
     public TextMeshProUGUI currentRoundText;
 
-    private PlayerUnit playerUnit;
-    private EnemyUnit[] enemyUnits;
+    public PlayerUnit playerUnit;
+    public EnemyUnit[] enemyUnits;
 
     private BattleState battleState;
 
@@ -40,6 +40,8 @@ public class BattleSystemManager : MonoBehaviour
     private CharacterStats[] currentCharacters;
     private int currentCharacterIndex = 0;
 
+    private GetMouseClick getMouseClick;
+
     void Start()
     {
         enemyUnits = new EnemyUnit[enemyBattlePositions.Length];
@@ -49,6 +51,8 @@ public class BattleSystemManager : MonoBehaviour
 
         string currentRound = "Round: " + currentTurn.ToString();
         currentRoundText.text = currentRound;
+
+        getMouseClick = GetComponent<GetMouseClick>();
 
         StartCoroutine(BeginBattle());
     }
@@ -125,13 +129,34 @@ public class BattleSystemManager : MonoBehaviour
 
         currentCharacterIndex = 1; // Reset it each time
 
-        foreach (EnemyUnit e in enemyUnits)
+        // Single target skills, cast on Enemy
+        if (skill.isSingleTarget && skill.isEnemyCast)
         {
-            e.TakeDamage(perEnemyFaithDamage, perEnemyPwrDamage, perEnemyDefDamage, currentCharacters[0], currentCharacters[currentCharacterIndex], currentCharacterIndex);
-            if (e.IsDefeated()) enemiesRemaining--;
-            yield return new WaitForSeconds(1);
-            currentCharacterIndex++;
+            foreach (EnemyUnit e in enemyUnits)
+            {
+                if (e.isSelected)
+                {
+                    e.TakeDamage(perEnemyFaithDamage, perEnemyPwrDamage, perEnemyDefDamage, currentCharacters[0], currentCharacters[getMouseClick.enemyUnitIndex + 1], getMouseClick.enemyUnitIndex + 1);
+                    if (e.IsDefeated()) enemiesRemaining--;
+                    yield return new WaitForSeconds(1);
+                    currentCharacterIndex++;
+                }
+            }
         }
+
+        // Single target skills, cast on Self
+        if (skill.isSingleTarget && skill.isSelfCast)
+        {
+            // smth smth
+        }
+
+        // foreach (EnemyUnit e in enemyUnits)
+        // {
+        //     e.TakeDamage(perEnemyFaithDamage, perEnemyPwrDamage, perEnemyDefDamage, currentCharacters[0], currentCharacters[currentCharacterIndex], currentCharacterIndex);
+        //     if (e.IsDefeated()) enemiesRemaining--;
+        //     yield return new WaitForSeconds(1);
+        //     currentCharacterIndex++;
+        // }
 
         if (enemiesRemaining > 0)
         {

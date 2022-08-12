@@ -23,3 +23,8 @@ MonoBehaviour:
   changeDef: 0
   cooldown: 1
   resultingStatus: {fileID: 0}
+  isSingleTarget: 1
+  isMultiTarget: 0
+  isSingleAndMultiTarget: 0
+  isSelfCast: 1
+  isEnemyCast: 0
