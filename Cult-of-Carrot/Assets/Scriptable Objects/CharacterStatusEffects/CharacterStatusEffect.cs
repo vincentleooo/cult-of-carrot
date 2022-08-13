@@ -12,13 +12,15 @@ public enum StatusEffectTypeChanged
     BLOCKTURN
 }
 
-[CreateAssetMenu(fileName = "CharacterStatusEffects", menuName = "Scriptable Objects/CharacterStatusEffects", order = 3)]
-public class CharacterStatusEffects : ScriptableObject
+[CreateAssetMenu(fileName = "CharacterStatusEffect", menuName = "Scriptable Objects/CharacterStatusEffect", order = 3)]
+public class CharacterStatusEffect : ScriptableObject
 {
     public string stateName = "";
     public bool castOnEnemy = true;
     [Multiline] public string description = "";
+    public Texture image;
     public int statChangeValue;
+    public bool doubleDamage;
     public int numTurns;
-    public StatusEffectTypeChanged[] statusEffectType;
+    public StatusEffectTypeChanged statusEffectType;
 }

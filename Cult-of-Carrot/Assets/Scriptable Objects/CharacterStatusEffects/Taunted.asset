@@ -18,6 +18,8 @@ MonoBehaviour:
 
     Lose -10
     PWR for 3 turns.'
+  image: {fileID: 2800000, guid: ffec8f34978344b1a9d39e851c91c6d9, type: 3}
   statChangeValue: 10
+  doubleDamage: 0
   numTurns: 3
-  statusEffectType: 01000000
+  statusEffectType: 1

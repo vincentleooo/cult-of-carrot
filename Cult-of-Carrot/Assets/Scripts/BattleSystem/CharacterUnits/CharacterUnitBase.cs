@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Assertions;
 using TMPro;
 
 public class CharacterUnitBase : MonoBehaviour
@@ -20,6 +21,9 @@ public class CharacterUnitBase : MonoBehaviour
     private float currentFaith;
     private float currentDef;
     private bool isDefeated = false;
+
+    protected List<CharacterStatusEffect> statusEffects = new List<CharacterStatusEffect>();
+    protected List<int> statusEffectsDurations = new List<int>();
 
     private Animator characterAnimator;
 
@@ -47,25 +51,30 @@ public class CharacterUnitBase : MonoBehaviour
         return currentPower;
     }
 
-    public void TakeDamage(float faithDamage, float pwrDamage, float defDamage, float damageCasterPower, bool doubleDamage = false)
+    public void TakeDamage(Skill enemySkill, float damageCasterPower, int damageReducer = 1)
     {
         Debug.Log(characterStats.charName + " taking damage");
 
-        if (doubleDamage)
+        // if (doubleDamage)
+        // {
+        //     Debug.Log("dealing double damage");
+        //     faithDamage *= 2;
+        //     pwrDamage *= 2;
+        //     defDamage *= 2;
+        // }
+
+        if (enemySkill.statusEffects.Length > 0)
         {
-            Debug.Log("dealing double damage");
-            faithDamage *= 2;
-            pwrDamage *= 2;
-            defDamage *= 2;
+            AddStatusEffects(enemySkill.statusEffects, enemySkill.statusEffectsDurations);
         }
 
-        currentPower -= pwrDamage;
-        currentDef -= defDamage;
+        currentPower -= enemySkill.changePower / damageReducer;
+        currentDef -= enemySkill.changeDef / damageReducer;
 
         float damageMultiplier = damageCasterPower - currentDef;
         if (damageMultiplier > 0)
         {
-            currentFaith -= faithDamage * (1f + 0.1f * damageMultiplier);
+            currentFaith -= (enemySkill.changeFaith / damageReducer) * (1f + (0.1f * damageMultiplier));
         }
         else
         {
@@ -76,21 +85,65 @@ public class CharacterUnitBase : MonoBehaviour
         faithBar.SetValue(currentFaith);
     }
 
-    public void CastOnSelf(float faithBoost, float pwrBoost, float defBoost, bool doubleBoost = false)
+    public void CastOnSelf(Skill selfSkill)
     {
-        if (doubleBoost)
+        // if (doubleBoost)
+        // {
+        //     faithBoost *= 2;
+        //     pwrBoost *= 2;
+        //     defBoost *= 2;
+        // }
+
+        if (selfSkill.statusEffects.Length > 0)
         {
-            faithBoost *= 2;
-            pwrBoost *= 2;
-            defBoost *= 2;
+            // print(selfSkill.statusEffects.ToString());
+            AddStatusEffects(selfSkill.statusEffects, selfSkill.statusEffectsDurations);
         }
 
-        currentPower += pwrBoost;
-        currentDef += defBoost;
-        currentFaith += faithBoost + (1f + 0.1f * currentPower);
+        currentPower += selfSkill.changePower;
+        currentDef += selfSkill.changeDef;
+        currentFaith += selfSkill.changeFaith + (1f + 0.1f * currentPower);
 
         statTooltipManager.SetTooltipText(currentPower, currentDef);
         faithBar.SetValue(currentFaith);
+    }
+
+    public bool TurnIsBlocked()
+    {
+        if (statusEffects.Count == 0) return false;
+
+        return (statusEffects[0].statusEffectType == StatusEffectTypeChanged.BLOCKTURN)
+               && (statusEffectsDurations[0] > 0);
+    }
+
+    public void AddStatusEffects(CharacterStatusEffect[] skillStatusEffects, int[] durations)
+    {
+        Assert.AreEqual(skillStatusEffects.Length, durations.Length);
+
+        for (int i = 0; i < skillStatusEffects.Length; i++)
+        {
+            statusEffects.Add(skillStatusEffects[i]);
+            statusEffectsDurations.Add(durations[i] - 1);  
+        }
+
+        ApplyStatusEffect();
+    }
+
+    public void UpdateStatusEffect()
+    {
+        if (statusEffects.Count < 1) return;
+
+        // Decrement status effect timer at start of list
+        statusEffectsDurations[0] -= 1;
+
+        // Remove status effects when duration is over
+        if (statusEffectsDurations[0] < 1)
+        {
+            ReverseStatusEffect();
+            statusEffects.RemoveAt(0);
+            statusEffectsDurations.RemoveAt(0);
+        }
+
     }
 
     public bool IsDefeated()
@@ -98,5 +151,49 @@ public class CharacterUnitBase : MonoBehaviour
         isDefeated = currentFaith <= 0;
 
         return isDefeated;
+    }
+
+    private void ApplyStatusEffect()
+    {
+        CharacterStatusEffect statusEffectApplied = statusEffects[0];
+        Debug.Log("Applying " + statusEffectApplied.name + " status effect");
+        int enemyCast = statusEffectApplied.castOnEnemy ? -1 : 1;
+
+        switch (statusEffectApplied.statusEffectType)
+        {
+            case StatusEffectTypeChanged.FAITH:
+                currentFaith += enemyCast * statusEffectApplied.statChangeValue;
+                break;
+            case StatusEffectTypeChanged.PWR:
+                currentPower += enemyCast * statusEffectApplied.statChangeValue;
+                break;
+            case StatusEffectTypeChanged.DEF:
+                currentDef += enemyCast * statusEffectApplied.statChangeValue;
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void ReverseStatusEffect()
+    {
+        CharacterStatusEffect statusEffectApplied = statusEffects[0];
+        Debug.Log("Removing " + statusEffectApplied.name + " status effect");
+        int enemyCast = statusEffectApplied.castOnEnemy ? -1 : 1;
+
+        switch (statusEffectApplied.statusEffectType)
+        {
+            case StatusEffectTypeChanged.FAITH:
+                currentFaith -= enemyCast * statusEffectApplied.statChangeValue;
+                break;
+            case StatusEffectTypeChanged.PWR:
+                currentPower -= enemyCast * statusEffectApplied.statChangeValue;
+                break;
+            case StatusEffectTypeChanged.DEF:
+                currentDef -= enemyCast * statusEffectApplied.statChangeValue;
+                break;
+            default:
+                break;
+        }
     }
 }

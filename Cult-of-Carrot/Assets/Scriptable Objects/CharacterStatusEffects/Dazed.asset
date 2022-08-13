@@ -18,6 +18,8 @@ MonoBehaviour:
 
     Cannot make any moves for
     2 turns.'
+  image: {fileID: 2800000, guid: b66bddb306c454b3f917204bc7b451ca, type: 3}
   statChangeValue: 0
+  doubleDamage: 0
   numTurns: 2
-  statusEffectType: 03000000
+  statusEffectType: 3

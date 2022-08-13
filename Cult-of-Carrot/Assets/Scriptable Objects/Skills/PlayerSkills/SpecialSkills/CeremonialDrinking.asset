@@ -23,4 +23,10 @@ MonoBehaviour:
   changePower: 0
   changeDef: 0
   cooldown: 5
-  resultingStatus: {fileID: 0}
+  statusEffects:
+  - {fileID: 11400000, guid: ca35589aff94b7d4aa1d35408889c1d6, type: 2}
+  statusEffectsDurations: 02000000
+  isSingleTarget: 1
+  isMultiTarget: 0
+  isAllTarget: 0
+  isEnemyCast: 1
