@@ -9,7 +9,7 @@ public class CharacterStats : ScriptableObject
     public int node = 1;
     public float Faith = 30f;
     public float Power = 10f;
-    public float Defence = 5f;
+    public float Defence = 10f;
 	public List<Skill> Skills;
 
     public void SetNode(int node)

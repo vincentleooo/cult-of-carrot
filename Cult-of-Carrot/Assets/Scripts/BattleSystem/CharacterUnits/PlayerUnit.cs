@@ -19,4 +19,5 @@ public class PlayerUnit : CharacterUnitBase
     //     }
     // }
 
+    public bool isSelected;
 }

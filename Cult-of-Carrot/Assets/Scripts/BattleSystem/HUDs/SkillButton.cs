@@ -23,17 +23,24 @@ public class SkillButton : MonoBehaviour
         this.skill = skill;
         this.attack = ScriptableObject.CreateInstance<Attack>();
         attack.skill = skill;
+
         if (button == null)
         {
             button = gameObject.GetComponent<Button>();
         }
+
         button.onClick.AddListener(() => {
             if (nextTurn <= currentTurn)
             {
                 nextTurn = currentTurn + skill.cooldown;
                 attack.canCast = true;
             }
-            else attack.canCast = false;
+
+            else
+            {
+                attack.canCast = false;
+            }
+
             attackEvent.Raise(attack);
         });
 

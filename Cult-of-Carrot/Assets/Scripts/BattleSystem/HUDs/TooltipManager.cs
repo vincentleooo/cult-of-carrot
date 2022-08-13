@@ -10,7 +10,7 @@ public class TooltipManager : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     public GameObject tooltip;
 
     // Start is called before the first frame update
-    protected void Start()
+    void Start()
     {
         tooltip.SetActive(false);
     }

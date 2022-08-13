@@ -11,7 +11,6 @@ public class SkillsPanel : MonoBehaviour
     private List<RectTransform> buttonTranforms;
     private List<GameObject> skillButtons;
 
-    // Start is called before the first frame update
     void Start()
     {
         CreateButtons();
