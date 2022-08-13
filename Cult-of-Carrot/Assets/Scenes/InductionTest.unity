@@ -733,11 +733,10 @@ MonoBehaviour:
   - {fileID: 1162594494}
   - {fileID: 1725101906}
   playerBattlePosition: {fileID: 824977084}
-  currentRoundText: {fileID: 2127345511}
-  currentCharacters:
-  - {fileID: 11400000, guid: 87288b689e43147a1addf110cb5ff290, type: 2}
-  - {fileID: 11400000, guid: 8d152b54a88e249b597e5cdeae253e95, type: 2}
-  - {fileID: 11400000, guid: 545a3e5af7d82af4eac80bb3826e7fe1, type: 2}
+  currentRoundText: {fileID: 0}
+  playerUnit: {fileID: 0}
+  enemyUnits: []
+  currentCharacters: []
 --- !u!4 &570100334
 Transform:
   m_ObjectHideFlags: 0
@@ -793,6 +792,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee1466f83f91a164299664092389e71d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentlySelectedCharacter: []
+  enemyUnitIndex: 0
 --- !u!1 &824977082
 GameObject:
   m_ObjectHideFlags: 0
