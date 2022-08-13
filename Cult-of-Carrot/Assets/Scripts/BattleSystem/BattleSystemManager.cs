@@ -20,6 +20,8 @@ public class BattleSystemManager : MonoBehaviour
 
     public GameObject[] enemyPrefabs;
     public GameObject playerPrefab;
+    //for skill anim
+    private GameObject skillAnim;
 
     public Transform[] enemyBattlePositions;
     public Transform playerBattlePosition;
@@ -90,11 +92,16 @@ public class BattleSystemManager : MonoBehaviour
             StartCoroutine(PlayerSkillAttack(attack.skill));
             playerHasClicked = true;
             skillsPanel.DisableSkillButtons();
+
         }
     }
 
     IEnumerator PlayerSkillAttack(Skill skill)
     {
+        skillAnim = Instantiate(skill.skillAnim, playerBattlePosition);
+        skillAnim.SetActive(true);
+
+
         battlePanel.UpdateBattleText("Player used " + skill.skillName);
 
         float perEnemyFaithDamage = skill.changeFaith; // enemiesRemaining;
@@ -122,6 +129,8 @@ public class BattleSystemManager : MonoBehaviour
 
     IEnumerator EnemiesAttack()
     {
+        Destroy(skillAnim);
+        
         battlePanel.UpdateBattleText("Enemy's turn. You better start praying.");
 
         yield return new WaitForSeconds(2);

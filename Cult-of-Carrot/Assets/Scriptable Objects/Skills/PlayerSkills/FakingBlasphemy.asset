@@ -25,3 +25,5 @@ MonoBehaviour:
   changePower: 0
   changeDef: 0
   cooldown: 2
+  resultingState: {fileID: 0}
+  skillAnim: {fileID: 326129953542994176, guid: e981af8c9e7cc2b4b81ce1bd069a9903, type: 3}

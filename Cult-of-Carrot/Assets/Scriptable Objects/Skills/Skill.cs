@@ -14,4 +14,6 @@ public class Skill : ScriptableObject
 	public float changeDef;
     public int cooldown; // TODO: Handle skill cooldowns
     public CharacterBattleStates resultingState;
+
+    public GameObject skillAnim;
 }
