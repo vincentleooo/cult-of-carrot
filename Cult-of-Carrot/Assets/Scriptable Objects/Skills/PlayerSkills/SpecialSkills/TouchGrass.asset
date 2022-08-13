@@ -25,3 +25,9 @@ MonoBehaviour:
   changeDef: 0
   cooldown: 8
   resultingStatus: {fileID: 0}
+  isSingleTarget: 0
+  isMultiTarget: 0
+  isAllTarget: 0
+  isSelfCast: 0
+  isEnemyCast: 0
+  skillAnim: {fileID: 326129953542994176, guid: e981af8c9e7cc2b4b81ce1bd069a9903, type: 3}

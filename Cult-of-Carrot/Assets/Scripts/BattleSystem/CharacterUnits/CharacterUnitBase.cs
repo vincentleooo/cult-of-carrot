@@ -41,6 +41,10 @@ public class CharacterUnitBase : MonoBehaviour
         characterAnimator = GetComponent<Animator>();
     }
 
+    void Update(){
+        characterAnimator.SetBool("isDefeated", isDefeated);
+    }
+
     public float GetCharacterPower()
     {
         return currentPower;
