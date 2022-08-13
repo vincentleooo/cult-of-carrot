@@ -142,7 +142,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\r\n            PWR: 10\r\n            DEF: 10\r\n        "
+  m_text: "\n            PWR: 10\n            DEF: -10\n        "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 73eeb3de7a5bc4ee8bce4468d9d4e16b, type: 2}
   m_sharedMaterial: {fileID: 4911009638393645499, guid: 73eeb3de7a5bc4ee8bce4468d9d4e16b, type: 2}

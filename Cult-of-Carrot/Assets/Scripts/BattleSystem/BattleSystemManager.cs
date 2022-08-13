@@ -27,17 +27,14 @@ public class BattleSystemManager : MonoBehaviour
 
     public TextMeshProUGUI currentRoundText;
 
-    public PlayerUnit playerUnit;
-    public EnemyUnit[] enemyUnits;
+    private PlayerUnit playerUnit;
+    [HideInInspector] public EnemyUnit[] enemyUnits;
 
     private BattleState battleState;
 
     private bool playerHasClicked = true;
     private int enemiesRemaining;
     private int currentTurn;
-
-    [SerializeField]
-    private CharacterStats[] currentCharacters;
     private int currentCharacterIndex = 0;
 
     private GetMouseClick getMouseClick;
@@ -61,11 +58,6 @@ public class BattleSystemManager : MonoBehaviour
     {
         // spawn player on battle stations
         playerPrefab = Instantiate(playerPrefab, playerBattlePosition);
-
-        // set player name
-        var characterName = playerPrefab.GetComponentInChildren<TextMeshPro>();
-        characterName.text = currentCharacters[currentCharacterIndex].charName;
-
         playerPrefab.SetActive(true);
         playerUnit = playerPrefab.GetComponent<PlayerUnit>();
         
@@ -73,11 +65,6 @@ public class BattleSystemManager : MonoBehaviour
         for (int i = 0; i < enemyPrefabs.Length; i++)
         {
             enemyPrefabs[i] = Instantiate(enemyPrefabs[i], enemyBattlePositions[i]);
-
-            // set enemy names
-            var characterNames = enemyPrefabs[i].GetComponentInChildren<TextMeshPro>();
-            characterNames.text = currentCharacters[i + 1].charName;
-
             enemyPrefabs[i].SetActive(true);
             enemyUnits[i] = enemyPrefabs[i].GetComponent<EnemyUnit>();
         }
@@ -105,6 +92,8 @@ public class BattleSystemManager : MonoBehaviour
     {
         if (battleState != BattleState.PLAYERTURN) return;
 
+
+        // Check if in the middle of 
         if (!attack.canCast)
         {
             battlePanel.UpdateBattleText("Cannot cast " + attack.skill.skillName + " during cooldown.");
@@ -122,26 +111,15 @@ public class BattleSystemManager : MonoBehaviour
     IEnumerator PlayerSkillAttack(Skill skill)
     {
         battlePanel.UpdateBattleText("Player used " + skill.skillName + "!");
-
-        float perEnemyFaithDamage = skill.changeFaith; // enemiesRemaining;
-        float perEnemyPwrDamage = skill.changePower; // enemiesRemaining;
-        float perEnemyDefDamage = skill.changeDef; // enemiesRemaining;
-
-        currentCharacterIndex = 1; // Reset it each time
+        Debug.Log("Player used " + skill.skillName + "!");
 
         // Single target, cast on Enemy skills
         if (skill.isSingleTarget && skill.isEnemyCast)
         {
-            foreach (EnemyUnit e in enemyUnits)
-            {
-                if (e.isSelected)
-                {
-                    e.TakeDamage(perEnemyFaithDamage, perEnemyPwrDamage, perEnemyDefDamage, currentCharacters[0], currentCharacters[getMouseClick.enemyUnitIndex + 1], getMouseClick.enemyUnitIndex + 1);
-                    if (e.IsDefeated()) enemiesRemaining--;
-                    yield return new WaitForSeconds(1);
-                    currentCharacterIndex++;
-                }
-            }
+            EnemyUnit targetEnemy = enemyUnits[getMouseClick.enemyUnitIndex];
+            targetEnemy.TakeDamage(skill.changeFaith, skill.changePower, skill.changeDef, playerUnit.GetCharacterPower());
+            if (targetEnemy.IsDefeated()) enemiesRemaining--;
+            yield return new WaitForSeconds(1);
         }
 
         // Single target, cast on Self skills
@@ -149,26 +127,18 @@ public class BattleSystemManager : MonoBehaviour
         {
             if (playerUnit.isSelected)
             {
-                playerUnit.TakeDamage(skill.changeFaith, skill.changePower, skill.changeDef, currentCharacters[0], currentCharacters[0], 0);
+                Debug.Log("Casting " + skill.skillName + " on self");
+                playerUnit.CastOnSelf(skill.changeFaith, skill.changePower, skill.changeDef);
                 yield return new WaitForSeconds(1);
-                StartCoroutine(CheckPlayerDeath());
+                // StartCoroutine(CheckPlayerDeath());
             }
         }
-
-        // foreach (EnemyUnit e in enemyUnits)
-        // {
-        //     e.TakeDamage(perEnemyFaithDamage, perEnemyPwrDamage, perEnemyDefDamage, currentCharacters[0], currentCharacters[currentCharacterIndex], currentCharacterIndex);
-        //     if (e.IsDefeated()) enemiesRemaining--;
-        //     yield return new WaitForSeconds(1);
-        //     currentCharacterIndex++;
-        // }
 
         if (enemiesRemaining > 0)
         {
             battleState = BattleState.ENEMYTURN;
             yield return StartCoroutine(EnemiesAttack());
         }
-
         else
         {
             battleState = BattleState.WIN;
@@ -188,19 +158,19 @@ public class BattleSystemManager : MonoBehaviour
         {
             Skill enemySkill = e.SelectAttack();
             battlePanel.UpdateBattleText("Enemy used " + enemySkill.skillName + "!");
-            playerUnit.TakeDamage(enemySkill.changeFaith, enemySkill.changePower, enemySkill.changeDef, currentCharacters[currentCharacterIndex], currentCharacters[0], 0);
+            playerUnit.TakeDamage(enemySkill.changeFaith, enemySkill.changePower, enemySkill.changeDef, e.GetCharacterPower());
             currentCharacterIndex++;
 
             yield return new WaitForSeconds(1);
-            StartCoroutine(CheckPlayerDeath());
+            // StartCoroutine(CheckPlayerDeath());
 
-            // if (playerUnit.IsDefeated())
-            // {
-            //     battleState = BattleState.LOST;
+            if (playerUnit.IsDefeated())
+            {
+                battleState = BattleState.LOST;
 
-            //     yield return StartCoroutine(EndBattle());
-            //     yield break;
-            // }
+                yield return StartCoroutine(EndBattle());
+                yield break;
+            }
 
         }
 
@@ -232,7 +202,7 @@ public class BattleSystemManager : MonoBehaviour
 
         else if (battleState == BattleState.LOST)
         {
-            battlePanel.UpdateBattleText("You lost, you little bitch.");
+            battlePanel.UpdateBattleText("You lost. Enjoy the gulag");
         }
 
         yield break;

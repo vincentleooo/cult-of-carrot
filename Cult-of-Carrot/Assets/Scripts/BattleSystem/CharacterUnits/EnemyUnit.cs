@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class EnemyUnit : CharacterUnitBase
 {
-    public bool isSelected;
-    
     System.Random random = new System.Random();
 
     public Skill SelectAttack()

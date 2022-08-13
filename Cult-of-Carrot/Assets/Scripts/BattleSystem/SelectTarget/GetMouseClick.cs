@@ -67,12 +67,12 @@ public class GetMouseClick : MonoBehaviour
 
                     foreach (EnemyUnit e in battleSystemManager.enemyUnits)
                     {
-                        print("index: " + enemyUnitListIndex + "; " + e.isSelected);
+                        // print("index: " + enemyUnitListIndex + "; " + e.isSelected);
 
                         if (e.isSelected)
                         {
                             enemyUnitIndex = enemyUnitListIndex; // Get the index of the selected enemy
-                            print("enemyUnitIndex: " + enemyUnitIndex);
+                            print("selected enemy index: " + enemyUnitIndex);
                         }
 
                         enemyUnitListIndex++;

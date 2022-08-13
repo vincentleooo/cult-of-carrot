@@ -6,6 +6,7 @@ using TMPro;
 
 public class CharacterUnitBase : MonoBehaviour
 {
+    public bool isSelected;
     [SerializeField] protected CharacterStats characterStats;
     [SerializeField] private HUDBar faithBar;
     [SerializeField] private CharacterStatTooltipManager statTooltipManager;
@@ -19,21 +20,7 @@ public class CharacterUnitBase : MonoBehaviour
     private float currentDef;
     private bool isDefeated = false;
 
-    private  Animator characterAnimator;
-
-    private float getCurrentCharacterFaith;
-    private float getCurrentCharacterPower;
-    private float getCurrentCharacterDef;
-    private float characterToAttackFaith;
-    private float characterToAttackPower;
-    private float characterToAttackDef;
-    private GameObject[] allFaithBars;
-    private GameObject[] allPowerBars;
-    private GameObject[] allDefBars;
-    private GameObject[] allFaithNumbers;
-    private int allFaithNumbersIndex = 0;
-    private GameObject[] allMaxFaithNumbers;
-    private int allMaxFaithNumbersIndex = 0;
+    private Animator characterAnimator;
 
     protected void Start()
     {
@@ -48,47 +35,20 @@ public class CharacterUnitBase : MonoBehaviour
         faithBar.SetMaxValue(maxFaith);
         faithBar.SetValue(maxFaith);
 
+        gameObject.GetComponentInChildren<TextMeshPro>().text = characterStats.charName;
         statTooltipManager.SetTooltipText(maxPower, maxDef);
 
         characterAnimator = GetComponent<Animator>();
-
-        allFaithBars = GameObject.FindGameObjectsWithTag("FaithBar");
-        allPowerBars = GameObject.FindGameObjectsWithTag("PowerBar");
-        allDefBars = GameObject.FindGameObjectsWithTag("DefBar");
-
-        allFaithNumbers = GameObject.FindGameObjectsWithTag("FaithNumber");
-        allMaxFaithNumbers = GameObject.FindGameObjectsWithTag("MaxFaithNumber");
-        SetAllCurrentFaith();
-        SetAllMaxFaith();
     }
 
-    // void Update()
-    // {
-    //     characterAnimator.SetBool("isDefeated", isDefeated);
-    // }
-
-    private void GetCurrentCharacterStats(float faith, float power, float def)
-	{
-		getCurrentCharacterFaith = faith;
-		getCurrentCharacterPower = power;
-		getCurrentCharacterDef = def;
-
-        print("f: " + currentFaith + "; p: " + currentPower + "; d: " + currentDef);
-	}
-
-    private void GetCharacterBeingAttackedStats(int index)
+    public float GetCharacterPower()
     {
-        characterToAttackFaith = allFaithBars[index].GetComponent<Slider>().value;
-        characterToAttackPower = allPowerBars[index].GetComponent<Slider>().value;
-        characterToAttackDef = allDefBars[index].GetComponent<Slider>().value;
-        
-        print("charToAttack => f: " + characterToAttackFaith + "; p: " + characterToAttackPower + "; d: " + characterToAttackDef);
+        return currentPower;
     }
 
-    public void TakeDamage(float faithDamage, float pwrDamage, float defDamage, CharacterStats character, CharacterStats characterBeingAttacked, int characterBeingAttackedIndex, bool doubleDamage = false)
+    public void TakeDamage(float faithDamage, float pwrDamage, float defDamage, float damageCasterPower, bool doubleDamage = false)
     {
-        GetCurrentCharacterStats(character.Faith, character.Power, character.Defence);
-        GetCharacterBeingAttackedStats(characterBeingAttackedIndex);
+        Debug.Log(characterStats.charName + " taking damage");
 
         if (doubleDamage)
         {
@@ -98,69 +58,43 @@ public class CharacterUnitBase : MonoBehaviour
             defDamage *= 2;
         }
 
-        print("currPower: " + currentPower);
         currentPower -= pwrDamage;
-        print("currPower2: " + currentPower);
-        print("pwrDmg: " + pwrDamage);
-
-
-        print("currDef: " + currentDef);
         currentDef -= defDamage;
-        print("currDef2: " + currentDef);
-        print("defDmg: " + defDamage);
 
-        characterToAttackFaith -= faithDamage * (1f + 0.1f * ((currentPower) - currentDef));
-
-        Debug.Log("faith dealt: " + faithDamage);
-        Debug.Log("total faith dealt: " + faithDamage * (1f + 0.1f * ((currentPower) - currentDef)));
-        print("current faith: " + characterToAttackFaith);
+        float damageMultiplier = damageCasterPower - currentDef;
+        if (damageMultiplier > 0)
+        {
+            currentFaith -= faithDamage * (1f + 0.1f * damageMultiplier);
+        }
+        else
+        {
+            currentFaith -= 5;
+        }
 
         statTooltipManager.SetTooltipText(currentPower, currentDef);
-
-        faithBar.SetValue(characterToAttackFaith);
-        // powerBar.SetValue(characterToAttackPower);
-        // defBar.SetValue(characterToAttackDef);
-        SetAllCurrentFaith();
+        faithBar.SetValue(currentFaith);
     }
 
-    private void SetAllMaxFaith()
+    public void CastOnSelf(float faithBoost, float pwrBoost, float defBoost, bool doubleBoost = false)
     {
-        allMaxFaithNumbersIndex = 0; // Reset it each time
-
-        // set the max Faith values for all the characters' Faith bars
-        foreach (var gameObjects in allMaxFaithNumbers)
+        if (doubleBoost)
         {
-            var gameObjectText = gameObjects.GetComponent<TextMeshProUGUI>();
-            gameObjectText.text = "/" + allFaithBars[allMaxFaithNumbersIndex].GetComponent<Slider>().value.ToString();
-            allMaxFaithNumbersIndex++;
+            faithBoost *= 2;
+            pwrBoost *= 2;
+            defBoost *= 2;
         }
-    }
 
-    private void SetAllCurrentFaith()
-    {
-        allFaithNumbersIndex = 0; // Reset it each time
+        currentPower += pwrBoost;
+        currentDef += defBoost;
+        currentFaith += faithBoost + (1f + 0.1f * currentPower);
 
-        // update the current Faith values for all the characters' Faith bars
-        foreach (var gameObjects in allFaithNumbers)
-        {
-            var gameObjectText = gameObjects.GetComponent<TextMeshProUGUI>();
-            gameObjectText.text = allFaithBars[allFaithNumbersIndex].GetComponent<Slider>().value.ToString();
-            allFaithNumbersIndex++;
-        }
+        statTooltipManager.SetTooltipText(currentPower, currentDef);
+        faithBar.SetValue(currentFaith);
     }
 
     public bool IsDefeated()
     {
-        // Not sure which condition is triggering the death (didn't check) but just use all lol
-        if (currentFaith <= 0 || getCurrentCharacterFaith <= 0 || characterToAttackFaith <= 0)
-        {
-            isDefeated = true;
-        }
-
-        else
-        {
-            isDefeated = false;
-        }
+        isDefeated = currentFaith <= 0;
 
         return isDefeated;
     }
