@@ -25,6 +25,7 @@ MonoBehaviour:
   resultingStatus: {fileID: 0}
   isSingleTarget: 1
   isMultiTarget: 0
-  isSingleAndMultiTarget: 0
+  isAllTarget: 0
   isSelfCast: 1
   isEnemyCast: 0
+  skillAnim: {fileID: 1701812803279059992, guid: 88542c57dd68e2e4090097e8d7c662d7, type: 3}
