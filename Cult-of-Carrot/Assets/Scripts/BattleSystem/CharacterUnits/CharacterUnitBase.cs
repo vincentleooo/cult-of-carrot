@@ -6,7 +6,8 @@ using TMPro;
 
 public class CharacterUnitBase : MonoBehaviour
 {
-    public bool isSelected;
+    [HideInInspector] public bool isSelected;
+    
     [SerializeField] protected CharacterStats characterStats;
     [SerializeField] private HUDBar faithBar;
     [SerializeField] private CharacterStatTooltipManager statTooltipManager;
