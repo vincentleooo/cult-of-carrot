@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1840233875129868651}
   - component: {fileID: 7517372346140449496}
   m_Layer: 0
-  m_Name: Priest2
+  m_Name: Priest2_temp
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

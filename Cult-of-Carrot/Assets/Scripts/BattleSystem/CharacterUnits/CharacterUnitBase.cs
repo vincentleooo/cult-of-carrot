@@ -7,6 +7,7 @@ using TMPro;
 public class CharacterUnitBase : MonoBehaviour
 {
     [SerializeField] protected CharacterStats characterStats;
+    [SerializeField] private CharacterStatTooltipManager statTooltipManager;
     [SerializeField] private HUDBar powerBar;
     [SerializeField] private HUDBar faithBar;
     [SerializeField] private HUDBar defBar;
@@ -128,6 +129,7 @@ public class CharacterUnitBase : MonoBehaviour
         powerBar.SetValue(characterToAttackPower);
         defBar.SetValue(characterToAttackDef);
         SetAllCurrentFaith();
+        statTooltipManager.SetTooltipText(currentPower, currentDef);
     }
 
     private void SetAllMaxFaith()
@@ -168,6 +170,8 @@ public class CharacterUnitBase : MonoBehaviour
         {
             isDefeated = false;
         }
+
+        isDefeated = currentFaith <= 0;
 
         return isDefeated;
     }

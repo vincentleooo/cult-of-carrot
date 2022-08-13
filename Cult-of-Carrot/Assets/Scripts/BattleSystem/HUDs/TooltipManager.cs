@@ -8,7 +8,7 @@ public class TooltipManager : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 {
     public GameObject tooltip;
 
-    void Start()
+    protected void Start()
     {
         tooltip.SetActive(false);
     }
