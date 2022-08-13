@@ -98,6 +98,6 @@ public class GetMouseClick : MonoBehaviour
 
     public void SetSelectRing(GameObject target, bool isActive)
     {
-        target.transform.GetChild(4).gameObject.SetActive(isActive);
+        target.transform.GetChild(3).gameObject.SetActive(isActive);
     }
 }

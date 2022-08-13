@@ -142,9 +142,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'PWR: 420
-
-    DEF: 69'
+  m_text: "\r\n            PWR: 10\r\n            DEF: 10\r\n        "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 73eeb3de7a5bc4ee8bce4468d9d4e16b, type: 2}
   m_sharedMaterial: {fileID: 4911009638393645499, guid: 73eeb3de7a5bc4ee8bce4468d9d4e16b, type: 2}
@@ -228,7 +226,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5785556890938908204
 RectTransform:
   m_ObjectHideFlags: 0

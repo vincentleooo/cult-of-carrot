@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce729077f59bb43cbb630e9d13cf7e0f, type: 3}
-  m_Name: PlayerStats_temp
+  m_Name: PlayerStats
   m_EditorClassIdentifier: Assembly-CSharp::CharacterState
   charName: Judas Iscariot
   node: 1

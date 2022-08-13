@@ -62,10 +62,10 @@ public class CharacterUnitBase : MonoBehaviour
         SetAllMaxFaith();
     }
 
-    void Update()
-    {
-        characterAnimator.SetBool("isDefeated", isDefeated);
-    }
+    // void Update()
+    // {
+    //     characterAnimator.SetBool("isDefeated", isDefeated);
+    // }
 
     private void GetCurrentCharacterStats(float faith, float power, float def)
 	{

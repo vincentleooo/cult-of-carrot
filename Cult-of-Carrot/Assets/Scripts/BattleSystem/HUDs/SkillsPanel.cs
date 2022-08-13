@@ -36,11 +36,15 @@ public class SkillsPanel : MonoBehaviour
             skillButtons.Add(buttonGameObject);
         }
 
+        print(skillButtons);
+        print(skillButtons.Count);
         DisableSkillButtons();
     }
 
     public void SetCurrentTurn(int currentTurn)
     {
+        print(skillButtons);
+        print(skillButtons.Count);
         foreach (GameObject btn in skillButtons)
         {
             btn.GetComponent<SkillButton>().SetCurrentTurn(currentTurn);
@@ -49,6 +53,8 @@ public class SkillsPanel : MonoBehaviour
 
     public void DisableSkillButtons()
     {
+        print("disable: " + skillButtons);
+        print("disable: " + skillButtons.Count);
         foreach (GameObject btn in skillButtons)
         {
             btn.GetComponent<Button>().interactable = false;

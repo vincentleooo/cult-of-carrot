@@ -121,9 +121,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b775320037c68409b9055fc46eb084f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterStats: {fileID: 11400000, guid: 87288b689e43147a1addf110cb5ff290, type: 2}
+  characterStats: {fileID: 11400000, guid: 87950344008f6f8408bf523dca4158bd, type: 2}
   faithBar: {fileID: 4422486098810168634}
   statTooltipManager: {fileID: 4428113696189140374}
+  isSelected: 0
 --- !u!114 &4428113696189140374
 MonoBehaviour:
   m_ObjectHideFlags: 0
