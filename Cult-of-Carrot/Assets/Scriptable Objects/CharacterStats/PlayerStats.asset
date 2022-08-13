@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterState
   charName: Judas Iscariot
   node: 1
-  Faith: 20
+  Faith: 30
   Power: 20
   Defence: 5
   Skills:

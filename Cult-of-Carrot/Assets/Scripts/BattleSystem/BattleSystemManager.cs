@@ -21,7 +21,8 @@ public class BattleSystemManager : MonoBehaviour
     public GameObject[] enemyPrefabs;
     public GameObject playerPrefab;
     //for skill anim
-    private GameObject skillAnim;
+    private GameObject playerSkillAnim;
+    private GameObject enemySkillAnim;
 
     public Transform[] enemyBattlePositions;
     public Transform playerBattlePosition;
@@ -70,6 +71,7 @@ public class BattleSystemManager : MonoBehaviour
     IEnumerator PlayerTurn()
     {
         Debug.Log(currentTurn);
+        Destroy(enemySkillAnim);
         battlePanel.UpdateBattleText("Player's Turn. Carrot be with you.");
         skillsPanel.SetCurrentTurn(currentTurn);
         skillsPanel.EnableSkillButtons();
@@ -98,8 +100,10 @@ public class BattleSystemManager : MonoBehaviour
 
     IEnumerator PlayerSkillAttack(Skill skill)
     {
-        skillAnim = Instantiate(skill.skillAnim, playerBattlePosition);
-        skillAnim.SetActive(true);
+        
+
+        playerSkillAnim = Instantiate(skill.skillAnim, playerBattlePosition);
+        playerSkillAnim.SetActive(true);
 
 
         battlePanel.UpdateBattleText("Player used " + skill.skillName);
@@ -129,8 +133,8 @@ public class BattleSystemManager : MonoBehaviour
 
     IEnumerator EnemiesAttack()
     {
-        Destroy(skillAnim);
-        
+        Destroy(playerSkillAnim);
+
         battlePanel.UpdateBattleText("Enemy's turn. You better start praying.");
 
         yield return new WaitForSeconds(2);
@@ -138,6 +142,11 @@ public class BattleSystemManager : MonoBehaviour
         foreach (EnemyUnit e in enemyUnits)
         {
             Skill enemySkill = e.SelectAttack();
+
+            
+            enemySkillAnim = Instantiate(enemySkill.skillAnim, enemyBattlePositions[0]);
+            enemySkillAnim.SetActive(true);
+
             battlePanel.UpdateBattleText("Enemy used " + enemySkill.skillName);
             playerUnit.TakeDamage(enemySkill.changeFaith, enemySkill.changePower, enemySkill.changeDef);
 
