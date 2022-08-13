@@ -13,6 +13,9 @@ public class SkillButton : MonoBehaviour
     private int nextTurn = 0;
     private int currentTurn = 0;
 
+    public AudioSource audioSource;
+    public AudioClip audioClip;
+
     void Start()
     {
         button = gameObject.GetComponent<Button>();
@@ -54,5 +57,10 @@ public class SkillButton : MonoBehaviour
     public void SetCurrentTurn(int currentTurn)
     {
         this.currentTurn = currentTurn;
+    }
+
+    public void playClip(){
+    audioSource.clip = audioClip;
+    audioSource.Play();
     }
 }

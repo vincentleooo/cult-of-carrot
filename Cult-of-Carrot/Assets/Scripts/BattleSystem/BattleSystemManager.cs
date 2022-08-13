@@ -21,6 +21,9 @@ public class BattleSystemManager : MonoBehaviour
 
     public GameObject[] enemyPrefabs;
     public GameObject playerPrefab;
+    //for skill anim
+    private GameObject playerSkillAnim;
+    private GameObject enemySkillAnim;
 
     public Transform[] enemyBattlePositions;
     public Transform playerBattlePosition;
@@ -81,6 +84,7 @@ public class BattleSystemManager : MonoBehaviour
         string currentRound = "Round: " + currentTurn.ToString();
         currentRoundText.text = currentRound;
 
+        Destroy(enemySkillAnim);
         battlePanel.UpdateBattleText("Player's Turn. Carrot be with you.");
         skillsPanel.SetCurrentTurn(currentTurn);
         skillsPanel.EnableSkillButtons();
@@ -105,13 +109,18 @@ public class BattleSystemManager : MonoBehaviour
             StartCoroutine(PlayerSkillAttack(attack.skill));
             playerHasClicked = true;
             skillsPanel.DisableSkillButtons();
+
         }
     }
 
     IEnumerator PlayerSkillAttack(Skill skill)
     {
+
         battlePanel.UpdateBattleText("Player used " + skill.skillName + "!");
         Debug.Log("Player used " + skill.skillName + "!");
+
+        playerSkillAnim = Instantiate(skill.skillAnim, playerBattlePosition);
+        playerSkillAnim.SetActive(true);
 
         // Single target, cast on Enemy skills
         if (skill.isSingleTarget && skill.isEnemyCast)
@@ -148,6 +157,8 @@ public class BattleSystemManager : MonoBehaviour
 
     IEnumerator EnemiesAttack()
     {
+        Destroy(playerSkillAnim);
+
         battlePanel.UpdateBattleText("Enemy's turn. You better start praying.");
 
         yield return new WaitForSeconds(2);
@@ -157,6 +168,11 @@ public class BattleSystemManager : MonoBehaviour
         foreach (EnemyUnit e in enemyUnits)
         {
             Skill enemySkill = e.SelectAttack();
+
+            
+            enemySkillAnim = Instantiate(enemySkill.skillAnim, enemyBattlePositions[0]);
+            enemySkillAnim.SetActive(true);
+
             battlePanel.UpdateBattleText("Enemy used " + enemySkill.skillName + "!");
             playerUnit.TakeDamage(enemySkill.changeFaith, enemySkill.changePower, enemySkill.changeDef, e.GetCharacterPower());
             currentCharacterIndex++;

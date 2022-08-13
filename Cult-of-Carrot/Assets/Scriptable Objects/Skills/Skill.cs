@@ -19,4 +19,6 @@ public class Skill : ScriptableObject
     public bool isAllTarget;
     public bool isSelfCast;
     public bool isEnemyCast;
+
+    public GameObject skillAnim;
 }
