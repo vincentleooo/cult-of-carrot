@@ -35,7 +35,7 @@ public class GetMouseClick : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
-                SelectTarget(targetSelected);
+                SetSelectRing(targetSelected.gameObject, !isSelectRingActive);
                 currentlySelectedCharacter.Add(targetSelected.gameObject);
 
                 // Deactivate all other SelectRings when you click on a new character
@@ -58,7 +58,7 @@ public class GetMouseClick : MonoBehaviour
                     currentlySelectedCharacter.RemoveAt(0);
                 }
 
-                // Cast on Enemy
+                // Click on Enemy
                 if (targetSelected.gameObject.tag == "Enemy")
                 {
                     GMCenemyUnit = targetSelected.GetComponent<EnemyUnit>();
@@ -79,7 +79,7 @@ public class GetMouseClick : MonoBehaviour
                     }
                 }
 
-                // Cast on Player
+                // Click on Player
                 else if (targetSelected.gameObject.tag == "Player")
                 {
                     GMCplayerUnit = targetSelected.GetComponent<PlayerUnit>();
@@ -89,11 +89,6 @@ public class GetMouseClick : MonoBehaviour
                 }
             }
         }
-    }
-
-    public void SelectTarget(SelectTarget target)
-    {
-        SetSelectRing(target.gameObject, !isSelectRingActive);
     }
 
     public void SetSelectRing(GameObject target, bool isActive)

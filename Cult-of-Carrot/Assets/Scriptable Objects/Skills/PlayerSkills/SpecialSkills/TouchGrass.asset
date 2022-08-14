@@ -24,6 +24,7 @@ MonoBehaviour:
   changePower: 0
   changeDef: 0
   cooldown: 8
+<<<<<<< HEAD
   resultingStatus: {fileID: 0}
   isSingleTarget: 0
   isMultiTarget: 0
@@ -31,3 +32,13 @@ MonoBehaviour:
   isSelfCast: 0
   isEnemyCast: 0
   skillAnim: {fileID: 326129953542994176, guid: e981af8c9e7cc2b4b81ce1bd069a9903, type: 3}
+=======
+  statusEffects:
+  - {fileID: 11400000, guid: 6eea613663322984b9dea0c505d8cb75, type: 2}
+  - {fileID: 11400000, guid: 441268a00596bde4bae67788cfa3087c, type: 2}
+  statusEffectsDurations: 0200000001000000
+  isSingleTarget: 1
+  isMultiTarget: 0
+  isAllTarget: 0
+  isEnemyCast: 0
+>>>>>>> origin/other-fight-scenes

@@ -11,7 +11,8 @@ namespace Map
         private static readonly List<NodeType> RandomNodes = new List<NodeType>
         {
             NodeType.Tutorial,
-            NodeType.MinorEnemy,
+            NodeType.MinorEnemy1,
+            NodeType.MinorEnemy2,
             NodeType.EliteEnemy,
             NodeType.Rest,
             NodeType.Shop

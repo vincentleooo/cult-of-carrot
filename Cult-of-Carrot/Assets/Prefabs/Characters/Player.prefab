@@ -125,10 +125,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b775320037c68409b9055fc46eb084f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSelected: 0
   characterStats: {fileID: 11400000, guid: 87950344008f6f8408bf523dca4158bd, type: 2}
   faithBar: {fileID: 5228872793756964504}
   statTooltipManager: {fileID: 2883363862885054084}
-  isSelected: 0
 --- !u!61 &3478043165895660146
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -226,11 +226,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1103833253591334759, guid: e335a0185ae15403a8fb510ef302e082, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -1583.5273
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1103833253591334759, guid: e335a0185ae15403a8fb510ef302e082, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -891.9848
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1103833253591334759, guid: e335a0185ae15403a8fb510ef302e082, type: 3}
       propertyPath: m_LocalPosition.x
@@ -262,11 +262,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1103833253591334759, guid: e335a0185ae15403a8fb510ef302e082, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 3.45
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1103833253591334759, guid: e335a0185ae15403a8fb510ef302e082, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.16
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1103833253591334759, guid: e335a0185ae15403a8fb510ef302e082, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

@@ -39,7 +39,6 @@ public class BattleSystemManager : MonoBehaviour
     private bool playerHasClicked = true;
     private int enemiesRemaining;
     private int currentTurn;
-    private int currentCharacterIndex = 0;
 
     private GetMouseClick getMouseClick;
 
@@ -98,11 +97,18 @@ public class BattleSystemManager : MonoBehaviour
         string currentRound = "Round: " + currentTurn.ToString();
         currentRoundText.text = currentRound;
 
-        battlePanel.UpdateBattleText("Player's Turn. Carrot be with you.");
-        skillsPanel.SetCurrentTurn(currentTurn);
-        skillsPanel.EnableSkillButtons();
-        playerHasClicked = false;
-        yield return null;
+        if (playerUnit.TurnIsBlocked())
+        {
+            yield return StartCoroutine(EnemiesAttack());
+        }
+        else
+        {
+            battlePanel.UpdateBattleText("Player's Turn. Carrot be with you.");
+            skillsPanel.SetCurrentTurn(currentTurn);
+            skillsPanel.EnableSkillButtons();
+            playerHasClicked = false;
+            yield return null;
+        }        
     }
 
     public void PlayerAttackChosen(Attack attack)
@@ -141,14 +147,13 @@ public class BattleSystemManager : MonoBehaviour
             playerSkillAnim = Instantiate(skill.skillAnim, playerBattlePosition);
             playerSkillAnim.SetActive(true);
             
-
-            targetEnemy.TakeDamage(skill.changeFaith, skill.changePower, skill.changeDef, playerUnit.GetCharacterPower());
+            targetEnemy.TakeDamage(skill, playerUnit.GetCharacterPower());
             if (targetEnemy.IsDefeated()) enemiesRemaining--;
             yield return new WaitForSeconds(1);
         }
 
         // Single target, cast on Self skills
-        if (skill.isSingleTarget && skill.isSelfCast)
+        if (skill.isSingleTarget && !skill.isEnemyCast)
         {
             if (playerUnit.isSelected)
             {
@@ -157,9 +162,23 @@ public class BattleSystemManager : MonoBehaviour
                 playerSkillAnim = Instantiate(skill.skillAnim, playerBattlePosition);
                 playerSkillAnim.SetActive(true);
 
-                playerUnit.CastOnSelf(skill.changeFaith, skill.changePower, skill.changeDef);
+                playerUnit.CastOnSelf(skill);
                 yield return new WaitForSeconds(1);
                 // StartCoroutine(CheckPlayerDeath());
+            }
+        }
+
+        // Multi target, cast on Enemy skills
+        if (skill.isMultiTarget)
+        {
+            foreach (EnemyUnit e in enemyUnits)
+            {
+                e.TakeDamage(skill, playerUnit.GetCharacterPower(), enemiesRemaining);
+                if (e.IsDefeated())
+                {
+                    enemiesRemaining--;
+                }
+                yield return new WaitForSeconds(1);
             }
         }
 
@@ -201,12 +220,24 @@ public class BattleSystemManager : MonoBehaviour
             yield return new WaitForSeconds(1);
             // StartCoroutine(CheckPlayerDeath());
 
-            if (playerUnit.IsDefeated())
+        foreach (EnemyUnit e in enemyUnits)
+        {
+            if (!e.TurnIsBlocked())
             {
-                battleState = BattleState.LOST;
+                Skill enemySkill = e.SelectAttack();
+                battlePanel.UpdateBattleText("Enemy used " + enemySkill.skillName + "!");
+                playerUnit.TakeDamage(enemySkill, e.GetCharacterPower());
 
-                yield return StartCoroutine(EndBattle());
-                yield break;
+                yield return new WaitForSeconds(1);
+                // StartCoroutine(CheckPlayerDeath());
+
+                if (playerUnit.IsDefeated())
+                {
+                    battleState = BattleState.LOST;
+
+                    yield return StartCoroutine(EndBattle());
+                    yield break;
+                }
             }
         }
 
@@ -249,7 +280,7 @@ public class BattleSystemManager : MonoBehaviour
         else if (battleState == BattleState.LOST)
         {
             LoseButton.gameObject.SetActive(true);
-            battlePanel.UpdateBattleText("You lost. Enjoy the gulag");
+            battlePanel.UpdateBattleText("You lost. Enjoy the gulag.");
         }
 
         yield break;
