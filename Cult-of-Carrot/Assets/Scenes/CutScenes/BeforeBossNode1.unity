@@ -177,11 +177,11 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 892198220}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 31f3972c2e8cfa949a8a1cbecc0c0e50, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 26a673a088fe89c4399a1949f5853274, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
-  m_TargetTexture: {fileID: 8400000, guid: 8c4e3241a2a6bb54786c54f52dd3ab8a, type: 2}
+  m_TargetTexture: {fileID: 8400000, guid: 369fdf74abb8bcb40bf56cb348ded907, type: 2}
   m_TimeReference: 0
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: <noninit>
@@ -232,7 +232,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 8400000, guid: 8c4e3241a2a6bb54786c54f52dd3ab8a, type: 2}
+  m_Texture: {fileID: 8400000, guid: 369fdf74abb8bcb40bf56cb348ded907, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -671,7 +671,7 @@ PrefabInstance:
       objectReference: {fileID: 892198222}
     - target: {fileID: 4184708836842828561, guid: a9350dfc230368d4a8d90ca5bd6428e8, type: 3}
       propertyPath: skipTime
-      value: 35
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 4184708836842828574, guid: a9350dfc230368d4a8d90ca5bd6428e8, type: 3}
       propertyPath: m_Pivot.x
@@ -900,7 +900,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Button: {fileID: 9204931937326687967}
-  sceneName: NodeSystem
+  sceneName: 
 --- !u!1 &9204931937601487250
 GameObject:
   m_ObjectHideFlags: 0

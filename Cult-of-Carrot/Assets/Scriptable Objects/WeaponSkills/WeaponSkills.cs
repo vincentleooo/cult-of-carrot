@@ -13,4 +13,5 @@ public class WeaponSkills : ScriptableObject
 	public float changeDef;
     public bool canBeUsed; // TODO: Handle when the weapon skill can be used
     public CharacterStatusEffects resultingStatusEffect;
+    public GameObject weaponAnim;
 }

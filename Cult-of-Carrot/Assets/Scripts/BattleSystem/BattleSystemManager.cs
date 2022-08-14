@@ -23,7 +23,8 @@ public class BattleSystemManager : MonoBehaviour
     public GameObject playerPrefab;
     //for skill anim
     private GameObject playerSkillAnim;
-    private GameObject enemySkillAnim;
+    // private GameObject enemySkillAnim;
+    private GameObject[] enemySkillAnims = {null,null,null};
 
     public Transform[] enemyBattlePositions;
     public Transform playerBattlePosition;
@@ -85,10 +86,18 @@ public class BattleSystemManager : MonoBehaviour
 
     IEnumerator PlayerTurn()
     {
+        for (int i = 0; i < enemySkillAnims.Length; i++)
+        {
+            if (enemySkillAnims[i] != null)
+            {
+                Destroy(enemySkillAnims[i]);
+            }
+        }
+        
+
         string currentRound = "Round: " + currentTurn.ToString();
         currentRoundText.text = currentRound;
 
-        Destroy(enemySkillAnim);
         battlePanel.UpdateBattleText("Player's Turn. Carrot be with you.");
         skillsPanel.SetCurrentTurn(currentTurn);
         skillsPanel.EnableSkillButtons();
@@ -123,13 +132,16 @@ public class BattleSystemManager : MonoBehaviour
         battlePanel.UpdateBattleText("Player used " + skill.skillName + "!");
         Debug.Log("Player used " + skill.skillName + "!");
 
-        playerSkillAnim = Instantiate(skill.skillAnim, playerBattlePosition);
-        playerSkillAnim.SetActive(true);
-
         // Single target, cast on Enemy skills
         if (skill.isSingleTarget && skill.isEnemyCast)
         {
             EnemyUnit targetEnemy = enemyUnits[getMouseClick.enemyUnitIndex];
+
+            // playerSkillAnim = Instantiate(skill.skillAnim, enemyBattlePositions[getMouseClick.enemyUnitIndex]);
+            playerSkillAnim = Instantiate(skill.skillAnim, playerBattlePosition);
+            playerSkillAnim.SetActive(true);
+            
+
             targetEnemy.TakeDamage(skill.changeFaith, skill.changePower, skill.changeDef, playerUnit.GetCharacterPower());
             if (targetEnemy.IsDefeated()) enemiesRemaining--;
             yield return new WaitForSeconds(1);
@@ -141,6 +153,10 @@ public class BattleSystemManager : MonoBehaviour
             if (playerUnit.isSelected)
             {
                 Debug.Log("Casting " + skill.skillName + " on self");
+
+                playerSkillAnim = Instantiate(skill.skillAnim, playerBattlePosition);
+                playerSkillAnim.SetActive(true);
+
                 playerUnit.CastOnSelf(skill.changeFaith, skill.changePower, skill.changeDef);
                 yield return new WaitForSeconds(1);
                 // StartCoroutine(CheckPlayerDeath());
@@ -169,16 +185,17 @@ public class BattleSystemManager : MonoBehaviour
 
         currentCharacterIndex = 1; // Reset it each time
 
-        foreach (EnemyUnit e in enemyUnits)
-        {
-            Skill enemySkill = e.SelectAttack();
 
-            
-            enemySkillAnim = Instantiate(enemySkill.skillAnim, enemyBattlePositions[0]);
-            enemySkillAnim.SetActive(true);
+        for (int i = 0; i < enemyUnits.Length; i++)
+        {
+            Skill enemySkill = enemyUnits[i].SelectAttack();
+
+
+            enemySkillAnims[i] = Instantiate(enemySkill.skillAnim, enemyBattlePositions[i]);
+            enemySkillAnims[i].SetActive(true);
 
             battlePanel.UpdateBattleText("Enemy used " + enemySkill.skillName + "!");
-            playerUnit.TakeDamage(enemySkill.changeFaith, enemySkill.changePower, enemySkill.changeDef, e.GetCharacterPower());
+            playerUnit.TakeDamage(enemySkill.changeFaith, enemySkill.changePower, enemySkill.changeDef, enemyUnits[i].GetCharacterPower());
             currentCharacterIndex++;
 
             yield return new WaitForSeconds(1);
@@ -191,7 +208,6 @@ public class BattleSystemManager : MonoBehaviour
                 yield return StartCoroutine(EndBattle());
                 yield break;
             }
-
         }
 
         yield return new WaitForSeconds(2);
@@ -229,5 +245,6 @@ public class BattleSystemManager : MonoBehaviour
 
         yield break;
     }
+
 
 }

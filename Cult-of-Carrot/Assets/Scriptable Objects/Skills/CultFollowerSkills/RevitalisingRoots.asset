@@ -25,5 +25,10 @@ MonoBehaviour:
   changePower: 5
   changeDef: 5
   cooldown: 2
-  resultingState: {fileID: 0}
-  skillAnim: {fileID: 8623456721184773987, guid: 9e205f8a053e4b4478dc9637decb0265, type: 3}
+  resultingStatus: {fileID: 0}
+  isSingleTarget: 0
+  isMultiTarget: 0
+  isAllTarget: 0
+  isSelfCast: 0
+  isEnemyCast: 0
+  skillAnim: {fileID: 326129953542994176, guid: e981af8c9e7cc2b4b81ce1bd069a9903, type: 3}
