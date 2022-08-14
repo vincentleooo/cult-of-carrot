@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class CutsceneButton : MonoBehaviour
 {
+	// to link to different cutscenes upon button press
     public Button yourButton;
     public GameObject video;
 

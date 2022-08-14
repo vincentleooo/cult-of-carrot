@@ -5,6 +5,8 @@ using UnityEngine.Video;
 
 public class VideoButton : MonoBehaviour
 {
+    // for different cutscene options
+    
     public VideoPlayer VideoPlayer; // Drag & Drop the GameObject holding the VideoPlayer component
     public GameObject Button1;
     public GameObject Button2;

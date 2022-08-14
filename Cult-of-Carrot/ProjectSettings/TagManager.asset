@@ -8,6 +8,9 @@ TagManager:
   - FaithBar
   - PowerBar
   - DefBar
+  - Enemy
+  - FaithNumber
+  - MaxFaithNumber
   layers:
   - Default
   - TransparentFX
@@ -53,4 +56,7 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: New Layer 4
+    uniqueID: 3220864085
     locked: 0

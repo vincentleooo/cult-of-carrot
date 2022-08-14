@@ -42,6 +42,10 @@ public class BattleSystemManager : MonoBehaviour
 
     private GetMouseClick getMouseClick;
 
+    // when battle ends
+    public GameObject WinButton;
+    public GameObject LoseButton;
+
     void Start()
     {
         enemyUnits = new EnemyUnit[enemyBattlePositions.Length];
@@ -213,11 +217,13 @@ public class BattleSystemManager : MonoBehaviour
     {
         if (battleState == BattleState.WIN)
         {
+            WinButton.gameObject.SetActive(true);
             battlePanel.UpdateBattleText("You won. You have made their lives better.");
         }
 
         else if (battleState == BattleState.LOST)
         {
+            LoseButton.gameObject.SetActive(true);
             battlePanel.UpdateBattleText("You lost. Enjoy the gulag");
         }
 
