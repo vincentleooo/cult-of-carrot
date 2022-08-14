@@ -98,8 +98,10 @@ public class BattleSystemManager : MonoBehaviour
     {
         if (battleState != BattleState.PLAYERTURN) return;
 
+        // Check if player has a target
+        if (!playerUnit.isSelected && (getMouseClick.enemyUnitIndex == -1)) return;
 
-        // Check if in the middle of 
+        // Check if in the middle of skill cooldown
         if (!attack.canCast)
         {
             battlePanel.UpdateBattleText("Cannot cast " + attack.skill.skillName + " during cooldown.");

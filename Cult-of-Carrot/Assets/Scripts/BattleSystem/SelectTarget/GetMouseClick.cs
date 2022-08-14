@@ -89,6 +89,10 @@ public class GetMouseClick : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            enemyUnitIndex = -1;
+        }
     }
 
     public void SelectTarget(SelectTarget target)
