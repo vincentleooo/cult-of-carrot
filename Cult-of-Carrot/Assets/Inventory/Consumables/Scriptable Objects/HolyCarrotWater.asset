@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 940cd774f7ded8749964308e7311be13, type: 3}
+  m_Name: HolyCarrotWater
+  m_EditorClassIdentifier: 
+  consumableID: 1
+  consumableName: "Holy Carrot Water\u2122"
+  price: 20
+  prefab: {fileID: 5372141736820619776, guid: e3d7ed4fc3dc340bd995731a3fe0079c, type: 3}
+  consumableDesc: Rumour has it that this is milked from the Holy Carrot Plant by
+    priests.
+  changeFaith: 30
+  changePower: 0
+  changeDef: 0
+  numTurns: 0
+  statusEffectType: 

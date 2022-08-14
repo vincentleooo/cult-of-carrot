@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 940cd774f7ded8749964308e7311be13, type: 3}
+  m_Name: StaleDailyBread
+  m_EditorClassIdentifier: 
+  consumableID: 0
+  consumableName: ' Stale Daily Bread'
+  price: 0
+  prefab: {fileID: 5372141736820619776, guid: 9b0021e5f56aa4d41a6d4f53902ab9f3, type: 3}
+  consumableDesc: Crusty, armoured bread. Gives you thick skin for a while.
+  changeFaith: 0
+  changePower: 0
+  changeDef: 15
+  numTurns: 3
+  statusEffectType: 
