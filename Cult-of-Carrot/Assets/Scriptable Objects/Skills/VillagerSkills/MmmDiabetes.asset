@@ -15,7 +15,7 @@ MonoBehaviour:
   skillName: Mmm, Diabetes
   skillDescription: 'Force feed enemy with processed villager food. Carrot is mortified.
 
-    Reduce
+    Reduces
     Enemy FAITH by 5.
 
     CD: 0
@@ -31,3 +31,4 @@ MonoBehaviour:
   isMultiTarget: 0
   isAllTarget: 0
   isEnemyCast: 1
+  skillAnim: {fileID: 2690307250742265579, guid: e39eae1bda2a451418c6e3e4f30a4b65, type: 3}

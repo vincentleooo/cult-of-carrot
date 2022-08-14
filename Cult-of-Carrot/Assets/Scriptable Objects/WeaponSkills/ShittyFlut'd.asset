@@ -20,3 +20,4 @@ MonoBehaviour:
   changeDef: 0
   canBeUsed: 0
   resultingStatusEffect: {fileID: 0}
+  weaponAnim: {fileID: 4852787742051112013, guid: 2a403289a34b77c4dac238d389714471, type: 3}

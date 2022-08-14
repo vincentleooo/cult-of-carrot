@@ -253,7 +253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VideoPlayer: {fileID: 892198222}
   Button1: {fileID: 9204931937326687962}
-  Button2: {fileID: 0}
+  Button2: {fileID: 4184708836735030858}
 --- !u!1 &1062644747
 GameObject:
   m_ObjectHideFlags: 0
@@ -764,6 +764,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: a9350dfc230368d4a8d90ca5bd6428e8, type: 3}
+--- !u!1 &4184708836735030858 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4184708836842828575, guid: a9350dfc230368d4a8d90ca5bd6428e8, type: 3}
+  m_PrefabInstance: {fileID: 4184708836735030857}
+  m_PrefabAsset: {fileID: 0}
 --- !u!222 &9204931937326687953
 CanvasRenderer:
   m_ObjectHideFlags: 0

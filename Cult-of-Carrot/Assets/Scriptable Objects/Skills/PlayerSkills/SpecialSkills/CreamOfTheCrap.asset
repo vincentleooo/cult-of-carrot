@@ -15,18 +15,19 @@ MonoBehaviour:
   skillName: Cream of the Crap
   skillDescription: 'You''re not shit, you''re THE shit.
 
-    Become SWIFT for 3
-    turns, then become ENRAGED for 2 turns.
+    Attacks all Enemies,
+    reducing each DEF by 15, then reduces FAITH by 30, shared among all Enemies.
 
-    CD: 8'
-  changeFaith: 0
+    CD:
+    6'
+  changeFaith: 30
   changePower: 0
-  changeDef: 0
-  cooldown: 8
-  statusEffects:
-  - {fileID: 11400000, guid: ea0acf0fd9f56334ca2d14c348c6d550, type: 2}
-  statusEffectsDurations: 02000000
-  isSingleTarget: 1
+  changeDef: 15
+  cooldown: 6
+  statusEffects: []
+  statusEffectsDurations: 
+  isSingleTarget: 0
   isMultiTarget: 0
-  isAllTarget: 0
-  isEnemyCast: 1
+  isAllTarget: 1
+  isEnemyCast: 0
+  skillAnim: {fileID: 3520461294986143228, guid: 34b916e40a3f0b7479c8cb34390e7805, type: 3}

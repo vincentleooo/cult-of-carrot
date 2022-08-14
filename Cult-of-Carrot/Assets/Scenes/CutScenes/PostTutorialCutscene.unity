@@ -253,7 +253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VideoPlayer: {fileID: 892198222}
   Button1: {fileID: 9204931937326687962}
-  Button2: {fileID: 0}
+  Button2: {fileID: 1755265696}
 --- !u!1 &1062644747
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,6 +472,11 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+--- !u!1 &1755265696 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4184708836842828575, guid: a9350dfc230368d4a8d90ca5bd6428e8, type: 3}
+  m_PrefabInstance: {fileID: 4184708836735030857}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1770005811
 GameObject:
   m_ObjectHideFlags: 0

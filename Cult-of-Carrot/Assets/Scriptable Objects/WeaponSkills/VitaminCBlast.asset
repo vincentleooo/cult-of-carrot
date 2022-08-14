@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: VitaminCBlast
   m_EditorClassIdentifier: 
   weaponSkillName: Vitamin C Blast
-  weaponSkillDescription: Instantly raises FAITH of enemy by 20.
+  weaponSkillDescription: Reduces Enemy FAITH by 20.
   changeFaith: 20
   changePower: 0
   changeDef: 0
   canBeUsed: 0
   resultingStatusEffect: {fileID: 0}
+  weaponAnim: {fileID: 2949006767174131602, guid: 3a865eb1a9f9a6246a780e3c407279f2, type: 3}

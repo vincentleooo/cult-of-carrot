@@ -16,7 +16,7 @@ MonoBehaviour:
   weaponSkillDescription: 'Enchants your enemy and puts them in a DAZED status for
     3 turns.
 
-    Gain +10 PWR for 3 turns.'
+    Gains 10 PWR for 3 turns.'
   changeFaith: 0
   changePower: 10
   changeDef: 0

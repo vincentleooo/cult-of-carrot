@@ -15,7 +15,7 @@ MonoBehaviour:
   skillName: Revitalising Roots
   skillDescription: 'Force feed an ally with fresh carrots. May give laser sights.
 
-    Increase
+    Increases
     Ally DEF and PWR by 5.
 
     CD: 2
@@ -25,10 +25,10 @@ MonoBehaviour:
   changePower: 5
   changeDef: 5
   cooldown: 2
-  resultingStatus: {fileID: 0}
+  statusEffects: []
+  statusEffectsDurations: 
   isSingleTarget: 0
   isMultiTarget: 0
-  isAllTarget: 0
-  isSelfCast: 0
+  isAllTarget: 1
   isEnemyCast: 0
-  skillAnim: {fileID: 326129953542994176, guid: e981af8c9e7cc2b4b81ce1bd069a9903, type: 3}
+  skillAnim: {fileID: 0}

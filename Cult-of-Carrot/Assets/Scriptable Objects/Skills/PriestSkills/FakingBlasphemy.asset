@@ -15,20 +15,20 @@ MonoBehaviour:
   skillName: Faking Blasphemy
   skillDescription: 'They spew a bunch of unbelievable non-believer words. For practice.
 
-    Reduce
+    Reduces
     Enemy FAITH by 5.
 
     CD: 0
 
 '
-  changeFaith: 50
+  changeFaith: 5
   changePower: 0
   changeDef: 0
   cooldown: 0
-  resultingStatus: {fileID: 0}
-  isSingleTarget: 0
+  statusEffects: []
+  statusEffectsDurations: 
+  isSingleTarget: 1
   isMultiTarget: 0
   isAllTarget: 0
-  isSelfCast: 0
-  isEnemyCast: 0
-  skillAnim: {fileID: 3346933702329494774, guid: 95141a10e5efb0043bca5af13a614711, type: 3}
+  isEnemyCast: 1
+  skillAnim: {fileID: 0}
