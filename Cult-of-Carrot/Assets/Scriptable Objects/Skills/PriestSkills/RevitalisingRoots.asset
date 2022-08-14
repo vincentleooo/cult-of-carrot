@@ -22,8 +22,8 @@ MonoBehaviour:
 
 '
   changeFaith: 0
-  changePower: 5
-  changeDef: 5
+  changePower: 15
+  changeDef: 15
   cooldown: 2
   statusEffects: []
   statusEffectsDurations: 

@@ -692,9 +692,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 27a7a073065647c4c9e2e54e85c56db4, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9e68ba925fe10824198a3345d0715155, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1059,6 +1059,8 @@ MonoBehaviour:
   - {fileID: 3267600989258130226, guid: 0a3a20236806a954fa674f268d0c8056, type: 3}
   - {fileID: 7878916908841426706, guid: 86ba87861c944dc43aa2c62f973c18fe, type: 3}
   playerPrefab: {fileID: 1494772015911411254, guid: b348d4fc82eaabe4f938fbbe7778a3fb, type: 3}
+  WinButton: {fileID: 1950584371}
+  LoseButton: {fileID: 1406191992}
   enemyBattlePositions:
   - {fileID: 1162594494}
   - {fileID: 1725101906}
@@ -1377,6 +1379,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1406191992 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7038089952621555428, guid: 0479e4f324501b94aa42d4c3c799f5c8, type: 3}
+  m_PrefabInstance: {fileID: 7038089951771109276}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1406191993 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7038089952621555429, guid: 0479e4f324501b94aa42d4c3c799f5c8, type: 3}
+  m_PrefabInstance: {fileID: 7038089951771109276}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1409960801
 GameObject:
   m_ObjectHideFlags: 0
@@ -1408,16 +1420,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1406191992 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7038089952621555428, guid: 0479e4f324501b94aa42d4c3c799f5c8, type: 3}
-  m_PrefabInstance: {fileID: 7038089951771109276}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &1406191993 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7038089952621555429, guid: 0479e4f324501b94aa42d4c3c799f5c8, type: 3}
-  m_PrefabInstance: {fileID: 7038089951771109276}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1599100322
 GameObject:
   m_ObjectHideFlags: 0
@@ -1667,7 +1669,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Time to turn these "priests" into believers!
+  m_Text: Clean up fast, you don't get paid for overtime!!
 --- !u!222 &1914323953
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2034,6 +2036,10 @@ PrefabInstance:
     - target: {fileID: 7038089952621555428, guid: 0479e4f324501b94aa42d4c3c799f5c8, type: 3}
       propertyPath: m_Name
       value: LoseButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 7038089952621555428, guid: 0479e4f324501b94aa42d4c3c799f5c8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7038089952621555429, guid: 0479e4f324501b94aa42d4c3c799f5c8, type: 3}
       propertyPath: m_Pivot.x

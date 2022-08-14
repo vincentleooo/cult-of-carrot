@@ -179,7 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54b38572c252c4eb8be182dd4322fdb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tooltip: {fileID: 5925882799162302556, guid: 26334854c1fe7487991282762d2b53c9, type: 3}
+  tooltip: {fileID: 1395322280096846703}
 --- !u!1001 &447875889541479286
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -821,6 +821,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: e335a0185ae15403a8fb510ef302e082, type: 3}
+--- !u!1 &1395322280096846703 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7064480610811787089, guid: e335a0185ae15403a8fb510ef302e082, type: 3}
+  m_PrefabInstance: {fileID: 8167064168651711550}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &9081130321262238553 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1103833253591334759, guid: e335a0185ae15403a8fb510ef302e082, type: 3}

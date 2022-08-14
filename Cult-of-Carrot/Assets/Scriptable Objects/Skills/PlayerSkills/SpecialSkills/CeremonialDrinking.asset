@@ -24,10 +24,10 @@ MonoBehaviour:
   changeDef: 0
   cooldown: 5
   statusEffects:
-  - {fileID: 11400000, guid: ca35589aff94b7d4aa1d35408889c1d6, type: 2}
+  - {fileID: 11400000, guid: a916439284c48624b8ff2584015fc562, type: 2}
   statusEffectsDurations: 02000000
   isSingleTarget: 1
   isMultiTarget: 0
   isAllTarget: 0
-  isEnemyCast: 1
+  isEnemyCast: 0
   skillAnim: {fileID: 1255443913237439572, guid: 85c9abbeed16ff142b61b6b1f28044cd, type: 3}
