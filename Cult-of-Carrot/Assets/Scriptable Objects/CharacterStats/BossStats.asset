@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce729077f59bb43cbb630e9d13cf7e0f, type: 3}
-  m_Name: Priest2Stats
+  m_Name: BossStats
   m_EditorClassIdentifier: Assembly-CSharp::CharacterState
-  charName: Gsus Cries Jr.
+  charName: Boss
   node: 1
-  Faith: 20
-  Power: 5
-  Defence: 5
+  Faith: 100
+  Power: 30
+  Defence: 30
   Skills:
-  - {fileID: 11400000, guid: d03f4fd756fba4bcd9deebf35706a3c4, type: 2}
-  - {fileID: 11400000, guid: 3a932d022b376424291d931b8a06ed1d, type: 2}
+  - {fileID: 11400000, guid: 2afeef7d9ecbe814987aeb584819443f, type: 2}
+  - {fileID: 11400000, guid: f1cc6ce2b8f507a42aced0488ed80899, type: 2}

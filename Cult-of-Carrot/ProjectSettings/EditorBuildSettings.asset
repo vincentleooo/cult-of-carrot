@@ -9,14 +9,23 @@ EditorBuildSettings:
     path: Assets/Scenes/StartingScene.unity
     guid: db0ddd3073d43b04a8929a54df178199
   - enabled: 1
-    path: Assets/Scenes/Induction.unity
-    guid: 3844a2f1dda7b92478b9c70caf0ad772
-  - enabled: 1
     path: Assets/Scenes/NodeSystem.unity
     guid: a82f272272ed790449bd8c75b1ef2e8c
   - enabled: 1
+    path: Assets/Scenes/Induction.unity
+    guid: a8ae444086ede5047b9a184d0dd74c17
+  - enabled: 1
+    path: Assets/Scenes/MinorEnemy1.unity
+    guid: 959d02da30407994bbb845a0577ab6db
+  - enabled: 1
+    path: Assets/Scenes/MinorEnemy2.unity
+    guid: 71d7dd28035d1114db362bc1b7731602
+  - enabled: 1
     path: Assets/Scenes/RestNode.unity
     guid: 3ca0a0c98d89a7d44ab1556e1b2d16a8
+  - enabled: 1
+    path: Assets/Scenes/ShopNode2.unity
+    guid: 7b049a66f28a7433d85e2391c939e757
   - enabled: 1
     path: Assets/Scenes/ShopNode.unity
     guid: 13b04524aa08a5845b24442c04edb777

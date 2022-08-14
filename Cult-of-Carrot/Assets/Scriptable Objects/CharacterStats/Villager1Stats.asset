@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce729077f59bb43cbb630e9d13cf7e0f, type: 3}
-  m_Name: Priest2Stats
+  m_Name: Villager1Stats
   m_EditorClassIdentifier: Assembly-CSharp::CharacterState
-  charName: Gsus Cries Jr.
+  charName: Pepparidge F.R.
   node: 1
-  Faith: 20
-  Power: 5
-  Defence: 5
+  Faith: 25
+  Power: 10
+  Defence: 15
   Skills:
-  - {fileID: 11400000, guid: d03f4fd756fba4bcd9deebf35706a3c4, type: 2}
-  - {fileID: 11400000, guid: 3a932d022b376424291d931b8a06ed1d, type: 2}
+  - {fileID: 11400000, guid: 5af48ddf9fe9a3a4e933ede75864e76b, type: 2}
+  - {fileID: 11400000, guid: 1407908bfab4f66469f9aca570ee7d38, type: 2}

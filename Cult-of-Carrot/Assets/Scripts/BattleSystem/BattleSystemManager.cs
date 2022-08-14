@@ -221,7 +221,7 @@ public class BattleSystemManager : MonoBehaviour
 
         else if (battleState == BattleState.LOST)
         {
-            battlePanel.UpdateBattleText("You lost. Enjoy the gulag");
+            battlePanel.UpdateBattleText("You lost. Enjoy the gulag.");
         }
 
         yield break;
