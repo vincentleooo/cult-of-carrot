@@ -821,13 +821,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-<<<<<<< HEAD:Cult-of-Carrot/Assets/Scenes/InductionTest.unity
-  m_AnchoredPosition: {x: 14.4001465, y: 11.976013}
-  m_SizeDelta: {x: 451.2166, y: 159.3374}
-=======
   m_AnchoredPosition: {x: 14.4001465, y: 11.976074}
   m_SizeDelta: {x: 400, y: 110}
->>>>>>> origin/other-fight-scenes:Cult-of-Carrot/Assets/Scenes/MinorEnemy2.unity
   m_Pivot: {x: 0, y: 0}
 --- !u!225 &386132656
 CanvasGroup:
@@ -1071,11 +1066,6 @@ MonoBehaviour:
   playerBattlePosition: {fileID: 824977084}
   currentRoundText: {fileID: 2127345511}
   enemyUnits: []
-<<<<<<< HEAD:Cult-of-Carrot/Assets/Scenes/InductionTest.unity
-  WinButton: {fileID: 1950584371}
-  LoseButton: {fileID: 1406191992}
-=======
->>>>>>> origin/other-fight-scenes:Cult-of-Carrot/Assets/Scenes/MinorEnemy2.unity
 --- !u!4 &570100334
 Transform:
   m_ObjectHideFlags: 0

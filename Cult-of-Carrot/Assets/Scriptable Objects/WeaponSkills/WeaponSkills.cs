@@ -12,10 +12,6 @@ public class WeaponSkills : ScriptableObject
 	public float changePower;
 	public float changeDef;
     public bool canBeUsed; // TODO: Handle when the weapon skill can be used
-<<<<<<< HEAD
-    public CharacterStatusEffects resultingStatusEffect;
-    public GameObject weaponAnim;
-=======
     public CharacterStatusEffect resultingStatusEffect;
->>>>>>> origin/other-fight-scenes
+    public GameObject weaponAnim;
 }

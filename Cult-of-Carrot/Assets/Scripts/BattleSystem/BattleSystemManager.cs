@@ -21,6 +21,11 @@ public class BattleSystemManager : MonoBehaviour
 
     public GameObject[] enemyPrefabs;
     public GameObject playerPrefab;
+
+	// when battle ends
+    public GameObject WinButton;
+    public GameObject LoseButton;
+
     //for skill anim
     private GameObject playerSkillAnim;
     // private GameObject enemySkillAnim;
@@ -42,9 +47,7 @@ public class BattleSystemManager : MonoBehaviour
 
     private GetMouseClick getMouseClick;
 
-    // when battle ends
-    public GameObject WinButton;
-    public GameObject LoseButton;
+	private int currentCharacterIndex = 0;
 
     void Start()
     {
@@ -104,7 +107,6 @@ public class BattleSystemManager : MonoBehaviour
         else
         {
             battlePanel.UpdateBattleText("Player's Turn. Carrot be with you.");
-            skillsPanel.SetCurrentTurn(currentTurn);
             skillsPanel.EnableSkillButtons();
             playerHasClicked = false;
             yield return null;
@@ -213,12 +215,14 @@ public class BattleSystemManager : MonoBehaviour
             enemySkillAnims[i] = Instantiate(enemySkill.skillAnim, enemyBattlePositions[i]);
             enemySkillAnims[i].SetActive(true);
 
-            battlePanel.UpdateBattleText("Enemy used " + enemySkill.skillName + "!");
-            playerUnit.TakeDamage(enemySkill.changeFaith, enemySkill.changePower, enemySkill.changeDef, enemyUnits[i].GetCharacterPower());
-            currentCharacterIndex++;
+            // battlePanel.UpdateBattleText("Enemy used " + enemySkill.skillName + "!");
+            // playerUnit.TakeDamage(enemySkill, enemyUnits[i].GetCharacterPower());
 
-            yield return new WaitForSeconds(1);
+            // currentCharacterIndex++;
+
+            // yield return new WaitForSeconds(1);
             // StartCoroutine(CheckPlayerDeath());
+		}
 
         foreach (EnemyUnit e in enemyUnits)
         {
@@ -285,6 +289,5 @@ public class BattleSystemManager : MonoBehaviour
 
         yield break;
     }
-
 
 }

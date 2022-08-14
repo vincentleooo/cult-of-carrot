@@ -558,12 +558,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6366796987577180648}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4303f87909a1a14c9bc2916dad9ddc3, type: 3}
+  m_Script: {fileID: 11500000, guid: b939277b20b1d4c6cbc37c84e1286244, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  yourButton: {fileID: 6366796987577180654}
-  audioSource: {fileID: 1783666317898291895}
-  audioClip: {fileID: 8300000, guid: c7d3a78f63685dc48ab9fdd191bd242b, type: 3}
+  attackEvent: {fileID: 0}
 --- !u!82 &1783666317898291895
 AudioSource:
   m_ObjectHideFlags: 0
