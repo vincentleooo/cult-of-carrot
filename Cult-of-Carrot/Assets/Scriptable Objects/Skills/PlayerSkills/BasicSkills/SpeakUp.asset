@@ -15,16 +15,17 @@ MonoBehaviour:
   skillName: Speak Up
   skillDescription: 'Know your worth!
 
-    Raises enemy FAITH by 10.
+    Raises Enemy FAITH by 15.
 
     CD: 1'
-  changeFaith: 10
+  changeFaith: 15
   changePower: 0
   changeDef: 0
-  cooldown: 1
-  resultingStatus: {fileID: 0}
+  cooldown: 0
+  statusEffects: []
+  statusEffectsDurations: 
   isSingleTarget: 1
   isMultiTarget: 0
-  isSingleAndMultiTarget: 0
-  isSelfCast: 0
+  isAllTarget: 0
   isEnemyCast: 1
+  skillAnim: {fileID: 8623456721184773987, guid: 9e205f8a053e4b4478dc9637decb0265, type: 3}

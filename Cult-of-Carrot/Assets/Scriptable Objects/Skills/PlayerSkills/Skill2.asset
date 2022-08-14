@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222452829764e4bd88a338a30bf00f7b, type: 3}
+  m_Name: Skill2
+  m_EditorClassIdentifier: 
+  skillName: Skill2
+  skillDescription: 'They spew a bunch of unbelievable non-believer words. For practice.
+
+    Reduce
+    Enemy FAITH by 5.
+
+    CD: 0
+
+'
+  changeFaith: 5
+  changePower: 0
+  changeDef: 0
+  cooldown: 2
+  resultingState: {fileID: 0}
+  skillAnim: {fileID: 1701812803279059992, guid: 88542c57dd68e2e4090097e8d7c662d7, type: 3}

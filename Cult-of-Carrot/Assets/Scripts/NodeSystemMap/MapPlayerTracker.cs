@@ -80,14 +80,19 @@ namespace Map
             switch (mapNode.Node.nodeType)
             {
                 case (NodeType.Tutorial):
-                    SceneManager.LoadScene("InductionTest");
+                    SceneManager.LoadScene("Induction");
                     break;
 
-                case (NodeType.MinorEnemy):
-                    SceneManager.LoadScene("InductionTest");
+                case (NodeType.MinorEnemy1):
+                    SceneManager.LoadScene("MinorEnemy1");
+                    break;
+                
+                case (NodeType.MinorEnemy2):
+                    SceneManager.LoadScene("MinorEnemy2");
                     break;
 
                 case (NodeType.EliteEnemy):
+                    SceneManager.LoadScene("EliteEnemy");
                     break;
 
                 case (NodeType.Rest):
@@ -99,6 +104,7 @@ namespace Map
                     break;
 
                 case (NodeType.Boss):
+                    SceneManager.LoadScene("Boss");
                     break;
 
                 default:

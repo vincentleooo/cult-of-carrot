@@ -15,8 +15,8 @@ MonoBehaviour:
   skillName: Ceremonial Drinking
   skillDescription: 'Drnklg 4 a gerter cuase.
 
-    Self becomes DAZED for 2 turns.
-    Gains 25 FAITH for 2 turns.
+    Self becomes DAZED and DRUNK for
+    2 turns. Gains 25 FAITH per turn passed.
 
     CD: 5'
   changeFaith: 25
@@ -28,4 +28,5 @@ MonoBehaviour:
   isSingleTarget: 1
   isMultiTarget: 0
   isAllTarget: 0
-  isEnemyCast: 1
+  isEnemyCast: 0
+  skillAnim: {fileID: 1255443913237439572, guid: 85c9abbeed16ff142b61b6b1f28044cd, type: 3}

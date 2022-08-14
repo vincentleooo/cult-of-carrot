@@ -15,6 +15,9 @@ MonoBehaviour:
   skillName: Touch Grass
   skillDescription: 'CASSLIGHTS Self for 2 turns.
 
+    CASSLIGHTS
+    Self for 2 turns.
+
     CD: 6'
   changeFaith: 0
   changePower: 0
@@ -23,3 +26,4 @@ MonoBehaviour:
   statusEffect: {fileID: 11400000, guid: 6eea613663322984b9dea0c505d8cb75, type: 2}
   isSingleTarget: 1
   isEnemyCast: 0
+  skillAnim: {fileID: 326129953542994176, guid: e981af8c9e7cc2b4b81ce1bd069a9903, type: 3}

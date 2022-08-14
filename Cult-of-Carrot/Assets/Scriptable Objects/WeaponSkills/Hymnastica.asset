@@ -16,9 +16,10 @@ MonoBehaviour:
   weaponSkillDescription: 'TAUNTS enemy for 3 turns with your hymns and enhances
     you with holy defences.
 
-    Gain +10 DEF for 3 turns.'
+    Gains 10 DEF for 3 turns.'
   changeFaith: 0
   changePower: 0
   changeDef: 10
   canBeUsed: 0
   resultingStatusEffect: {fileID: 0}
+  weaponAnim: {fileID: 2705832662201096303, guid: a71285020bacd3940b8770a46731fc07, type: 3}

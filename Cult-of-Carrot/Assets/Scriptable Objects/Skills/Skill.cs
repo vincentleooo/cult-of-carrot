@@ -16,4 +16,6 @@ public class Skill : ScriptableObject
     public bool isSingleTarget;
     // public bool isMultiTarget;
     public bool isEnemyCast;
+
+    public GameObject skillAnim;
 }

@@ -13,19 +13,22 @@ MonoBehaviour:
   m_Name: TheLastWord
   m_EditorClassIdentifier: 
   skillName: The Last Word
-  skillDescription: 'Reduces FAITH of enemies by 10, raises self DEF by 10.
+  skillDescription: 'Yeah, stop talking.
 
-    CD:
-    3
+    Reduces Enemy FAITH by 15, reduces
+    Enemy DEF by 5.
+
+    CD: 3
 
 '
   changeFaith: 10
   changePower: 0
-  changeDef: 10
+  changeDef: 5
   cooldown: 3
   statusEffects: []
   statusEffectsDurations: 
-  isSingleTarget: 0
+  isSingleTarget: 1
   isMultiTarget: 0
   isAllTarget: 0
-  isEnemyCast: 0
+  isEnemyCast: 1
+  skillAnim: {fileID: 3960689017542784835, guid: 1ef8f18ddf3203e469c35cd99718efd1, type: 3}

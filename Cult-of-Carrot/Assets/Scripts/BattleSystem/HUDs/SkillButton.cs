@@ -10,6 +10,7 @@ public class SkillButton : MonoBehaviour
     private Skill skill;
     private Button button;
 
+
     void Start()
     {
         button = gameObject.GetComponent<Button>();

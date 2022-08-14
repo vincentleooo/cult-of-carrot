@@ -15,8 +15,8 @@ MonoBehaviour:
   charName: Judas Iscariot
   node: 1
   Faith: 30
-  Power: 10
-  Defence: 10
+  Power: 20
+  Defence: 5
   Skills:
   - {fileID: 11400000, guid: 06329a30f785f5b49a128c9df3a9ce98, type: 2}
   - {fileID: 11400000, guid: 27fcea068795eff46bc0da7c6ca2803c, type: 2}

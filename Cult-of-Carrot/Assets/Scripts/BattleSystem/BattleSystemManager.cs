@@ -22,6 +22,15 @@ public class BattleSystemManager : MonoBehaviour
     public GameObject[] enemyPrefabs;
     public GameObject playerPrefab;
 
+	// when battle ends
+    public GameObject WinButton;
+    public GameObject LoseButton;
+
+    //for skill anim
+    private GameObject playerSkillAnim;
+    // private GameObject enemySkillAnim;
+    private GameObject[] enemySkillAnims = {null,null,null};
+
     public Transform[] enemyBattlePositions;
     public Transform playerBattlePosition;
 
@@ -36,6 +45,8 @@ public class BattleSystemManager : MonoBehaviour
     private int currentTurn;
 
     private GetMouseClick getMouseClick;
+
+	private int currentCharacterIndex = 0;
 
     void Start()
     {
@@ -76,6 +87,15 @@ public class BattleSystemManager : MonoBehaviour
 
     IEnumerator PlayerTurn()
     {
+        for (int i = 0; i < enemySkillAnims.Length; i++)
+        {
+            if (enemySkillAnims[i] != null)
+            {
+                Destroy(enemySkillAnims[i]);
+            }
+        }
+        
+
         string currentRound = "Round: " + currentTurn.ToString();
         currentRoundText.text = currentRound;
         playerUnit.UpdateStatusEffect();
@@ -114,6 +134,7 @@ public class BattleSystemManager : MonoBehaviour
         {
             StartCoroutine(PlayerSkillAttack(skill));
             skillsPanel.DisableSkillButtons();
+
         }
         else
         {
@@ -124,12 +145,18 @@ public class BattleSystemManager : MonoBehaviour
 
     IEnumerator PlayerSkillAttack(Skill skill)
     {
+
         battlePanel.UpdateBattleText("Player used " + skill.skillName + "!");
 
         // Single target, cast on Enemy skills
         if (skill.isSingleTarget && skill.isEnemyCast)
         {
             EnemyUnit targetEnemy = enemyUnits[getMouseClick.enemyUnitIndex];
+
+            // playerSkillAnim = Instantiate(skill.skillAnim, enemyBattlePositions[getMouseClick.enemyUnitIndex]);
+            playerSkillAnim = Instantiate(skill.skillAnim, playerBattlePosition);
+            playerSkillAnim.SetActive(true);
+            
             targetEnemy.TakeDamage(skill, playerUnit.GetCharacterPower());
             if (targetEnemy.IsDefeated()) enemiesRemaining--;
             yield return new WaitForSeconds(1);
@@ -141,6 +168,10 @@ public class BattleSystemManager : MonoBehaviour
             if (playerUnit.isSelected)
             {
                 Debug.Log("Casting " + skill.skillName + " on self");
+
+                playerSkillAnim = Instantiate(skill.skillAnim, playerBattlePosition);
+                playerSkillAnim.SetActive(true);
+
                 playerUnit.CastOnSelf(skill);
                 yield return new WaitForSeconds(1);
                 // StartCoroutine(CheckPlayerDeath());
@@ -175,9 +206,31 @@ public class BattleSystemManager : MonoBehaviour
 
     IEnumerator EnemiesAttack()
     {
+        Destroy(playerSkillAnim);
+
         battlePanel.UpdateBattleText("Enemy's turn. You better start praying.");
 
         yield return new WaitForSeconds(2);
+
+        currentCharacterIndex = 1; // Reset it each time
+
+
+        for (int i = 0; i < enemyUnits.Length; i++)
+        {
+            Skill enemySkill = enemyUnits[i].SelectAttack();
+
+
+            enemySkillAnims[i] = Instantiate(enemySkill.skillAnim, enemyBattlePositions[i]);
+            enemySkillAnims[i].SetActive(true);
+
+            // battlePanel.UpdateBattleText("Enemy used " + enemySkill.skillName + "!");
+            // playerUnit.TakeDamage(enemySkill, enemyUnits[i].GetCharacterPower());
+
+            // currentCharacterIndex++;
+
+            // yield return new WaitForSeconds(1);
+            // StartCoroutine(CheckPlayerDeath());
+		}
 
         foreach (EnemyUnit e in enemyUnits)
         {
@@ -222,14 +275,25 @@ public class BattleSystemManager : MonoBehaviour
 
     IEnumerator EndBattle()
     {
+        for (int i = 0; i < enemySkillAnims.Length; i++)
+        {
+            if (enemySkillAnims[i] != null)
+            {
+                Destroy(enemySkillAnims[i]);
+            }
+        }
+        Destroy(playerSkillAnim);
+        
         if (battleState == BattleState.WIN)
         {
+            WinButton.gameObject.SetActive(true);
             battlePanel.UpdateBattleText("You won. You have made their lives better.");
         }
 
         else if (battleState == BattleState.LOST)
         {
-            battlePanel.UpdateBattleText("You lost. Enjoy the gulag");
+            LoseButton.gameObject.SetActive(true);
+            battlePanel.UpdateBattleText("You lost. Enjoy the gulag.");
         }
 
         yield break;

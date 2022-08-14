@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: The Consummion
   m_EditorClassIdentifier: 
   weaponSkillName: The Consummion
-  weaponSkillDescription: Makes you DRUNK.
-  changeFaith: 0
+  weaponSkillDescription: Recovers 30 FAITH and makes Self DRUNK.
+  changeFaith: 30
   changePower: 0
   changeDef: 0
   canBeUsed: 0
   resultingStatusEffect: {fileID: 0}
+  weaponAnim: {fileID: 7137171999961319631, guid: b8e559272e23fe34a8a89618eef6892c, type: 3}

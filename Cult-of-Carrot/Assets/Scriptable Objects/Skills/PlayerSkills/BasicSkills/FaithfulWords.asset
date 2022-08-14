@@ -15,16 +15,17 @@ MonoBehaviour:
   skillName: Faithful Words
   skillDescription: 'Prayer2Go.
 
-    Restores your own FAITH by 10.
+    Restores Self FAITH by 20.
 
     CD: 1'
-  changeFaith: 10
+  changeFaith: 20
   changePower: 0
   changeDef: 0
   cooldown: 1
-  resultingStatus: {fileID: 0}
+  statusEffects: []
+  statusEffectsDurations: 
   isSingleTarget: 1
   isMultiTarget: 0
-  isSingleAndMultiTarget: 0
-  isSelfCast: 1
+  isAllTarget: 0
   isEnemyCast: 0
+  skillAnim: {fileID: 1701812803279059992, guid: 88542c57dd68e2e4090097e8d7c662d7, type: 3}
