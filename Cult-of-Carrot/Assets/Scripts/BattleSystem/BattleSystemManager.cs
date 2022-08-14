@@ -109,6 +109,16 @@ public class BattleSystemManager : MonoBehaviour
             battlePanel.UpdateBattleText("No target selected!");
             return;
         }
+        else if (!playerUnit.isSelected && !skill.isEnemyCast)
+        {
+            battlePanel.UpdateBattleText("No target selected!");
+            return;
+        }
+        else if (!enemySelected && skill.isEnemyCast)
+        {
+            battlePanel.UpdateBattleText("No target selected!");
+            return;
+        }
 
         if (playerUnit.CanCastSkill(skill))
         {
