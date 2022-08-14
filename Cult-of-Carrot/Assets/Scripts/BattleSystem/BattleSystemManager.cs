@@ -32,7 +32,6 @@ public class BattleSystemManager : MonoBehaviour
 
     private BattleState battleState;
 
-    private bool playerHasClicked = true;
     private int enemiesRemaining;
     private int currentTurn;
 
@@ -79,6 +78,7 @@ public class BattleSystemManager : MonoBehaviour
     {
         string currentRound = "Round: " + currentTurn.ToString();
         currentRoundText.text = currentRound;
+        playerUnit.SetCurrentTurn(currentTurn);
 
         if (playerUnit.TurnIsBlocked())
         {
@@ -87,39 +87,37 @@ public class BattleSystemManager : MonoBehaviour
         else
         {
             battlePanel.UpdateBattleText("Player's Turn. Carrot be with you.");
-            skillsPanel.SetCurrentTurn(currentTurn);
             skillsPanel.EnableSkillButtons();
-            playerHasClicked = false;
             yield return null;
         }        
     }
 
-    public void PlayerAttackChosen(Attack attack)
+    public void PlayerAttackChosen(Skill skill)
     {
         if (battleState != BattleState.PLAYERTURN) return;
 
         // Check if player has a target
-        if (!playerUnit.isSelected && (getMouseClick.enemyUnitIndex == -1)) return;
-
-        // Check if in the middle of skill cooldown
-        if (!attack.canCast)
+        if (!playerUnit.isSelected && (getMouseClick.enemyUnitIndex == -1) && !skill.isMultiTarget)
         {
-            battlePanel.UpdateBattleText("Cannot cast " + attack.skill.skillName + " during cooldown.");
+            battlePanel.UpdateBattleText("No target selected!");
             return;
         }
 
-        if (!playerHasClicked)
+        if (playerUnit.CanCastSkill(skill))
         {
-            StartCoroutine(PlayerSkillAttack(attack.skill));
-            playerHasClicked = true;
+            StartCoroutine(PlayerSkillAttack(skill));
             skillsPanel.DisableSkillButtons();
+        }
+        else
+        {
+            int skillTurnsLeft = playerUnit.GetSkillTurnsLeft(skill.skillName);
+            battlePanel.UpdateBattleText("Cannot cast " + skill.skillName + " for the next " + skillTurnsLeft.ToString() + " turns.");
         }
     }
 
     IEnumerator PlayerSkillAttack(Skill skill)
     {
         battlePanel.UpdateBattleText("Player used " + skill.skillName + "!");
-        Debug.Log("Player used " + skill.skillName + "!");
 
         // Single target, cast on Enemy skills
         if (skill.isSingleTarget && skill.isEnemyCast)

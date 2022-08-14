@@ -39,14 +39,6 @@ public class SkillsPanel : MonoBehaviour
         DisableSkillButtons();
     }
 
-    public void SetCurrentTurn(int currentTurn)
-    {
-        foreach (GameObject btn in skillButtons)
-        {
-            btn.GetComponent<SkillButton>().SetCurrentTurn(currentTurn);
-        }
-    }
-
     public void DisableSkillButtons()
     {
         foreach (GameObject btn in skillButtons)

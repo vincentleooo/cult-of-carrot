@@ -7,11 +7,8 @@ using TMPro;
 public class SkillButton : MonoBehaviour
 {
     public AttackEvent attackEvent;
-    private Attack attack;
     private Skill skill;
     private Button button;
-    private int nextTurn = 0;
-    private int currentTurn = 0;
 
     void Start()
     {
@@ -21,8 +18,6 @@ public class SkillButton : MonoBehaviour
     public void SetSkill(Skill skill)
     {
         this.skill = skill;
-        this.attack = ScriptableObject.CreateInstance<Attack>();
-        attack.skill = skill;
 
         if (button == null)
         {
@@ -30,18 +25,7 @@ public class SkillButton : MonoBehaviour
         }
 
         button.onClick.AddListener(() => {
-            if (nextTurn <= currentTurn)
-            {
-                nextTurn = currentTurn + skill.cooldown;
-                attack.canCast = true;
-            }
-
-            else
-            {
-                attack.canCast = false;
-            }
-
-            attackEvent.Raise(attack);
+            attackEvent.Raise(skill);
         });
 
         TMP_Text buttonTMP = gameObject.GetComponentInChildren<TMP_Text>();
@@ -51,8 +35,4 @@ public class SkillButton : MonoBehaviour
         tooltip.SetTooltipText(skill.skillDescription);
     }
 
-    public void SetCurrentTurn(int currentTurn)
-    {
-        this.currentTurn = currentTurn;
-    }
 }
