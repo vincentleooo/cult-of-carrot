@@ -960,6 +960,8 @@ MonoBehaviour:
   - {fileID: 1551214225815051511, guid: be0c891bcc5572f4fb5e5bcb8922c7b7, type: 3}
   - {fileID: 7878916908841426706, guid: 86ba87861c944dc43aa2c62f973c18fe, type: 3}
   playerPrefab: {fileID: 1494772015911411254, guid: b348d4fc82eaabe4f938fbbe7778a3fb, type: 3}
+  WinButton: {fileID: 0}
+  LoseButton: {fileID: 0}
   enemyBattlePositions:
   - {fileID: 1162594494}
   - {fileID: 1725101906}
@@ -1361,7 +1363,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 5309598ae94c5c5e73baddf800000000
+  m_ApplyToSortingLayers: 5309598ae94c5c5e73baddf800000000557cfabf
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
