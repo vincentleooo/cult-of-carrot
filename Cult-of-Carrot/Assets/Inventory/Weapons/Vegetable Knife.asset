@@ -10,20 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 802588319e069463a8fc614172ee53b0, type: 3}
-  m_Name: Carrot of Faith
+  m_Name: Vegetable Knife
   m_EditorClassIdentifier: 
   weaponID: 0
   price: 0
-  prefab: {fileID: 2727985165866550235, guid: 1adff4f6f96644133bf30ea80625d356, type: 3}
-  weaponName: Carrot of Faith
-  weaponDescription: 'Basic carrot for converting people. Carrots give you good eyesight;
-    help them see the glory of Carrot.
+  prefab: {fileID: 2761403682044352262, guid: 209cebbeb216a4a38a6f9586ab30fa95, type: 3}
+  weaponName: Vegetable Knife
+  weaponDescription: 'For when they start to get physical.
 
 
-    Vitamin C Blast:
+    The Holy Dagger:
 
-    Reduces Enemy
-    FAITH by 20.
+    Gains
+    30 PWR for 3 turns.
 
 '
   changeFaith: 0

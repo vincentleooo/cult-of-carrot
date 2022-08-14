@@ -19,8 +19,15 @@ MonoBehaviour:
   weaponDescription: 'For singing hymns on a flight while 30,000 feet in the air.
     HALLELUJAH!
 
-    Hymnastica: Taunts enemy for 3 turns with your hymns, making
-    them TAUNTED and enhancing you with holy defences.'
+
+    Hymnastica:
+
+    TAUNTS enemy for 3 turns with your hymns and
+    enhances you with holy defences.
+
+    Gains 10 DEF for 3 turns.
+
+'
   changeFaith: 0
   changePower: 0
   changeDef: 0

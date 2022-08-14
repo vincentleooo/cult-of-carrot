@@ -1491,7 +1491,7 @@ GameObject:
   - component: {fileID: 1128434941}
   - component: {fileID: 1128434942}
   m_Layer: 0
-  m_Name: shopkeeper
+  m_Name: Shopkeeper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1552,7 +1552,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 1bea755130c2f544ba4a1a1119e1f001, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2288,7 +2288,7 @@ GameObject:
   - component: {fileID: 1757346587}
   - component: {fileID: 1757346586}
   m_Layer: 0
-  m_Name: table
+  m_Name: Table
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2767,11 +2767,11 @@ PrefabInstance:
       objectReference: {fileID: 5372141736820619776, guid: d8a19e4cd7a93457996c36cc9fb7f11e, type: 3}
     - target: {fileID: 5311121700118091491, guid: 03179ba14ab0f4e9990047b0493d9b5c, type: 3}
       propertyPath: weaponItems.Array.size
-      value: 4
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5311121700118091491, guid: 03179ba14ab0f4e9990047b0493d9b5c, type: 3}
       propertyPath: equipmentItems.Array.size
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 5311121700118091491, guid: 03179ba14ab0f4e9990047b0493d9b5c, type: 3}
       propertyPath: weaponItems.Array.data[0]
@@ -2789,6 +2789,18 @@ PrefabInstance:
       propertyPath: weaponItems.Array.data[3]
       value: 
       objectReference: {fileID: 11400000, guid: 05b31d0ae1b5843f3a72332487232eea, type: 2}
+    - target: {fileID: 5311121700118091491, guid: 03179ba14ab0f4e9990047b0493d9b5c, type: 3}
+      propertyPath: weaponItems.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 08da1b552c5284cdcb33278c0324ed65, type: 2}
+    - target: {fileID: 5311121700118091491, guid: 03179ba14ab0f4e9990047b0493d9b5c, type: 3}
+      propertyPath: weaponItems.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9d365b99ac67344cbb82cf92559f817c, type: 2}
+    - target: {fileID: 5311121700118091491, guid: 03179ba14ab0f4e9990047b0493d9b5c, type: 3}
+      propertyPath: weaponItems.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4c61827ae5099446fb7de25507c91a06, type: 2}
     - target: {fileID: 5311121700118091491, guid: 03179ba14ab0f4e9990047b0493d9b5c, type: 3}
       propertyPath: consumableItems.Array.size
       value: 4
@@ -2828,11 +2840,11 @@ PrefabInstance:
     - target: {fileID: 5311121700118091491, guid: 03179ba14ab0f4e9990047b0493d9b5c, type: 3}
       propertyPath: equipmentItems.Array.data[8]
       value: 
-      objectReference: {fileID: 11400000, guid: ddf6b754fb17e34409c81cd065344a7f, type: 2}
+      objectReference: {fileID: 11400000, guid: f803d6ba5bb50b64e936a780f8759b72, type: 2}
     - target: {fileID: 5311121700118091491, guid: 03179ba14ab0f4e9990047b0493d9b5c, type: 3}
       propertyPath: equipmentItems.Array.data[9]
       value: 
-      objectReference: {fileID: 11400000, guid: f803d6ba5bb50b64e936a780f8759b72, type: 2}
+      objectReference: {fileID: 11400000, guid: 1e4409f6b65ee094997769ccd8adbc93, type: 2}
     - target: {fileID: 5311121700118091491, guid: 03179ba14ab0f4e9990047b0493d9b5c, type: 3}
       propertyPath: consumableItems.Array.data[0]
       value: 
@@ -2856,11 +2868,11 @@ PrefabInstance:
     - target: {fileID: 5311121700118091491, guid: 03179ba14ab0f4e9990047b0493d9b5c, type: 3}
       propertyPath: equipmentItems.Array.data[10]
       value: 
-      objectReference: {fileID: 11400000, guid: 1e4409f6b65ee094997769ccd8adbc93, type: 2}
+      objectReference: {fileID: 11400000, guid: 3a3ea47d8db47ce42bc2cc3b8b8fe7a0, type: 2}
     - target: {fileID: 5311121700118091491, guid: 03179ba14ab0f4e9990047b0493d9b5c, type: 3}
       propertyPath: equipmentItems.Array.data[11]
       value: 
-      objectReference: {fileID: 11400000, guid: 3a3ea47d8db47ce42bc2cc3b8b8fe7a0, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 5311121700118091491, guid: 03179ba14ab0f4e9990047b0493d9b5c, type: 3}
       propertyPath: equipmentItems.Array.data[12]
       value: 

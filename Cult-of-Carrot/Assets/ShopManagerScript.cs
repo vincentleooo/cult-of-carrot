@@ -10,7 +10,6 @@ using UnityEngine.SceneManagement;
 public class ShopManagerScript : MonoBehaviour
 {
 
-	public int[,] Consumables = new int[5, 5];
 	public float coins;
 	public TextMeshProUGUI coinsTxt;
 	public Consumables[] consumableItems;

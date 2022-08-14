@@ -16,9 +16,9 @@ MonoBehaviour:
   price: 0
   prefab: {fileID: 3124539044190806667, guid: da19cb828f16642508ad2f68adf2b895, type: 3}
   weaponName: Agriculture Scriptures
-  weaponDescription: "Cultist starter pack (priesthood comes included). \nHoly Chanting:
-    Enchants your enemy and puts them in a DAZE status for 3 turns.\nGains +10 PWR
-    for 3 turns."
+  weaponDescription: "Cultist starter pack (priesthood comes included). \n\nHoly
+    Chanting:\nEnchants your enemy and puts them in a DAZE status for 3 turns.\nGains
+    10 PWR for 3 turns."
   changeFaith: 0
   changePower: 0
   changeDef: 0
