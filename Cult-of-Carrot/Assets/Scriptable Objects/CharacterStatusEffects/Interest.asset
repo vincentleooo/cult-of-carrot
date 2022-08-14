@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: Interest
   m_EditorClassIdentifier: 
   stateName: Interest
+  effectIndex: 3
   castOnEnemy: 1
   description: 'A valid point was made.
 
     Takes 2x damage for 2 turns.'
-  image: {fileID: 2800000, guid: 98e0c68dfbca640b199d102afc306f54, type: 3}
+  texture: {fileID: 2800000, guid: 98e0c68dfbca640b199d102afc306f54, type: 3}
   statChangeValue: 0
   doubleDamage: 1
   numTurns: 2
-  statusEffectType: 0
+  statusEffectType: 4

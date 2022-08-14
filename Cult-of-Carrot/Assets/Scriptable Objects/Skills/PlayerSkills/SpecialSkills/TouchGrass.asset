@@ -13,22 +13,13 @@ MonoBehaviour:
   m_Name: TouchGrass
   m_EditorClassIdentifier: 
   skillName: Touch Grass
-  skillDescription: 'A supreme power bestowed by the Left Hand of the Carrot Lord.
+  skillDescription: 'CASSLIGHTS Self for 2 turns.
 
-    CASSLIGHT
-    yourself for 2 turns, then gain the superior SPIRITUAL AWAKENING for 1 turn.
-
-    CD:
-    8'
+    CD: 6'
   changeFaith: 0
   changePower: 0
   changeDef: 0
-  cooldown: 8
-  statusEffects:
-  - {fileID: 11400000, guid: 6eea613663322984b9dea0c505d8cb75, type: 2}
-  - {fileID: 11400000, guid: 441268a00596bde4bae67788cfa3087c, type: 2}
-  statusEffectsDurations: 0200000001000000
+  cooldown: 6
+  statusEffect: {fileID: 11400000, guid: 6eea613663322984b9dea0c505d8cb75, type: 2}
   isSingleTarget: 1
-  isMultiTarget: 0
-  isAllTarget: 0
   isEnemyCast: 0

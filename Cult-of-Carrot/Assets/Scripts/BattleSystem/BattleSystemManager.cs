@@ -78,6 +78,7 @@ public class BattleSystemManager : MonoBehaviour
     {
         string currentRound = "Round: " + currentTurn.ToString();
         currentRoundText.text = currentRound;
+        playerUnit.UpdateStatusEffect();
         playerUnit.SetCurrentTurn(currentTurn);
 
         if (playerUnit.TurnIsBlocked())
@@ -97,7 +98,13 @@ public class BattleSystemManager : MonoBehaviour
         if (battleState != BattleState.PLAYERTURN) return;
 
         // Check if player has a target
-        if (!playerUnit.isSelected && (getMouseClick.enemyUnitIndex == -1) && !skill.isMultiTarget)
+        bool enemySelected = false;
+        foreach (EnemyUnit e in enemyUnits)
+        {
+            if (!e.IsDefeated() && e.isSelected) enemySelected = true;
+        }
+
+        if (!playerUnit.isSelected && !enemySelected && !skill.isSingleTarget)
         {
             battlePanel.UpdateBattleText("No target selected!");
             return;
@@ -141,7 +148,7 @@ public class BattleSystemManager : MonoBehaviour
         }
 
         // Multi target, cast on Enemy skills
-        if (skill.isMultiTarget)
+        if (!skill.isSingleTarget)
         {
             foreach (EnemyUnit e in enemyUnits)
             {
@@ -174,7 +181,8 @@ public class BattleSystemManager : MonoBehaviour
 
         foreach (EnemyUnit e in enemyUnits)
         {
-            if (!e.TurnIsBlocked())
+            e.UpdateStatusEffect();
+            if (!e.TurnIsBlocked() && !e.IsDefeated())
             {
                 Skill enemySkill = e.SelectAttack();
                 battlePanel.UpdateBattleText("Enemy used " + enemySkill.skillName + "!");

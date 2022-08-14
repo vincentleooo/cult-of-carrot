@@ -16,13 +16,18 @@ MonoBehaviour:
   skillDescription: 'Special move to convert people outside of the cult.
 
     Reduce
-    Enemy FAITH by 10.
+    Enemy FAITH by 5.
 
     CD: 0
 
 '
-  changeFaith: 10
+  changeFaith: 5
   changePower: 0
   changeDef: 0
   cooldown: 0
-  resultingState: {fileID: 0}
+  statusEffects: []
+  statusEffectsDurations: 
+  isSingleTarget: 0
+  isMultiTarget: 0
+  isAllTarget: 0
+  isEnemyCast: 0

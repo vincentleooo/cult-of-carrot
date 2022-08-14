@@ -9,16 +9,18 @@ public enum StatusEffectTypeChanged
     FAITH,
     PWR,
     DEF,
-    BLOCKTURN
+    BLOCKTURN,
+    NONE
 }
 
 [CreateAssetMenu(fileName = "CharacterStatusEffect", menuName = "Scriptable Objects/CharacterStatusEffect", order = 3)]
 public class CharacterStatusEffect : ScriptableObject
 {
     public string stateName = "";
+    public EffectIndex effectIndex;
     public bool castOnEnemy = true;
     [Multiline] public string description = "";
-    public Texture image;
+    public Texture texture;
     public int statChangeValue;
     public bool doubleDamage;
     public int numTurns;

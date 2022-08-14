@@ -12,11 +12,8 @@ public class Skill : ScriptableObject
 	public float changePower;
 	public float changeDef;
     public int cooldown;
-    public CharacterStatusEffect[] statusEffects;
-    public int[] statusEffectsDurations;
+    public CharacterStatusEffect statusEffect;
     public bool isSingleTarget;
-    public bool isMultiTarget;
-    public bool isAllTarget;
-    // public bool isSelfCast;
+    // public bool isMultiTarget;
     public bool isEnemyCast;
 }

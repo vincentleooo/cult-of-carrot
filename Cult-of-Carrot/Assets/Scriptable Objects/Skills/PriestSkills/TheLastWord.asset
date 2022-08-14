@@ -13,14 +13,19 @@ MonoBehaviour:
   m_Name: TheLastWord
   m_EditorClassIdentifier: 
   skillName: The Last Word
-  skillDescription: 'Reduces FAITH of enemies by 15, raises self DEF by 10.
+  skillDescription: 'Reduces FAITH of enemies by 10, raises self DEF by 10.
 
     CD:
     3
 
 '
-  changeFaith: 15
+  changeFaith: 10
   changePower: 0
   changeDef: 10
   cooldown: 3
-  resultingState: {fileID: 0}
+  statusEffects: []
+  statusEffectsDurations: 
+  isSingleTarget: 0
+  isMultiTarget: 0
+  isAllTarget: 0
+  isEnemyCast: 0
