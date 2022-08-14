@@ -31,4 +31,4 @@ MonoBehaviour:
   isAllTarget: 0
   isSelfCast: 0
   isEnemyCast: 0
-  skillAnim: {fileID: 3209919853237238370, guid: 39eaf2c99a11db745adaa8ad6f895193, type: 3}
+  skillAnim: {fileID: 5107667154349053281, guid: ed7546e9fcea26243bffc94e8661c70f, type: 3}

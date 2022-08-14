@@ -231,6 +231,15 @@ public class BattleSystemManager : MonoBehaviour
 
     IEnumerator EndBattle()
     {
+        for (int i = 0; i < enemySkillAnims.Length; i++)
+        {
+            if (enemySkillAnims[i] != null)
+            {
+                Destroy(enemySkillAnims[i]);
+            }
+        }
+        Destroy(playerSkillAnim);
+        
         if (battleState == BattleState.WIN)
         {
             WinButton.gameObject.SetActive(true);

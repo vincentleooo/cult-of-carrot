@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 51da04d4da593c14db7fe28d58b56202
+guid: 8780107d2eb4bfd428d0ac19f4d2bdb6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -106,7 +106,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: polis-BOSS_0
+      name: theholydagger_0
       rect:
         serializedVersion: 2
         x: 0
@@ -120,14 +120,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ecac30e922ab0a4fb503098effe6ccf
-      internalID: -1931647441
+      spriteID: 875b9641b0ce2ed4d84c41e90de1c233
+      internalID: -1729752734
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: polis-BOSS_1
+      name: theholydagger_1
       rect:
         serializedVersion: 2
         x: 512
@@ -141,14 +141,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc2818edc9b038546be8803c4ca10b41
-      internalID: 780123045
+      spriteID: a70b86a81faabfc4b88f217decf5a7ee
+      internalID: 1774286130
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: polis-BOSS_2
+      name: theholydagger_2
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1024
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efb0dd5276289fb448c829ed16d4b5e7
+      internalID: -1320337644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theholydagger_3
       rect:
         serializedVersion: 2
         x: 0
@@ -162,14 +183,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 43d3a05597b68e644986ab0af652c254
-      internalID: 939514022
+      spriteID: 0a558418351d41944aa19f437d006be9
+      internalID: -484464640
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: polis-BOSS_3
+      name: theholydagger_4
       rect:
         serializedVersion: 2
         x: 512
@@ -183,14 +204,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b3cc8495e7d01e40a7d697df5657d53
-      internalID: 1684199916
+      spriteID: 064aad2a0decf5d48afadaa1b8f4350a
+      internalID: 506541683
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: polis-BOSS_4
+      name: theholydagger_5
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2e426a57ea67ef4c8e7f176b59b1948
+      internalID: 199728457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theholydagger_6
       rect:
         serializedVersion: 2
         x: 0
@@ -204,8 +246,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 359395de2db90ff4086b969d931ba80a
-      internalID: -593369580
+      spriteID: 81ecabc46396f06428f4a65d1a41e291
+      internalID: 462042117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theholydagger_7
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5407bf51b4a74174681b081b24595424
+      internalID: 1886153270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theholydagger_8
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8670a0a0da4327a4ea65374c7f9e8c7d
+      internalID: -680198348
       vertices: []
       indices: 
       edges: []
@@ -213,7 +297,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 59a0551caca20a34c82ce87370b94adc
     internalID: 0
     vertices: []
     indices: 
@@ -221,11 +305,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      polis-BOSS_1: 780123045
-      polis-BOSS_4: -593369580
-      polis-BOSS_3: 1684199916
-      polis-BOSS_2: 939514022
-      polis-BOSS_0: -1931647441
+      theholydagger_3: -484464640
+      theholydagger_0: -1729752734
+      theholydagger_5: 199728457
+      theholydagger_7: 1886153270
+      theholydagger_1: 1774286130
+      theholydagger_4: 506541683
+      theholydagger_6: 462042117
+      theholydagger_2: -1320337644
+      theholydagger_8: -680198348
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 
