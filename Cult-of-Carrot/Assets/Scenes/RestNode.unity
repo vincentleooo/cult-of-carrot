@@ -220,7 +220,7 @@ RectTransform:
   - {fileID: 1476250455}
   - {fileID: 310111961}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5639,6 +5639,7 @@ GameObject:
   m_Component:
   - component: {fileID: 615340331}
   - component: {fileID: 615340330}
+  - component: {fileID: 615340332}
   m_Layer: 0
   m_Name: PointLight2D
   m_TagString: Untagged
@@ -5740,6 +5741,26 @@ Transform:
   m_Father: {fileID: 688002053}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &615340332
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615340329}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8cc9a7d040e69094397852fccd395eb3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &639230461
 GameObject:
   m_ObjectHideFlags: 0
@@ -10680,7 +10701,7 @@ GameObject:
   m_Component:
   - component: {fileID: 688002053}
   m_Layer: 0
-  m_Name: Lighting
+  m_Name: LightingSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10701,7 +10722,7 @@ Transform:
   - {fileID: 615340331}
   - {fileID: 1071352774}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &723186542
 GameObject:
@@ -11199,7 +11220,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2163338869917363966, guid: 48ebb3cf62d548e44b7199257a9576f3, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2163338869917363966, guid: 48ebb3cf62d548e44b7199257a9576f3, type: 3}
       propertyPath: m_LocalPosition.x
