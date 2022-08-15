@@ -49,6 +49,9 @@ public class BattleSystemManager : MonoBehaviour
 
 	private int currentCharacterIndex = 0;
 
+    public GameObject disableUI;
+    public GameObject enableUI;
+
     void Start()
     {
         enemyUnits = new EnemyUnit[enemyBattlePositions.Length];
@@ -266,6 +269,9 @@ public class BattleSystemManager : MonoBehaviour
 
     IEnumerator EndBattle()
     {
+        
+
+
         for (int i = 0; i < enemySkillAnims.Length; i++)
         {
             if (enemySkillAnims[i] != null)
@@ -277,6 +283,8 @@ public class BattleSystemManager : MonoBehaviour
         
         if (battleState == BattleState.WIN)
         {
+            disableUI.gameObject.SetActive(false);
+            enableUI.gameObject.SetActive(true);
             WinButton.gameObject.SetActive(true);
             battlePanel.UpdateBattleText("You won. You have made their lives better.");
         }
