@@ -5,7 +5,8 @@ namespace Map
     public enum NodeType
     {
         Tutorial,
-        MinorEnemy,
+        MinorEnemy1,
+        MinorEnemy2,
         EliteEnemy,
         Rest,
         Shop,

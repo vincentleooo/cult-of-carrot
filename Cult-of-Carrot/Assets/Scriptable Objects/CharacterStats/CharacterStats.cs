@@ -6,10 +6,26 @@ using UnityEngine;
 public class CharacterStats : ScriptableObject 
 {
     public string charName = "";
-    public GameObject characterGameObject;
     public int node = 1;
-    public int Faith = 30;
-    public int Power = 10;
-    public int Defence = 5;
-	public Skills[] Skills;
+    public float Faith = 30f;
+    public float Power = 10f;
+    public float Defence = 10f;
+	public List<Skill> Skills;
+
+    public void SetNode(int node)
+    {
+        this.node = node;
+    }
+
+    public void SetStats(float faith, float power, float defence) 
+    {
+        this.Faith = faith;
+        this.Power = power;
+        this.Defence = defence;
+    }
+
+    public void AddSkill(Skill skill)
+    {
+        Skills.Add(skill);
+    }
 }

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1d2daaadf2e445e79a790a7d9cbb704, type: 3}
+  m_Name: VitaminCBlast
+  m_EditorClassIdentifier: 
+  weaponSkillName: Vitamin C Blast
+  weaponSkillDescription: Reduces Enemy FAITH by 20.
+  changeFaith: 20
+  changePower: 0
+  changeDef: 0
+  canBeUsed: 0
+  resultingStatusEffect: {fileID: 0}
+  weaponAnim: {fileID: 2949006767174131602, guid: 3a865eb1a9f9a6246a780e3c407279f2, type: 3}

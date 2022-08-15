@@ -7,7 +7,7 @@ public class AttackEvent : ScriptableObject
 {
     private readonly List<AttackEventListener> eventListeners = new List<AttackEventListener>();
 
-    public void Raise(Skills skill)
+    public void Raise(Skill skill)
     {
         for(int i = eventListeners.Count -1; i >= 0; i--)
             eventListeners[i].OnEventRaised(skill);

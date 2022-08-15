@@ -83,11 +83,16 @@ namespace Map
                     SceneManager.LoadScene("Tutorial");
                     break;
 
-                case (NodeType.MinorEnemy):
-                    SceneManager.LoadScene("Tutorial");
+                case (NodeType.MinorEnemy1):
+                    SceneManager.LoadScene("MinorEnemy1");
+                    break;
+                
+                case (NodeType.MinorEnemy2):
+                    SceneManager.LoadScene("MinorEnemy2");
                     break;
 
                 case (NodeType.EliteEnemy):
+                    SceneManager.LoadScene("EliteEnemy");
                     break;
 
                 case (NodeType.Rest):
@@ -99,6 +104,7 @@ namespace Map
                     break;
 
                 case (NodeType.Boss):
+                    SceneManager.LoadScene("Boss");
                     break;
 
                 default:

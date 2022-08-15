@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 144184119fd91b74aa8a5de7266f5d15, type: 3}
+  m_Name: PrisonersBallAndChain
+  m_EditorClassIdentifier: 
+  equipmentID: 0
+  price: 0
+  prefab: {fileID: 785104253911992399, guid: f0b5021ded49747e6a9d8fe50ab8da22, type: 3}
+  prefabInventory: {fileID: 785104253911992399, guid: c792a1197555e45b29c6bb52125d7c75, type: 3}
+  equipmentName: Prisoner's Ball & Chain
+  equipmentDescription: 'Unfriendly reminder of your past, and also apparently a
+    free way into prison without question.
+
+    PWR +10, DEF +10.'
+  changeFaith: 0
+  changePower: 10
+  changeDef: 10
+  isEquipped: 0
+  equipmentType: 4

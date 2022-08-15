@@ -3,7 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ground
+  - FaithBar
+  - PowerBar
+  - DefBar
+  - Enemy
+  - FaithNumber
+  - MaxFaithNumber
+  - Event
   layers:
   - Default
   - TransparentFX
@@ -49,4 +57,7 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: animations
+    uniqueID: 3220864085
     locked: 0

@@ -65,7 +65,7 @@ namespace Map
 
         private void OnApplicationQuit()
         {
-            SaveMap();
+            PlayerPrefs.DeleteKey("Map");
         }
     }
 }

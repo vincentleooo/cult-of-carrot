@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 802588319e069463a8fc614172ee53b0, type: 3}
+  m_Name: Bread and Wine
+  m_EditorClassIdentifier: 
+  weaponID: 0
+  price: 0
+  prefab: {fileID: 2037177059970665036, guid: 77a4f9ffec82f426f8d4aef6d20d9193, type: 3}
+  prefabInventory: {fileID: 2037177059970665036, guid: c836baa46f28949e4a6a500fa3d3c288, type: 3}
+  weaponName: Bread and Wine
+  weaponDescription: 'Carbs give carrots a balanced diet. And numbs the pain.
+
+
+    The
+    Consummion:
+
+    Recovers 30 FAITH and Mmakes you DRUNK.'
+  changeFaith: 0
+  changePower: 0
+  changeDef: 0
+  weaponSkill: {fileID: 0}
+  isEquipped: 0

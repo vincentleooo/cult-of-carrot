@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using TMPro;
 
 public enum BattleState 
 {
@@ -15,54 +16,70 @@ public enum BattleState
 
 public class BattleSystemManager : MonoBehaviour
 {
-    public Text battleText;
-    public Transform[] skillButtonPositions;
-    public Button[] skillButtons;
+    public HUDBattlePanel battlePanel;
+    public SkillsPanel skillsPanel;
 
-    private GameObject[] enemies;
-    private GameObject player;
+    public GameObject[] enemyPrefabs;
+    public GameObject playerPrefab;
+
+	// when battle ends
+    public GameObject WinButton;
+    public GameObject LoseButton;
+
+    //for skill anim
+    // private GameObject playerSkillAnim;
+	private GameObject[] playerSkillAnims = {null,null,null};
+    // private GameObject enemySkillAnim;
+    private GameObject[] enemySkillAnims = {null,null,null};
 
     public Transform[] enemyBattlePositions;
     public Transform playerBattlePosition;
 
-    public CharacterStats[] enemiesStats;
-    public CharacterStats playerStats;
+    public TextMeshProUGUI currentRoundText;
 
     private PlayerUnit playerUnit;
-    private EnemyUnit[] enemyUnits;
+    [HideInInspector] public EnemyUnit[] enemyUnits;
 
     private BattleState battleState;
 
-    private bool playerHasClicked = true;
     private int enemiesRemaining;
+    private int currentTurn;
 
-    // Start is called before the first frame update
+    private GetMouseClick getMouseClick;
+
+	private int currentCharacterIndex = 0;
+
+    public GameObject disableUI = null;
+    public GameObject enableUI = null;
+
     void Start()
     {
-        Debug.Assert(enemiesStats.Length == enemyBattlePositions.Length); 
-        enemies = new GameObject[enemiesStats.Length];
-        enemyUnits = new EnemyUnit[enemiesStats.Length];
-        enemiesRemaining = enemiesStats.Length;
+        enemyUnits = new EnemyUnit[enemyBattlePositions.Length];
+        enemiesRemaining = enemyBattlePositions.Length;
         battleState = BattleState.START;
+        currentTurn = 1;
+
+        string currentRound = "Round: " + currentTurn.ToString();
+        currentRoundText.text = currentRound;
+
+        getMouseClick = GetComponent<GetMouseClick>();
+
         StartCoroutine(BeginBattle());
     }
 
     IEnumerator BeginBattle()
     {
-        // spawn characters on battle stations
-        // players
-        player = Instantiate(playerStats.characterGameObject, playerBattlePosition);
-        player.SetActive(true);
-        playerUnit = player.GetComponent<PlayerUnit>();
-        playerUnit.SetStats(playerStats.Faith, playerStats.Power, playerStats.Defence);
+        // spawn player on battle stations
+        playerPrefab = Instantiate(playerPrefab, playerBattlePosition);
+        playerPrefab.SetActive(true);
+        playerUnit = playerPrefab.GetComponent<PlayerUnit>();
         
-        // enemies
-        for (int i = 0; i < enemiesStats.Length; i++)
+        // spawn enemies on battle stations
+        for (int i = 0; i < enemyPrefabs.Length; i++)
         {
-            enemies[i] = Instantiate(enemiesStats[i].characterGameObject, enemyBattlePositions[i]);
-            enemies[i].SetActive(true);
-            enemyUnits[i] = enemies[i].GetComponent<EnemyUnit>();
-            enemyUnits[i].SetStats(enemiesStats[i].Faith, enemiesStats[i].Power, enemiesStats[i].Defence);
+            enemyPrefabs[i] = Instantiate(enemyPrefabs[i], enemyBattlePositions[i]);
+            enemyPrefabs[i].SetActive(true);
+            enemyUnits[i] = enemyPrefabs[i].GetComponent<EnemyUnit>();
         }
 
         yield return new WaitForSeconds(3);
@@ -74,36 +91,159 @@ public class BattleSystemManager : MonoBehaviour
 
     IEnumerator PlayerTurn()
     {
-        battleText.text = "Player's Turn. Carrot be with you.";
-        playerHasClicked = false;
-        yield return null;
+        for (int i = 0; i < enemySkillAnims.Length; i++)
+        {
+            if (enemySkillAnims[i] != null)
+            {
+                Destroy(enemySkillAnims[i]);
+            }
+        }
+        
+
+        string currentRound = "Round: " + currentTurn.ToString();
+        currentRoundText.text = currentRound;
+        playerUnit.UpdateStatusEffect();
+        playerUnit.SetCurrentTurn(currentTurn);
+
+        if (playerUnit.TurnIsBlocked())
+        {
+            yield return StartCoroutine(EnemiesAttack());
+        }
+        else
+        {
+            battlePanel.UpdateBattleText("Player's Turn. Carrot be with you.");
+            skillsPanel.EnableSkillButtons();
+            yield return null;
+        }        
     }
 
-    public void CharacterAttack(Skills skill)
+    public void PlayerAttackChosen(Skill skill)
     {
-        Debug.Log(skill.skillName);
         if (battleState != BattleState.PLAYERTURN) return;
 
-        if (!playerHasClicked)
+        // Check if player has a target
+        bool enemySelected = false;
+        foreach (EnemyUnit e in enemyUnits)
+        {
+            if (!e.IsDefeated() && e.isSelected) enemySelected = true;
+        }
+
+        if (!playerUnit.isSelected && !enemySelected && !skill.isSingleTarget)
+        {
+            battlePanel.UpdateBattleText("No target selected!");
+            return;
+        }
+        else 
+		if (!playerUnit.isSelected && !skill.isEnemyCast)
+        {
+            battlePanel.UpdateBattleText("No target selected! Select yourself for self-cast skills.");
+            return;
+        }
+        else if (!enemySelected && skill.isEnemyCast)
+        {
+            battlePanel.UpdateBattleText("No target selected! Select one enemy to attack.");
+            return;
+        }
+
+        if (playerUnit.CanCastSkill(skill))
         {
             StartCoroutine(PlayerSkillAttack(skill));
-            playerHasClicked = true;
+            skillsPanel.DisableSkillButtons();
+
+        }
+        else
+        {
+            int skillTurnsLeft = playerUnit.GetSkillTurnsLeft(skill.skillName);
+            battlePanel.UpdateBattleText("Cannot cast " + skill.skillName + " for the next " + skillTurnsLeft.ToString() + " turns.");
         }
     }
 
-    IEnumerator PlayerSkillAttack(Skills skill)
+    IEnumerator PlayerSkillAttack(Skill skill)
     {
-        battleText.text = "Player used " + skill.skillName;
 
-        int perEnemyFaithDamage = skill.changeFaith / enemiesRemaining;
-        int perEnemyPwrDamage = skill.changePower / enemiesRemaining;
-        int perEnemyDefDamage = skill.changeDef / enemiesRemaining;
+        battlePanel.UpdateBattleText("Player used " + skill.skillName + "!");
 
-        foreach (EnemyUnit e in enemyUnits)
+        // Single target, cast on Enemy skills
+        if (skill.isSingleTarget && skill.isEnemyCast)
         {
-            e.ChangeStats(perEnemyFaithDamage, perEnemyPwrDamage, perEnemyDefDamage);
-            if (e.currentFaith <= 0) enemiesRemaining--;
-            yield return new WaitForSeconds(1);
+            // EnemyUnit targetEnemy = enemyUnits[getMouseClick.enemyUnitIndex];
+
+			for (int i = 0; i < enemyUnits.Length; i++)
+			{
+				if (enemyUnits[i].isSelected)
+				{
+					playerSkillAnims[i] = Instantiate(skill.skillAnim, playerBattlePosition);
+					playerSkillAnims[i].SetActive(true);
+					
+					enemyUnits[i].TakeDamage(skill, playerUnit.GetCharacterPower());
+					if (enemyUnits[i].IsDefeated()) enemiesRemaining--;
+
+					yield return new WaitForSeconds(1);
+					yield return null;
+				}
+			}
+
+			// foreach (EnemyUnit e in enemyUnits)
+			// {
+			// 	if (e.isSelected)
+			// 	{
+			// 		playerSkillAnim = Instantiate(skill.skillAnim, playerBattlePosition);
+			// 		playerSkillAnim.SetActive(true);
+					
+			// 		e.TakeDamage(skill, playerUnit.GetCharacterPower());
+			// 		if (e.IsDefeated()) enemiesRemaining--;
+
+			// 		yield return new WaitForSeconds(1);
+			// 		yield return null;
+			// 	}
+			// }
+
+            // playerSkillAnim = Instantiate(skill.skillAnim, enemyBattlePositions[getMouseClick.enemyUnitIndex]);
+            
+        }
+
+        // Single target, cast on Self skills
+        if (skill.isSingleTarget && !skill.isEnemyCast)
+        {
+            if (playerUnit.isSelected)
+            {
+                Debug.Log("Casting " + skill.skillName + " on self");
+
+                playerSkillAnims[0] = Instantiate(skill.skillAnim, playerBattlePosition);
+                playerSkillAnims[0].SetActive(true);
+
+                playerUnit.CastOnSelf(skill);
+                yield return new WaitForSeconds(1);
+                // StartCoroutine(CheckPlayerDeath());
+            }
+        }
+
+        // Multi target, cast on Enemy skills
+        if (!skill.isSingleTarget)
+        {
+            // foreach (EnemyUnit e in enemyUnits)
+            // {
+			// 	playerSkillAnim = Instantiate(skill.skillAnim, playerBattlePosition);
+            //     playerSkillAnim.SetActive(true);
+            //     e.TakeDamage(skill, playerUnit.GetCharacterPower(), enemiesRemaining);
+            //     if (e.IsDefeated())
+            //     {
+            //         enemiesRemaining--;
+            //     }
+            //     yield return new WaitForSeconds(1);
+            // }
+
+			for (int i = 0; i < enemyUnits.Length; i++)
+			{
+				playerSkillAnims[i] = Instantiate(skill.skillAnim, playerBattlePosition);
+				playerSkillAnims[i].SetActive(true);
+				
+				enemyUnits[i].TakeDamage(skill, playerUnit.GetCharacterPower());
+				if (enemyUnits[i].IsDefeated()) enemiesRemaining--;
+
+				yield return new WaitForSeconds(1);
+				
+			}
         }
 
         if (enemiesRemaining > 0)
@@ -120,44 +260,112 @@ public class BattleSystemManager : MonoBehaviour
 
     IEnumerator EnemiesAttack()
     {
-        battleText.text = "Enemy's turn. You better start praying.";
+        for (int i = 0; i < playerSkillAnims.Length; i++)
+        {
+            if (playerSkillAnims[i] != null)
+            {
+                Destroy(playerSkillAnims[i]);
+            }
+        }
 
-        // TODO: Have enemies w diff attacks or smth
+        battlePanel.UpdateBattleText("Enemy's turn. You better start praying.");
+
+        yield return new WaitForSeconds(2);
+
+        currentCharacterIndex = 1; // Reset it each time
+
+
+        for (int i = 0; i < enemyUnits.Length; i++)
+        {
+			if (enemyUnits[i].IsDefeated()) continue;
+            Skill enemySkill = enemyUnits[i].SelectAttack();
+
+            enemySkillAnims[i] = Instantiate(enemySkill.skillAnim, enemyBattlePositions[i]);
+            enemySkillAnims[i].SetActive(true);
+
+            // battlePanel.UpdateBattleText("Enemy used " + enemySkill.skillName + "!");
+            // playerUnit.TakeDamage(enemySkill, enemyUnits[i].GetCharacterPower());
+
+            // currentCharacterIndex++;
+
+            // yield return new WaitForSeconds(1);
+            // StartCoroutine(CheckPlayerDeath());
+		}
+
         foreach (EnemyUnit e in enemyUnits)
         {
-            int playerDamage = e.Attack();
-            playerUnit.TakeDamage(playerDamage);
-
-            yield return new WaitForSeconds(1);
-
-            // Check if player is still alive
-            if (playerUnit.currentFaith <= 0)
+            e.UpdateStatusEffect();
+			if (e.IsDefeated()) continue;
+            if (!e.TurnIsBlocked() && !e.IsDefeated())
             {
-                battleState = BattleState.LOST;
+                Skill enemySkill = e.SelectAttack();
+                battlePanel.UpdateBattleText("Enemy used " + enemySkill.skillName + "!");
+                playerUnit.TakeDamage(enemySkill, e.GetCharacterPower());
 
-                // TODO: Transition to end battle
-                yield return StartCoroutine(EndBattle());
-                yield break;
+                yield return new WaitForSeconds(1);
+                // StartCoroutine(CheckPlayerDeath());
+
+                if (playerUnit.IsDefeated())
+                {
+                    battleState = BattleState.LOST;
+
+                    yield return StartCoroutine(EndBattle());
+                    yield break;
+                }
             }
         }
 
         yield return new WaitForSeconds(2);
 
+        currentTurn += 1;
         battleState = BattleState.PLAYERTURN;
 
         yield return StartCoroutine(PlayerTurn());
     }
 
+    IEnumerator CheckPlayerDeath()
+    {
+        if (playerUnit.IsDefeated())
+        {
+            battleState = BattleState.LOST;
+
+            yield return StartCoroutine(EndBattle());
+            yield break;
+        }
+    }
+
     IEnumerator EndBattle()
     {
+        
+
+
+        for (int i = 0; i < enemySkillAnims.Length; i++)
+        {
+            if (enemySkillAnims[i] != null)
+            {
+                Destroy(enemySkillAnims[i]);
+            }
+        }
+        for (int i = 0; i < playerSkillAnims.Length; i++)
+        {
+            if (playerSkillAnims[i] != null)
+            {
+                Destroy(playerSkillAnims[i]);
+            }
+        }
+        
         if (battleState == BattleState.WIN)
         {
-            battleText.text = "You won. Bitch.";
+            disableUI.gameObject.SetActive(false);
+            enableUI.gameObject.SetActive(true);
+            WinButton.gameObject.SetActive(true);
+            battlePanel.UpdateBattleText("You won. You have made their lives better.");
         }
 
         else if (battleState == BattleState.LOST)
         {
-            battleText.text = "You lost, you little bitch.";
+            LoseButton.gameObject.SetActive(true);
+            battlePanel.UpdateBattleText("You lost. Enjoy the gulag.");
         }
 
         yield break;

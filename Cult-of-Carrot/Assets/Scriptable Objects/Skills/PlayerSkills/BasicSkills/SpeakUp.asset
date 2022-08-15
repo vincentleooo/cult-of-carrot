@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222452829764e4bd88a338a30bf00f7b, type: 3}
+  m_Name: SpeakUp
+  m_EditorClassIdentifier: 
+  skillName: Speak Up
+  skillDescription: 'Know your worth!
+
+    Raises Enemy FAITH by 15.
+
+    CD: 1'
+  changeFaith: 15
+  changePower: 0
+  changeDef: 0
+  cooldown: 0
+  statusEffects: []
+  statusEffectsDurations: 
+  isSingleTarget: 1
+  isMultiTarget: 0
+  isAllTarget: 0
+  isEnemyCast: 1
+  skillAnim: {fileID: 8623456721184773987, guid: 9e205f8a053e4b4478dc9637decb0265, type: 3}

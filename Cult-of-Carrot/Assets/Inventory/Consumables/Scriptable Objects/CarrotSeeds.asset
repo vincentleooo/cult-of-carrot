@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 940cd774f7ded8749964308e7311be13, type: 3}
+  m_Name: CarrotSeeds
+  m_EditorClassIdentifier: 
+  consumableID: 0
+  consumableName: Carrot Seeds
+  price: 10
+  prefab: {fileID: 5372141736820619776, guid: 11fd1cf139f3141ffac012aed75aa04a, type: 3}
+  prefabInventory: {fileID: 5372141736820619776, guid: 01504eddbab0545c2b419f318ec598e2, type: 3}
+  consumableDesc: Store it for a dry day. Plant It on a rainy day. Or eat it now
+    for that headache.
+  changeFaith: 0
+  changePower: 0
+  changeDef: 0
+  numTurns: 0
+  statusEffectType: 

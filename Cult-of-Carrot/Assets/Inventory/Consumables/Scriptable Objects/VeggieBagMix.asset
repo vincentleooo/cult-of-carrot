@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 940cd774f7ded8749964308e7311be13, type: 3}
+  m_Name: VeggieBagMix
+  m_EditorClassIdentifier: 
+  consumableID: 0
+  consumableName: Veggie Bag Mix
+  price: 0
+  prefab: {fileID: 5372141736820619776, guid: 0ba0d83dd211d42d6ad4d19cb1a3cbfd, type: 3}
+  prefabInventory: {fileID: 5372141736820619776, guid: 7ee10e0d66bef4f788b21e96d93c0f4d, type: 3}
+  consumableDesc: "Kids like it. Cultists LOVE it. Get yours today for 23.59$, or
+    a dollar if you\u2019re one of us."
+  changeFaith: 0
+  changePower: 15
+  changeDef: 0
+  numTurns: 3
+  statusEffectType: 
