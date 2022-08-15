@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a2f56b17aadeb4843b7bd76d562971b9, type: 3}
+  m_Sprite: {fileID: -1336819826, guid: a4fa5b0d2db3d6a429ce953537757bfc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -104,7 +104,7 @@ Animator:
   m_GameObject: {fileID: 7759355377679089293}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f93ffde732dac5b4599bf5ecdf775135, type: 2}
+  m_Controller: {fileID: 9100000, guid: f39eff33fabbcdb4eb18dcc8b3c2b70a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -190,6 +190,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 3440446611713200499}
     m_Modifications:
+    - target: {fileID: 4304146457511384301, guid: 86efad3ca9b7cae4f8bffaa98d19142b, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 4781446251867031384, guid: 86efad3ca9b7cae4f8bffaa98d19142b, type: 3}
       propertyPath: m_Name
       value: SelectRing

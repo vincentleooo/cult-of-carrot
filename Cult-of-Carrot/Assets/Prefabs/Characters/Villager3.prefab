@@ -371,6 +371,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 4488367615581318993}
     m_Modifications:
+    - target: {fileID: 4304146457511384301, guid: 86efad3ca9b7cae4f8bffaa98d19142b, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 4781446251867031384, guid: 86efad3ca9b7cae4f8bffaa98d19142b, type: 3}
       propertyPath: m_Name
       value: SelectRing

@@ -27,7 +27,8 @@ public class BattleSystemManager : MonoBehaviour
     public GameObject LoseButton;
 
     //for skill anim
-    private GameObject playerSkillAnim;
+    // private GameObject playerSkillAnim;
+	private GameObject[] playerSkillAnims = {null,null,null};
     // private GameObject enemySkillAnim;
     private GameObject[] enemySkillAnims = {null,null,null};
 
@@ -48,8 +49,8 @@ public class BattleSystemManager : MonoBehaviour
 
 	private int currentCharacterIndex = 0;
 
-    public GameObject disableUI;
-    public GameObject enableUI;
+    public GameObject disableUI = null;
+    public GameObject enableUI = null;
 
     void Start()
     {
@@ -167,20 +168,35 @@ public class BattleSystemManager : MonoBehaviour
         {
             // EnemyUnit targetEnemy = enemyUnits[getMouseClick.enemyUnitIndex];
 
-			foreach (EnemyUnit e in enemyUnits)
+			for (int i = 0; i < enemyUnits.Length; i++)
 			{
-				if (e.isSelected)
+				if (enemyUnits[i].isSelected)
 				{
-					playerSkillAnim = Instantiate(skill.skillAnim, playerBattlePosition);
-					playerSkillAnim.SetActive(true);
+					playerSkillAnims[i] = Instantiate(skill.skillAnim, playerBattlePosition);
+					playerSkillAnims[i].SetActive(true);
 					
-					e.TakeDamage(skill, playerUnit.GetCharacterPower());
-					if (e.IsDefeated()) enemiesRemaining--;
+					enemyUnits[i].TakeDamage(skill, playerUnit.GetCharacterPower());
+					if (enemyUnits[i].IsDefeated()) enemiesRemaining--;
 
 					yield return new WaitForSeconds(1);
 					yield return null;
 				}
 			}
+
+			// foreach (EnemyUnit e in enemyUnits)
+			// {
+			// 	if (e.isSelected)
+			// 	{
+			// 		playerSkillAnim = Instantiate(skill.skillAnim, playerBattlePosition);
+			// 		playerSkillAnim.SetActive(true);
+					
+			// 		e.TakeDamage(skill, playerUnit.GetCharacterPower());
+			// 		if (e.IsDefeated()) enemiesRemaining--;
+
+			// 		yield return new WaitForSeconds(1);
+			// 		yield return null;
+			// 	}
+			// }
 
             // playerSkillAnim = Instantiate(skill.skillAnim, enemyBattlePositions[getMouseClick.enemyUnitIndex]);
             
@@ -193,8 +209,8 @@ public class BattleSystemManager : MonoBehaviour
             {
                 Debug.Log("Casting " + skill.skillName + " on self");
 
-                playerSkillAnim = Instantiate(skill.skillAnim, playerBattlePosition);
-                playerSkillAnim.SetActive(true);
+                playerSkillAnims[0] = Instantiate(skill.skillAnim, playerBattlePosition);
+                playerSkillAnims[0].SetActive(true);
 
                 playerUnit.CastOnSelf(skill);
                 yield return new WaitForSeconds(1);
@@ -205,17 +221,29 @@ public class BattleSystemManager : MonoBehaviour
         // Multi target, cast on Enemy skills
         if (!skill.isSingleTarget)
         {
-            foreach (EnemyUnit e in enemyUnits)
-            {
-				playerSkillAnim = Instantiate(skill.skillAnim, playerBattlePosition);
-                playerSkillAnim.SetActive(true);
-                e.TakeDamage(skill, playerUnit.GetCharacterPower(), enemiesRemaining);
-                if (e.IsDefeated())
-                {
-                    enemiesRemaining--;
-                }
-                yield return new WaitForSeconds(1);
-            }
+            // foreach (EnemyUnit e in enemyUnits)
+            // {
+			// 	playerSkillAnim = Instantiate(skill.skillAnim, playerBattlePosition);
+            //     playerSkillAnim.SetActive(true);
+            //     e.TakeDamage(skill, playerUnit.GetCharacterPower(), enemiesRemaining);
+            //     if (e.IsDefeated())
+            //     {
+            //         enemiesRemaining--;
+            //     }
+            //     yield return new WaitForSeconds(1);
+            // }
+
+			for (int i = 0; i < enemyUnits.Length; i++)
+			{
+				playerSkillAnims[i] = Instantiate(skill.skillAnim, playerBattlePosition);
+				playerSkillAnims[i].SetActive(true);
+				
+				enemyUnits[i].TakeDamage(skill, playerUnit.GetCharacterPower());
+				if (enemyUnits[i].IsDefeated()) enemiesRemaining--;
+
+				yield return new WaitForSeconds(1);
+				
+			}
         }
 
         if (enemiesRemaining > 0)
@@ -232,7 +260,13 @@ public class BattleSystemManager : MonoBehaviour
 
     IEnumerator EnemiesAttack()
     {
-        Destroy(playerSkillAnim);
+        for (int i = 0; i < playerSkillAnims.Length; i++)
+        {
+            if (playerSkillAnims[i] != null)
+            {
+                Destroy(playerSkillAnims[i]);
+            }
+        }
 
         battlePanel.UpdateBattleText("Enemy's turn. You better start praying.");
 
@@ -312,7 +346,13 @@ public class BattleSystemManager : MonoBehaviour
                 Destroy(enemySkillAnims[i]);
             }
         }
-        Destroy(playerSkillAnim);
+        for (int i = 0; i < playerSkillAnims.Length; i++)
+        {
+            if (playerSkillAnims[i] != null)
+            {
+                Destroy(playerSkillAnims[i]);
+            }
+        }
         
         if (battleState == BattleState.WIN)
         {
