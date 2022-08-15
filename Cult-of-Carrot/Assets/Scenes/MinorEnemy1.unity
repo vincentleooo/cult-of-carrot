@@ -1130,6 +1130,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 832737409321981629, guid: 45c62c6f544c5694d9682477a930f278, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 832737409582255093, guid: 45c62c6f544c5694d9682477a930f278, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -59
@@ -1154,6 +1158,14 @@ PrefabInstance:
       propertyPath: m_Text
       value: CEREMONIAL DRINKING
       objectReference: {fileID: 0}
+    - target: {fileID: 832737410161163157, guid: 45c62c6f544c5694d9682477a930f278, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 832737410161163158, guid: 45c62c6f544c5694d9682477a930f278, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1279a89512d44d94eb164b8adebe12f3, type: 3}
     - target: {fileID: 832737410299913696, guid: 45c62c6f544c5694d9682477a930f278, type: 3}
       propertyPath: m_Text
       value: carrot seeds
