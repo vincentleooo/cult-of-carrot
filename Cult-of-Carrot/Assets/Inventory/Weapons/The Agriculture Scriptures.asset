@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 802588319e069463a8fc614172ee53b0, type: 3}
+  m_Name: The Agriculture Scriptures
+  m_EditorClassIdentifier: 
+  weaponID: 0
+  price: 0
+  prefab: {fileID: 3124539044190806667, guid: da19cb828f16642508ad2f68adf2b895, type: 3}
+  prefabInventory: {fileID: 3124539044190806667, guid: 65cd45b32eb14499aa8cf26ce11efc6f, type: 3}
+  weaponName: Agriculture Scriptures
+  weaponDescription: "Cultist starter pack (priesthood comes included). \n\nHoly
+    Chanting:\nEnchants your enemy and puts them in a DAZE status for 3 turns.\nGains
+    10 PWR for 3 turns."
+  changeFaith: 0
+  changePower: 0
+  changeDef: 0
+  weaponSkill: {fileID: 0}
+  isEquipped: 0

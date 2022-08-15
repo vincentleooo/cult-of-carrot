@@ -4,29 +4,67 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
+using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class ShopManagerScript : MonoBehaviour
 {
 
-	public int[,] shopItems = new int[5, 5];
 	public float coins;
 	public TextMeshProUGUI coinsTxt;
-	public ShopItems[] items;
+	public Consumables[] consumableItems;
+	public Equipment[] equipmentItems;
+	public Weapons[] weaponItems;
 	private GameObject newPrefab;
 	public bool unbuy = false;
+	public UnityEvent onApplicationExit;
 
 	// Fisher-Yates Shuffle
-	void Shuffle(ShopItems[] a)
+	void Shuffle(Consumables[] a)
 	{
 		// Loops through array backwards
-		for (int i = a.Length-1; i > 0; i--)
+		for (int i = a.Length - 1; i > 0; i--)
 		{
 			// Randomise a number between 0 and i (so that the range decreases each time)
 			int rnd = Random.Range(0, i);
-			
+
 			// Save the value of the current i, otherwise it'll overright when we swap the values
-			ShopItems temp = a[i];
-			
+			Consumables temp = a[i];
+
+			// Swap the new and old values
+			a[i] = a[rnd];
+			a[rnd] = temp;
+		}
+	}
+
+	void Shuffle(Equipment[] a)
+	{
+		// Loops through array backwards
+		for (int i = a.Length - 1; i > 0; i--)
+		{
+			// Randomise a number between 0 and i (so that the range decreases each time)
+			int rnd = Random.Range(0, i);
+
+			// Save the value of the current i, otherwise it'll overright when we swap the values
+			Equipment temp = a[i];
+
+			// Swap the new and old values
+			a[i] = a[rnd];
+			a[rnd] = temp;
+		}
+	}
+
+	void Shuffle(Weapons[] a)
+	{
+		// Loops through array backwards
+		for (int i = a.Length - 1; i > 0; i--)
+		{
+			// Randomise a number between 0 and i (so that the range decreases each time)
+			int rnd = Random.Range(0, i);
+
+			// Save the value of the current i, otherwise it'll overright when we swap the values
+			Weapons temp = a[i];
+
 			// Swap the new and old values
 			a[i] = a[rnd];
 			a[rnd] = temp;
@@ -35,16 +73,47 @@ public class ShopManagerScript : MonoBehaviour
 
 	void Start()
 	{
-		Shuffle(items);
-
-		for (int i = 0; i < items.Length; i++)
-		{
-			Debug.Log("Hellu");
-			newPrefab = Instantiate<GameObject>(items[i].prefab);
-			newPrefab.transform.SetParent(GameObject.Find("Content").transform, false);
-		}
+		InstantiateConsumables();
+		InstantiateEquipment();
+		InstantiateWeapons();
 
 		coinsTxt.text = "Coins: " + coins.ToString();
+	}
+
+	void InstantiateConsumables()
+	{
+		Shuffle(consumableItems);
+
+		for (int i = 0; i < consumableItems.Length; i++)
+		{
+			Debug.Log("Hellu");
+			newPrefab = Instantiate<GameObject>(consumableItems[i].prefab);
+			newPrefab.transform.SetParent(GameObject.Find("Consumables").transform, false);
+		}
+	}
+
+	void InstantiateEquipment()
+	{
+		Shuffle(equipmentItems);
+
+		for (int i = 0; i < 7; i++)
+		{
+			Debug.Log("Hellu");
+			newPrefab = Instantiate<GameObject>(equipmentItems[i].prefab);
+			newPrefab.transform.SetParent(GameObject.Find("Equipment").transform, false);
+		}
+	}
+
+	void InstantiateWeapons()
+	{
+		Shuffle(weaponItems);
+
+		for (int i = 0; i < 3; i++)
+		{
+			Debug.Log("Hellu");
+			newPrefab = Instantiate<GameObject>(weaponItems[i].prefab);
+			newPrefab.transform.SetParent(GameObject.Find("Equipment").transform, false);
+		}
 	}
 
 	public void Buy()
@@ -54,24 +123,25 @@ public class ShopManagerScript : MonoBehaviour
 			Debug.Log("Buy.");
 			GameObject buttonRef = GameObject.FindGameObjectWithTag("Event").GetComponent<EventSystem>().currentSelectedGameObject;
 
-			if (coins >= buttonRef.GetComponent<ButtonInfo>().price)
+			if (coins >= buttonRef.GetComponent<ShopButton>().Price())
 			{
-				coins -= buttonRef.GetComponent<ButtonInfo>().price;
-				buttonRef.GetComponent<ButtonInfo>().quantity++;
-				buttonRef.GetComponent<ButtonInfo>().quantityText.text = buttonRef.GetComponent<ButtonInfo>().quantity.ToString();
+				coins -= buttonRef.GetComponent<ShopButton>().Price();
+				buttonRef.GetComponent<ShopButton>().ModifyQuantity(1);
+				buttonRef.GetComponent<ShopButton>().quantityText.text = buttonRef.GetComponent<ShopButton>().Quantity().ToString();
 			}
-		} else {Unbuy();}
+		}
+		else { Unbuy(); }
 	}
 
 	public void Unbuy()
 	{
 		GameObject buttonRef = GameObject.FindGameObjectWithTag("Event").GetComponent<EventSystem>().currentSelectedGameObject;
 
-		if (buttonRef.GetComponent<ButtonInfo>().quantity > 0)
+		if (buttonRef.GetComponent<ShopButton>().Quantity() > 0)
 		{
-			coins += buttonRef.GetComponent<ButtonInfo>().price;
-			buttonRef.GetComponent<ButtonInfo>().quantity--;
-			buttonRef.GetComponent<ButtonInfo>().quantityText.text = buttonRef.GetComponent<ButtonInfo>().quantity.ToString();
+			coins += buttonRef.GetComponent<ShopButton>().Price();
+			buttonRef.GetComponent<ShopButton>().ModifyQuantity(-1);
+			buttonRef.GetComponent<ShopButton>().quantityText.text = buttonRef.GetComponent<ShopButton>().Quantity().ToString();
 		}
 	}
 
@@ -79,4 +149,9 @@ public class ShopManagerScript : MonoBehaviour
 	{
 		coinsTxt.text = "Coins: " + coins.ToString();
 	}
+
+	void OnApplicationQuit()
+    {
+        onApplicationExit.Invoke();
+    }
 }
