@@ -905,7 +905,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Button: {fileID: 9204931937326687967}
-  sceneName: 
+  sceneName: NodeSystem
 --- !u!1 &9204931937601487250
 GameObject:
   m_ObjectHideFlags: 0

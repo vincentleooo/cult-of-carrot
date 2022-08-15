@@ -15,9 +15,6 @@ MonoBehaviour:
   skillName: Touch Grass
   skillDescription: 'CASSLIGHTS Self for 2 turns.
 
-    CASSLIGHTS
-    Self for 2 turns.
-
     CD: 6'
   changeFaith: 0
   changePower: 0

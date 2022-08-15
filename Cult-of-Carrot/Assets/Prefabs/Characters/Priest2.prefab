@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSelected: 0
-  characterStats: {fileID: 11400000, guid: 8d152b54a88e249b597e5cdeae253e95, type: 2}
+  characterStats: {fileID: 11400000, guid: 545a3e5af7d82af4eac80bb3826e7fe1, type: 2}
   faithBar: {fileID: 7272209304809348289}
   statTooltipManager: {fileID: 8016088830135824462}
   effectManager: {fileID: 1376018732685375501}
@@ -444,6 +444,10 @@ PrefabInstance:
     - target: {fileID: 1103833253591334755, guid: e335a0185ae15403a8fb510ef302e082, type: 3}
       propertyPath: m_Name
       value: CharacterStatTooltip
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103833253591334755, guid: e335a0185ae15403a8fb510ef302e082, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1103833253591334759, guid: e335a0185ae15403a8fb510ef302e082, type: 3}
       propertyPath: m_Pivot.x

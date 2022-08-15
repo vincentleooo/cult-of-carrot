@@ -129,14 +129,15 @@ public class BattleSystemManager : MonoBehaviour
             battlePanel.UpdateBattleText("No target selected!");
             return;
         }
-        else if (!playerUnit.isSelected && !skill.isEnemyCast)
+        else 
+		if (!playerUnit.isSelected && !skill.isEnemyCast)
         {
-            battlePanel.UpdateBattleText("No target selected!");
+            battlePanel.UpdateBattleText("No target selected! Select yourself for self-cast skills.");
             return;
         }
         else if (!enemySelected && skill.isEnemyCast)
         {
-            battlePanel.UpdateBattleText("No target selected!");
+            battlePanel.UpdateBattleText("No target selected! Select one enemy to attack.");
             return;
         }
 
@@ -161,15 +162,25 @@ public class BattleSystemManager : MonoBehaviour
         // Single target, cast on Enemy skills
         if (skill.isSingleTarget && skill.isEnemyCast)
         {
-            EnemyUnit targetEnemy = enemyUnits[getMouseClick.enemyUnitIndex];
+            // EnemyUnit targetEnemy = enemyUnits[getMouseClick.enemyUnitIndex];
+
+			foreach (EnemyUnit e in enemyUnits)
+			{
+				if (e.isSelected)
+				{
+					playerSkillAnim = Instantiate(skill.skillAnim, playerBattlePosition);
+					playerSkillAnim.SetActive(true);
+					
+					e.TakeDamage(skill, playerUnit.GetCharacterPower());
+					if (e.IsDefeated()) enemiesRemaining--;
+
+					yield return new WaitForSeconds(1);
+					yield return null;
+				}
+			}
 
             // playerSkillAnim = Instantiate(skill.skillAnim, enemyBattlePositions[getMouseClick.enemyUnitIndex]);
-            playerSkillAnim = Instantiate(skill.skillAnim, playerBattlePosition);
-            playerSkillAnim.SetActive(true);
             
-            targetEnemy.TakeDamage(skill, playerUnit.GetCharacterPower());
-            if (targetEnemy.IsDefeated()) enemiesRemaining--;
-            yield return new WaitForSeconds(1);
         }
 
         // Single target, cast on Self skills
@@ -193,6 +204,8 @@ public class BattleSystemManager : MonoBehaviour
         {
             foreach (EnemyUnit e in enemyUnits)
             {
+				playerSkillAnim = Instantiate(skill.skillAnim, playerBattlePosition);
+                playerSkillAnim.SetActive(true);
                 e.TakeDamage(skill, playerUnit.GetCharacterPower(), enemiesRemaining);
                 if (e.IsDefeated())
                 {
@@ -227,8 +240,8 @@ public class BattleSystemManager : MonoBehaviour
 
         for (int i = 0; i < enemyUnits.Length; i++)
         {
+			if (enemyUnits[i].IsDefeated()) continue;
             Skill enemySkill = enemyUnits[i].SelectAttack();
-
 
             enemySkillAnims[i] = Instantiate(enemySkill.skillAnim, enemyBattlePositions[i]);
             enemySkillAnims[i].SetActive(true);
@@ -245,6 +258,7 @@ public class BattleSystemManager : MonoBehaviour
         foreach (EnemyUnit e in enemyUnits)
         {
             e.UpdateStatusEffect();
+			if (e.IsDefeated()) continue;
             if (!e.TurnIsBlocked() && !e.IsDefeated())
             {
                 Skill enemySkill = e.SelectAttack();
