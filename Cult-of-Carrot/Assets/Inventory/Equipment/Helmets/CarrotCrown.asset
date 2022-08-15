@@ -15,6 +15,7 @@ MonoBehaviour:
   equipmentID: 0
   price: 0
   prefab: {fileID: 1110076190258911765, guid: 035346b93134d41469b3fb5cc805c1c4, type: 3}
+  prefabInventory: {fileID: 1110076190258911765, guid: 13f3f26124fa7487589650d89f78e00b, type: 3}
   equipmentName: Carrot Crown
   equipmentDescription: 'You feel safer with your head protected.
 

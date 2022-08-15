@@ -15,6 +15,7 @@ MonoBehaviour:
   equipmentID: 0
   price: 0
   prefab: {fileID: 785104253911992399, guid: f0b5021ded49747e6a9d8fe50ab8da22, type: 3}
+  prefabInventory: {fileID: 785104253911992399, guid: c792a1197555e45b29c6bb52125d7c75, type: 3}
   equipmentName: Prisoner's Ball & Chain
   equipmentDescription: 'Unfriendly reminder of your past, and also apparently a
     free way into prison without question.

@@ -15,6 +15,7 @@ MonoBehaviour:
   equipmentID: 0
   price: 0
   prefab: {fileID: 785104253911992399, guid: 70b4650cda8054a1599e60f9948c523b, type: 3}
+  prefabInventory: {fileID: 785104253911992399, guid: 436df8e1534fc4ae0a0f2dae4d759623, type: 3}
   equipmentName: Clerical Collar
   equipmentDescription: 'Priesthood gives you invincible drip.
 

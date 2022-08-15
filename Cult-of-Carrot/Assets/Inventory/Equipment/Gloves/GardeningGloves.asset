@@ -15,6 +15,7 @@ MonoBehaviour:
   equipmentID: 0
   price: 0
   prefab: {fileID: 477326806273251707, guid: d8c29e27c55a541f2a448836761cbe93, type: 3}
+  prefabInventory: {fileID: 477326806273251707, guid: ef955104dbd594e8f9178f820f116d26, type: 3}
   equipmentName: Gardening Gloves
   equipmentDescription: 'Green fingers stained red.
 

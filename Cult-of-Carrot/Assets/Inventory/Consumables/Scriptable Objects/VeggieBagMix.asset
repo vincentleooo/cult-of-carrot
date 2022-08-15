@@ -16,6 +16,7 @@ MonoBehaviour:
   consumableName: Veggie Bag Mix
   price: 0
   prefab: {fileID: 5372141736820619776, guid: 0ba0d83dd211d42d6ad4d19cb1a3cbfd, type: 3}
+  prefabInventory: {fileID: 5372141736820619776, guid: 7ee10e0d66bef4f788b21e96d93c0f4d, type: 3}
   consumableDesc: "Kids like it. Cultists LOVE it. Get yours today for 23.59$, or
     a dollar if you\u2019re one of us."
   changeFaith: 0

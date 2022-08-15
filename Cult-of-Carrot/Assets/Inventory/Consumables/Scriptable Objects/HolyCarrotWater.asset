@@ -16,6 +16,7 @@ MonoBehaviour:
   consumableName: "Holy Carrot Water\u2122"
   price: 20
   prefab: {fileID: 5372141736820619776, guid: e3d7ed4fc3dc340bd995731a3fe0079c, type: 3}
+  prefabInventory: {fileID: 5372141736820619776, guid: 55ca78bc16c12491db879cb7df720dc8, type: 3}
   consumableDesc: Rumour has it that this is milked from the Holy Carrot Plant by
     priests.
   changeFaith: 30

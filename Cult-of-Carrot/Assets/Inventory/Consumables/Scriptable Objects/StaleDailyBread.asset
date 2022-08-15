@@ -16,6 +16,7 @@ MonoBehaviour:
   consumableName: ' Stale Daily Bread'
   price: 0
   prefab: {fileID: 5372141736820619776, guid: 9b0021e5f56aa4d41a6d4f53902ab9f3, type: 3}
+  prefabInventory: {fileID: 5372141736820619776, guid: 66543655662d4484a817a0508f82cdb6, type: 3}
   consumableDesc: Crusty, armoured bread. Gives you thick skin for a while.
   changeFaith: 0
   changePower: 0

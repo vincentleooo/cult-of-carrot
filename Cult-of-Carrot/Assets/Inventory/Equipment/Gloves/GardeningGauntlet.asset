@@ -15,6 +15,7 @@ MonoBehaviour:
   equipmentID: 0
   price: 0
   prefab: {fileID: 785104253911992399, guid: 91db566185e9b4dc689d6e3dae3c2c24, type: 3}
+  prefabInventory: {fileID: 785104253911992399, guid: 4336b40a43e5247b4b56182f25477a1c, type: 3}
   equipmentName: Gardening Gauntlet
   equipmentDescription: 'For beating some faith into people.
 

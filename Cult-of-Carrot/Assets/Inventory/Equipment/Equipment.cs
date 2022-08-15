@@ -18,6 +18,7 @@ public class Equipment : ScriptableObject
 	public float price;
 	private int _quantity = 0;
 	public GameObject prefab;
+	public GameObject prefabInventory;
 
 	public void SetQuantity(int newQuantity)
 	{

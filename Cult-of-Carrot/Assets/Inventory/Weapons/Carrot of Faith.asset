@@ -15,6 +15,7 @@ MonoBehaviour:
   weaponID: 0
   price: 0
   prefab: {fileID: 2727985165866550235, guid: 1adff4f6f96644133bf30ea80625d356, type: 3}
+  prefabInventory: {fileID: 2727985165866550235, guid: 7afeda8a4ae534cf2be04fc87b8b87b0, type: 3}
   weaponName: Carrot of Faith
   weaponDescription: 'Basic carrot for converting people. Carrots give you good eyesight;
     help them see the glory of Carrot.
@@ -29,4 +30,5 @@ MonoBehaviour:
   changeFaith: 0
   changePower: 0
   changeDef: 0
+  weaponSkill: {fileID: 0}
   isEquipped: 0

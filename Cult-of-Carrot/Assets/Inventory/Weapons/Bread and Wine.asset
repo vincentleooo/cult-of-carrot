@@ -15,6 +15,7 @@ MonoBehaviour:
   weaponID: 0
   price: 0
   prefab: {fileID: 2037177059970665036, guid: 77a4f9ffec82f426f8d4aef6d20d9193, type: 3}
+  prefabInventory: {fileID: 2037177059970665036, guid: c836baa46f28949e4a6a500fa3d3c288, type: 3}
   weaponName: Bread and Wine
   weaponDescription: 'Carbs give carrots a balanced diet. And numbs the pain.
 
@@ -26,4 +27,5 @@ MonoBehaviour:
   changeFaith: 0
   changePower: 0
   changeDef: 0
+  weaponSkill: {fileID: 0}
   isEquipped: 0

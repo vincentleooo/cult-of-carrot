@@ -15,6 +15,7 @@ MonoBehaviour:
   weaponID: 0
   price: 0
   prefab: {fileID: 2761403682044352262, guid: 209cebbeb216a4a38a6f9586ab30fa95, type: 3}
+  prefabInventory: {fileID: 2761403682044352262, guid: 5d78f44613d944e58a20efa0d07858ce, type: 3}
   weaponName: Vegetable Knife
   weaponDescription: 'For when they start to get physical.
 
@@ -28,4 +29,5 @@ MonoBehaviour:
   changeFaith: 0
   changePower: 0
   changeDef: 0
+  weaponSkill: {fileID: 0}
   isEquipped: 0

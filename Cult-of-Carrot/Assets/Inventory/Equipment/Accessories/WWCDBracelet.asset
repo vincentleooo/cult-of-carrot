@@ -15,6 +15,7 @@ MonoBehaviour:
   equipmentID: 0
   price: 0
   prefab: {fileID: 5738601151832126301, guid: 36f8b707aab92415eaa20118e738f032, type: 3}
+  prefabInventory: {fileID: 5738601151832126301, guid: 071b2179b7304457881fb233b0fe15e3, type: 3}
   equipmentName: WWCD Bracelet
   equipmentDescription: 'Before you consult the Elders on seed planting problems,
     ask yourself: What Would Carrot Do?

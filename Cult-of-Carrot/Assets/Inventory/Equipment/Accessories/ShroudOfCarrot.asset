@@ -15,6 +15,7 @@ MonoBehaviour:
   equipmentID: 0
   price: 0
   prefab: {fileID: 834519195445630442, guid: ff8fa49deafc6454f8be8aa96049f94a, type: 3}
+  prefabInventory: {fileID: 834519195445630442, guid: 2ed93108942c744c19fa67f6993f4746, type: 3}
   equipmentName: Shroud of Carrot
   equipmentDescription: 'Carrot DIED for you and rose again. Wear its burial cloth
     with PRIDE.

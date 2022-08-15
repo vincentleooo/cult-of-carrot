@@ -15,10 +15,12 @@ MonoBehaviour:
   weaponID: 0
   price: 0
   prefab: {fileID: 5781224256088428521, guid: 766280ad446384da0bd206ac5f1ebef9, type: 3}
+  prefabInventory: {fileID: 5781224256088428521, guid: 493f4e6ff87e94d3288c4eb9d1cd9bcb, type: 3}
   weaponName: Shitty Flute
   weaponDescription: "When you cannot afford a guitar.\n\nShittyFlut\u2019d:\nTAUNTS
     and ENRAGES enemy for 2 turns with your poor fluting skills."
   changeFaith: 0
   changePower: 0
   changeDef: 0
+  weaponSkill: {fileID: 0}
   isEquipped: 0

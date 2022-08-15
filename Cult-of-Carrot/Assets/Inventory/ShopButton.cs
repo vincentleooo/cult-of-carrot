@@ -14,6 +14,7 @@ public enum InventoryType
 
 public class ShopButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+	public bool canClick = true;
 	private int itemID;
 	private string itemName;
 	private string itemDesc;
@@ -50,7 +51,8 @@ public class ShopButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 			quantity = shopEquipmentItems.Quantity();
 			equipmentType = shopEquipmentItems.equipmentType;
 			equipmentText.text = equipmentType.ToString();
-		} else if (inventoryType == InventoryType.CONSUMABLES)
+		}
+		else if (inventoryType == InventoryType.CONSUMABLES)
 		{
 			itemID = shopItems.consumableID;
 			itemName = shopItems.consumableName;
@@ -66,10 +68,13 @@ public class ShopButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 			price = shopWeaponsItems.price;
 			quantity = shopWeaponsItems.Quantity();
 		}
-		
+
 		shopManager = GameObject.Find("ShopManager").GetComponent<ShopManagerScript>();
-		GetComponent<Button>().onClick.AddListener(delegate {Clicked();});
-		priceText.text = "$" + price.ToString();
+		if (canClick)
+		{
+			GetComponent<Button>().onClick.AddListener(delegate { Clicked(); });
+			priceText.text = "$" + price.ToString();
+		}
 		nameText.text = itemName;
 		descText.text = itemDesc;
 		childObj = transform.Find("DescBG");
@@ -78,27 +83,53 @@ public class ShopButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 	}
 
 	public void OnPointerEnter(PointerEventData eventData)
-    {
+	{
 		childObj.gameObject.SetActive(true);
-    }
+	}
 
 	public void OnPointerExit(PointerEventData eventData)
-    {
+	{
 		childObj.gameObject.SetActive(false);
-    }
+	}
 
 	void Clicked()
 	{
-		shopManager.Buy();
+		if (!canClick) return;
+
+		if (shopManager.unbuy)
+		{
+			shopManager.Buy();
+		}
 
 		if (inventoryType == InventoryType.EQUIPMENT)
 		{
+			if (shopEquipmentItems.Quantity() == 0)
+			{
+				if (!shopManager.unbuy)
+				{
+					shopManager.Buy();
+				}
+			}
 			shopEquipmentItems.SetQuantity(quantity);
-		} else if (inventoryType == InventoryType.CONSUMABLES)
+
+		}
+		else if (inventoryType == InventoryType.CONSUMABLES)
 		{
+			if (!shopManager.unbuy)
+			{
+				shopManager.Buy();
+			}
 			shopItems.SetQuantity(quantity);
-		} else if (inventoryType == InventoryType.WEAPONS)
+		}
+		else if (inventoryType == InventoryType.WEAPONS)
 		{
+			if (shopWeaponsItems.Quantity() == 0)
+			{
+				if (!shopManager.unbuy)
+				{
+					shopManager.Buy();
+				}
+			}
 			shopWeaponsItems.SetQuantity(quantity);
 		}
 
@@ -118,5 +149,15 @@ public class ShopButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 	public void ModifyQuantity(int differenceSigned)
 	{
 		quantity += differenceSigned;
+	}
+
+	public void RemoveListeners()
+	{
+		GetComponent<Button>().onClick.RemoveAllListeners();
+	}
+
+	public void AddListeners()
+	{
+		GetComponent<Button>().onClick.AddListener(delegate { Clicked(); });
 	}
 }

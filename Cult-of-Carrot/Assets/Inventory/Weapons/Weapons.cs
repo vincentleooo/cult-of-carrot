@@ -10,6 +10,7 @@ public class Weapons : ScriptableObject
 	public float price;
 	private int _quantity = 0;
 	public GameObject prefab;
+	public GameObject prefabInventory;
 
 	public void SetQuantity(int newQuantity)
 	{
@@ -25,5 +26,6 @@ public class Weapons : ScriptableObject
     public float changeFaith;
 	public float changePower;
 	public float changeDef;
+	public WeaponSkills weaponSkill;
     public bool isEquipped; // Not sure if we need this yet
 }

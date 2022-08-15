@@ -15,6 +15,7 @@ MonoBehaviour:
   equipmentID: 0
   price: 0
   prefab: {fileID: 7238473947760076750, guid: bce9df2fcf5614eb8b5ef68544c33d43, type: 3}
+  prefabInventory: {fileID: 7238473947760076750, guid: 5134bec61e4934d88b28c976afa0b919, type: 3}
   equipmentName: Priestly Robes
   equipmentDescription: 'Acknowledgement of your rise to Priesthood.
 

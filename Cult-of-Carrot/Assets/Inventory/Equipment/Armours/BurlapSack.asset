@@ -15,6 +15,7 @@ MonoBehaviour:
   equipmentID: 0
   price: 0
   prefab: {fileID: 3066866262637933309, guid: 05a8a4dfff91e4b8c86f42c13633912d, type: 3}
+  prefabInventory: {fileID: 3066866262637933309, guid: 1cbc418dbf56648dbb9301e7bf97fc88, type: 3}
   equipmentName: BurlapSack
   equipmentDescription: 'Leftover from the sack of carrots.
 

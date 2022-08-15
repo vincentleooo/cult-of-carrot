@@ -15,6 +15,7 @@ MonoBehaviour:
   equipmentID: 0
   price: 0
   prefab: {fileID: 6505752804035912917, guid: 217919250deba4f9cb273a2f71e337d1, type: 3}
+  prefabInventory: {fileID: 6505752804035912917, guid: 2027fbc6e6514442ea58d3ef7d0116e1, type: 3}
   equipmentName: Socks & Sandals
   equipmentDescription: 'Fashion is subjective.
 

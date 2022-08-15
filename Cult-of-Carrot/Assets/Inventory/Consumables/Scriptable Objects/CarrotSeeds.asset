@@ -16,6 +16,7 @@ MonoBehaviour:
   consumableName: Carrot Seeds
   price: 10
   prefab: {fileID: 5372141736820619776, guid: 11fd1cf139f3141ffac012aed75aa04a, type: 3}
+  prefabInventory: {fileID: 5372141736820619776, guid: 01504eddbab0545c2b419f318ec598e2, type: 3}
   consumableDesc: Store it for a dry day. Plant It on a rainy day. Or eat it now
     for that headache.
   changeFaith: 0

@@ -15,6 +15,7 @@ MonoBehaviour:
   equipmentID: 0
   price: 0
   prefab: {fileID: 3852335809310398606, guid: 917132e5d119c43788ecacb159c11a37, type: 3}
+  prefabInventory: {fileID: 3852335809310398606, guid: c741fa15a24694340bf4545b154e390b, type: 3}
   equipmentName: Trendy Glove Socks
   equipmentDescription: 'Fashion is CLEARLY subjective. A Cult favourite.
 

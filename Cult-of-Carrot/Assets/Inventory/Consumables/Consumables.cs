@@ -8,6 +8,7 @@ public class Consumables : ScriptableObject
 	public float price;
 	private int _quantity = 0;
 	public GameObject prefab;
+	public GameObject prefabInventory;
 	[Multiline] public string consumableDesc = "";
 	public float changeFaith;
 	public float changePower;
